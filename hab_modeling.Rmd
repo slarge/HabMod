@@ -1,0 +1,74 @@
+---
+title: "Habitat model construction for witch flounder"
+author: "Scott Large, Kevin Friedland, Marta Ribera, Emily Shumchenia, John Manderson, Kristin Kleisner, and Sean Lucey + others?"
+date: ""
+output: html_document
+#bibliography: bibliography.bib
+#csl: fish-and-fisheries.csl
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction
+
+A principal element of stock assessments is fishery independent indices of abundance which provide both quantitative and qualitative information in the development of management advice. It is recognized that sample designs for surveys and the nature of survey gear produce catch rate data that is noisy and at times biased, which has spurred interest in remedies to improve the accuracy and precision of the signal from these surveys (Hattab et al 2013, Thorson et al. 2015). A common approach has been to develop models that describe the species distribution in time associated with environmental data and habitat characteristics, including both dynamic and static variables (Elith and Leathwick, 2009). These models have grown in sophistication in the forms of data used in model building to include models that draw on the dimensional structure of the ecosystem and the formation of gradients or fronts (Alabia et al., 2016; Duron et al. 2016).
+
+Ocean fronts play a key role in marine ecosystems, affecting every trophic level across a wide range of spatio-temporal scales, from meters to thousands of kilometers, and from days to millions of years (Belkin et al., 2014). Fronts are associated with elevated primary and secondary production, in addition to commercially important fish stocks (Tseng et al., 2014). Many species are linked to fronts at certain life stages, e.g. spawning, feeding, ontogenetic development, migrations, etc., sometimes using different fronts at different life stages. The nature and strength of front-biota links depend on physical nature and scales of the front as well as the species and their life stages in question. Fronts thus support different niches and habitats over a wide range of spatio-temporal scales. Studies of biophysical interactions at fronts (Le Fevre, 1986) lead to a growing realization of the importance of fronts to marine ecosystems. New technologies, particularly satellite remote sensing, facilitated recent advances in this field, including introduction of frontal data in operational applications and ecosystem-based fisheries management (Wilson, 2011).
+
+Here, we use habitat variables that have been linked to the station records of the NEFSC bottom trawl survey as an expanded set of independent variables to model index survey abundance beyond the data available in the station logs of the survey (top and bottom temperature and salinity and depth). The information provided here includes multiple measures of benthic habitat complexity and structure related to its three dimensional structure and sediment characteristics. Also, the station records are linked to remote sensing data including sea surface temperature and chlorophyll concentration at three spatial resolutions, 4km, 9km, and 25km. And, records are linked to the gradient magnitudes of the SST and chlorophyll data (frontal structure). 
+
+The intent of this work is to use environmental variables and NEFSC Bottom Trawl Survey abundance data to accurately predict the presence and abundance of principle stocks in the northwestern Atlantic. Further, we also seek a deeper understanding of how environmental variables influence stock dynamics.
+
+The BTS is a stratified random survey.
+
+Here, we use a two-stage modeling procedure that links relationships between species occurance and abundance. First, we use species distribution models (SDM) to predict the probability of occurance (occupancy) of each stock. Second, the predicted occupancy is regressed against abundance data and habitat variables with Random Forest regression (RF). Co-occuring species are also included as covariates within the RF regression model to account for potential biotic effects.  
+
+This approach allows for species abundance and occurrence to be controlled by different environmental factors. 
+
+## Methods
+
+<em>Data</em>
+Considerable work has gone into aggregating the survey data and the environmental parameters. Kevin et al should provide simple documentation on how these data are prepared and caveats to their use. Random Forest requires complete observations (i.e., no missing values for a station), so we subdivided the survey data into several distinct datasets. For the occupancy model, we tried to select the variables with the longest time-series and the fewest missing observations. This dataset was randomly subdivided into a training and testing dataset to evaluate the ensemble models. For the RF analysis, we selected most relevant variables - regardless of time0series length. 
+
+knitr::kable() of the environmental parameters
+
+Abundance data were transformed into presence and absences. If a given species was found at a station it was considered present. If a given species was not found at a station, it would be considered absent only if it was found within the station's stratum during that survey year. If the species was not found within that station's stratum during that survey year, that station was not considered in the analysis for the species.   
+
+
+We evaluated the correlation between environmental parameters. If two parameters were correlated above 0.7 or below -0.7 we used expert judgement to select the parameter that had the greatest likelihood to influence occupancy. Occupancy was evaluated with a longer data set and included fewer parameters. Abundance was modeled with a shorter data set including more parameters. Observations that were used in occupancy model training were excluded from further analyses. 
+
+
+
+<em>Models</em>
+Species distribution models. Given the nature of the BTS, we have presence-only data. Since Random Forest
+
+Questions:
+* Identify the modeling benefits of using presence-only SDM vs. abundance RF. RF do not allow missing data. We have quite a few covariates but many of them are only available for recent years. 
+* Instead of using presence-only SDM, could we just use RF on abundance for long timeseries? The other ms that use presence-only convert from 
+* Think about the fundamental relationship between the area of occupancy and abundance for marine fishes
+
+## Results
+Data cleaning steps
+
+Variable importance
+
+Ensemble model
+
+Random Forest
+
+## Discussion
+
+Here, we use a novel two-step approach to model marine species abundance. 
+
+
+## References
+
+
+## Supplementary information
+Code link (github)
+
+FIG: Correlation plot
+FIG: NA matrix
+FIG: presence-absence and predicted map
