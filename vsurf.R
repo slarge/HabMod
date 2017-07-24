@@ -1,48 +1,67 @@
-rm(list = ls())
-
+#rm(list = ls())
+cat("start log\n")
 strt_time <- Sys.time()
-
+cat(paste0("Initiating the service at: ", strt_time, ".\n"))
 # Load libraries
+libs = c("VSURF", "parallel", "doParallel")
 library(VSURF)
-#library(snow)
-#library(Rmpi)
 library(parallel)
 library(doParallel)
 
-false<-F
-true<-T
+if(all(libs %in% .packages())){
+  cat("The following packages are loaded: ", libs, ".\n")
+}
+if(!any(libs %in% .packages())){
+  cat("The following packages are not loaded: ", libs[!libs %in% .packages()], ".\n")
+}
 
 #parameters
+false <-F
+true <-T
 x = "x.txt"
-x = read.table(x, header = T, sep = ",") # for test
+x = read.table(x, header = T, sep = ",")
 y = "y.txt"
-y = read.table(y, header = T, sep = ",") # for test
-ntree = 500 
-mtry = max(floor(ncol(x)/3), 1);
+y = read.table(y, header = T, sep = ",")
+ntree = 500
+mtry = max(floor(ncol(x)/3), 1)
 nfor.thres = 50
 nmin = 1
 nfor.interp = 25 
 nsd = 1
 nfor.pred = 25
-parallel = false 
-ncores = detectCores() - 1;
-clusterType = "PSOCK";
+parallel = false
+ncores = parallel::detectCores() - 1
+clusterType = "PSOCK"
 seed = 627
+name = "test"
+
+if(length(x) >= 1 &
+   length(y) >= 1) {
+  cat(paste0("You have loaded a file with ", nrow(x), " observations of ", ncol(x), " predictors."))
+}
+if(length(x) < 1 |
+   length(y) < 1){
+  cat("x or y did not load correctly.")
+}
 
 if(ncol(y) == 1) {
   y = y[,1]
 }
 
-
 if(length(unique(y)) == 2) {
   y = as.factor(y)
 }
 
+if(is.null(ncores)) {
+  cat("Your number of cores is... wonky.\n")
+} else {
+  cat("You have", ncores, "cores ready for action.\n")
+}
 
+cluster <- parallel::makeCluster(ncores) # convention to leave 1 core for OS
+doParallel::registerDoParallel(cluster)
 
-cluster <- makeCluster(ncores) # convention to leave 1 core for OS
-registerDoParallel(cluster)
-
+cat("Now we're starting the VSURF process with", ncores, "cores.\n")
 dat.vsurf <- VSURF::VSURF(x = x,
                           y = y,
                           ntree = ntree, 
@@ -55,9 +74,13 @@ dat.vsurf <- VSURF::VSURF(x = x,
                           parallel = parallel, 
                           ncores = ncores,
                           clusterType = clusterType)
-                          
-stopCluster(cluster)
-registerDoSEQ()
+cat("VSURF finished, now stopping ")
+parallel::stopCluster(cluster)
+cat("the cluster")
+foreach::registerDoSEQ()
 
-output_file <- "output.rds"
+output_file <- paste0(name, "_output.rds")
 saveRDS(dat.vsurf, output_file)
+rm(dat.vsurf)
+cat("Just to make sure we saved everything:")
+summary(readRDS(output_file))
