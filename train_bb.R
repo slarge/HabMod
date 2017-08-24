@@ -63,8 +63,8 @@ registerDoParallel(cluster)
 
 
 cat("Now we're starting the VSURF process with", ncores, "cores.\n")
-wf_abund <- caret::train(x = trainX,
-                         y = trainY,
+wf_abund <- caret::train(x = x,
+                         y = y,
                          method = "cforest",
                          tuneGrid = tune_grid,
                          trControl = train_control,
@@ -78,10 +78,7 @@ cat("the cluster")
 foreach::registerDoSEQ()
 
 output_file <- paste0(name, "_output_train.rds")
-saveRDS(dat.vsurf, output_file)
-rm(dat.vsurf)
-cat("Just to make sure we saved everything:")
-summary(readRDS(output_file))
+saveRDS(wf_abund, output_file)
 
 stp_time <- Sys.time()
 stp_time - strt_time
