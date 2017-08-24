@@ -9,10 +9,12 @@ library(biomod2)
 library(viridis)
 library(gridExtra)
 library(caret)
-# library(vtreat)
-# library(tidyverse)
 library(maps)
 library(mapproj)
+library(parallel)
+library(doParallel)
+# library(vtreat)
+# library(tidyverse)
 # library(sf)
 # library(tableplot)
 # library(party)
@@ -23,16 +25,7 @@ library(mapproj)
 # devtools::install_github("btupper/fishboxes")
 # library(fishboxes)
 
-
-wd <- ("~/git/slarge/hab_modeling/data/")
-# dest <- tempdir()
-# dir(dest)
-# map_dest <- paste0(wd, "maps")
-# ok <- download_nefsc_gis("EcoMon_Strata", dest = dest)
-# 
-# P <- readOGR(path.expand(dest), "EcoMon_Strata")
-
-# plot(P)
+wd <- ("~/slarge/HabMod/data/")
 
 # First get the species of interest
 svspp_dat <- read.csv(paste0(wd, "SVSPP.csv"), stringsAsFactors = FALSE)
@@ -72,7 +65,7 @@ stock_list <- data.frame(matrix(c("Gulf of Maine", "Atlantic cod",
 colnames(stock_list) <- c("AREA", "COMNAME")
 
 stock_list <- stock_list %>% 
-  mutate(COMNAME = toupper(COMNAME)) %>% 
+  mutate(COMNAME = tolower(COMNAME)) %>% 
   left_join(svspp_dat, by = "COMNAME")
 
 data_files <- list.files(path = wd, full.names = FALSE)
@@ -117,8 +110,8 @@ pa_table <- survdat %>%
   mutate(ssum = sum(count),
          PRESENCE = sum(count, na.rm = TRUE),
          PRESENCE = ifelse(PRESENCE >= 1,
-                     1,
-                     0))
+                           1,
+                           0))
 
 stat_dat <- survdat %>% 
   dplyr::select(-CATCHSEX, -SVSPP, -LENGTH,
@@ -156,8 +149,9 @@ corr_plot <- ggcorr(corr_dat, geom = "blank", label = TRUE, hjust = .75, size = 
 na_dat <- pa_dat %>%
   filter(COMNAME == "witch flounder") %>%
   dplyr::select_(.dots = c("YEAR", corr_names)) %>% 
-  slice_rows(.cols = "YEAR") %>%
-  summarize_each(funs( sum(is.na(.))/n())) %>%
+  group_by(YEAR) %>% 
+  # slice_rows(.cols = "YEAR") %>%
+  summarize_all(funs( sum(is.na(.))/n())) %>%
   as.data.frame %>%
   gather(YEAR)
 
@@ -190,7 +184,7 @@ rf_vars <-  c(sdm_vars, "chl_f_9km_month_1", "chl_9km_month_1",
               "sst_4km_month_1", "ABUNDANCE")
 
 wf_dat <- pa_dat %>% 
-  filter(COMNAME == quote(sp_name)) %>% 
+  filter(COMNAME == sp_name) %>% 
   select_(.dots = sdm_vars) %>% 
   as.data.frame() %>% 
   na.omit()
@@ -210,7 +204,6 @@ myExpl <- wf_dat_train[, setdiff(names(wf_dat_train), c("PRESENCE","LAT", "LON",
 myEvalResp <- wf_dat_test[, "PRESENCE"]
 myEvalExpl <- wf_dat_test[, setdiff(names(wf_dat_test), c("PRESENCE","LAT", "LON", join_names))]
 myEvalXY <- wf_dat_test[, c("LON", "LAT")]
-
 
 myBiomodData <- BIOMOD_FormatingData(resp.var = myResp,
                                      expl.var = myExpl,
@@ -270,28 +263,6 @@ ggplot(df1, aes(x = VARIABLE, y = MEAN, color = MODEL)) +
   geom_point() +
   stat_summary(fun.y = "mean", colour = "red", size = 2, geom = "point")
 
-# myGLMModels <- BIOMOD_LoadModels(myBiomodModelOut, models=c('GLM'))
-# 
-# myRespPlotGLM <- response.plot2(models  = myGLMModels,
-#                                 Data = get_formal_data(myBiomodModelOut,'expl.var'), 
-#                                 show.variables= get_formal_data(myBiomodModelOut,'expl.var.names'),
-#                                 do.bivariate = FALSE,
-#                                 fixed.var.metric = 'median',
-#                                 col = c("red", "blue", "green"),
-#                                 legend = TRUE,
-#                                 data_species = get_formal_data(myBiomodModelOut,'resp.var'))
-
-
-# myRFModels <- BIOMOD_LoadModels(myBiomodModelOut, models=c('RF'))
-# 
-# myRespPlotRF <- response.plot2(models  = myRFModels,
-#                                 Data = get_formal_data(myBiomodModelOut,'expl.var'), 
-#                                 show.variables= get_formal_data(myBiomodModelOut,'expl.var.names'),
-#                                 do.bivariate = FALSE,
-#                                 fixed.var.metric = 'median',
-#                                 col = c("red", "blue", "green"),
-#                                 legend = TRUE,
-#                                 data_species = get_formal_data(myBiomodModelOut,'resp.var'))
 scores_TSS <- as.numeric(myBiomodModelEval["TSS","Evaluating.data",,,])
 
 ## select a threshold to keep a single model
@@ -394,7 +365,7 @@ rf_vars <- rf_vars[!grepl("PRESENCE", rf_vars)]
 
 rf_df <- survdat %>%
   left_join(svspp_dat) %>%  #, by = "SVSPP") %>% 
-  filter(COMNAME == quote(sp_name)) %>% 
+  filter(COMNAME == sp_name) %>% 
   left_join(full_dat) %>% 
   select_(.dots = rf_vars) %>% 
   as.data.frame() %>% 
@@ -417,12 +388,24 @@ f <- paste(outcome,
            paste(vars, collapse = ' + '), 
            sep = ' ~ ')
 
-train_control <- trainControl(method = "cv", number = 10)
+cluster <- makeCluster(detectCores() - 1) # convention to leave 1 core for OS
+registerDoParallel(cluster)
+
+train_control <- trainControl(method = "cv",
+                              number = 10,
+                              allowParallel = TRUE)
+
 model <- train(form = as.formula(f), 
                data = rf_dat, 
                trControl = train_control, 
                method = "rf",
                importance = T)
+
+stopCluster(cluster)
+registerDoSEQ()
+
+im = importance(run.rf)
+im = data.frame(im)
 
 plot(model$finalModel)
 print(model)
