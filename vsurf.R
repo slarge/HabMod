@@ -4,6 +4,8 @@ strt_time <- Sys.time()
 cat(paste0("Initiating the service at: ", strt_time, ".\n"))
 # Load libraries
 libs = c("VSURF", "parallel", "doParallel")
+# library(VSURF)
+# devtools::install_github("slarge/VSURF")
 library(VSURF)
 library(parallel)
 library(doParallel)
@@ -18,22 +20,26 @@ if(!any(libs %in% .packages())){
 #parameters
 false <-F
 true <-T
-x = "x.txt"
+# x = "x.txt"
+x = "witch_flounder_PA_x.txt"
+# download.file(x, "x.txt", mode = "wb", cacheOK = FALSE)
+# download.file(y, "y.txt", mode = "wb", cacheOK = FALSE)
 x = read.table(x, header = T, sep = ",")
-y = "y.txt"
+# y = "y.txt"
+y = "witch_flounder_PA_y.txt"
 y = read.table(y, header = T, sep = ",")
-ntree = 500
+ntree = 1000
 mtry = max(floor(ncol(x)/3), 1)
-nfor.thres = 50
+nfor.thres = 3
 nmin = 1
 nfor.interp = 25 
 nsd = 1
 nfor.pred = 25
-parallel = false
+parallel = true
 ncores = parallel::detectCores() - 1
-clusterType = "PSOCK"
+clusterType = "FORK"
 seed = 627
-name = "test"
+name = "ranger_test"
 
 if(length(x) >= 1 &
    length(y) >= 1) {
@@ -58,10 +64,10 @@ if(is.null(ncores)) {
   cat("You have", ncores, "cores ready for action.\n")
 }
 
-cluster <- parallel::makeCluster(ncores) # convention to leave 1 core for OS
-doParallel::registerDoParallel(cluster)
+# cluster <- parallel::makeCluster(ncores) # convention to leave 1 core for OS
+# doParallel::registerDoParallel(cluster)
 
-cat("Now we're starting the VSURF process with", ncores, "cores.\n")
+# cat("Now we're starting the VSURF process with", ncores, "cores.\n")
 dat.vsurf <- VSURF::VSURF(x = x,
                           y = y,
                           ntree = ntree, 
@@ -74,13 +80,22 @@ dat.vsurf <- VSURF::VSURF(x = x,
                           parallel = parallel, 
                           ncores = ncores,
                           clusterType = clusterType)
-cat("VSURF finished, now stopping ")
-parallel::stopCluster(cluster)
-cat("the cluster")
-foreach::registerDoSEQ()
+# cat("VSURF finished, now stopping ")
+# parallel::stopCluster(cluster)
+# cat("the cluster\n")
+# foreach::registerDoSEQ()
+summary(dat.vsurf)
+
 
 output_file <- paste0(name, "_output.rds")
 saveRDS(dat.vsurf, output_file)
 rm(dat.vsurf)
 cat("Just to make sure we saved everything:")
 summary(readRDS(output_file))
+plot(dat.vsurf)
+names(x)[dat.vsurf$varselect.interp]
+
+output_file <- paste0(name, "_output_", Sys.time(), ".rds")
+output_file <- gsub(" ", "_", output_file)
+output_file <- gsub(":", "_", output_file)
+
