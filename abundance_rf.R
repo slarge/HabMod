@@ -10,7 +10,7 @@ library(parallel)
 library(doParallel)
 library(VSURF)
 library(httr)
-library(googleVis)
+# library(googleVis)
 library(xml2)
 library(viridis)
 library(marmap)
@@ -25,7 +25,7 @@ username <<- "largesi"
 token <<-"1ba80d8d-15ea-4ff1-9420-f8c97ea15d40-843339462" #YOUR TOKEN FOR A VRE
 
 wd <- ("~/slarge/HabMod/data/")
-# wd <- ("~/git/slarge/HabMod/data/")
+wd <- ("~/git/slarge/HabMod/data/")
 
 ## ~~~~~~~~~~~~~ ##
 ## Load the data ##
@@ -214,6 +214,7 @@ for(sp.i in unique(all_dat_sac$SVSPP)) {
   close(log_con)
   
   ## VSURF is a data-driven approach to select important variables from high dimensional datasets
+  ## same VSURF::VSURF(), but exported to bluebridge
   vsurf_url <- vsurf_bb(file_x = pa_x,
                         file_y = pa_y,
                         ntree = 200,
@@ -533,6 +534,9 @@ for(sp.i in unique(all_dat_sac$SVSPP)) {
   rf_name <- paste0(name, "_biomass")
   saveRDS(assign(value = rf_az, x = rf_name), paste0(rf_name, ".rds"))
 }
+
+
+## ANALYSIS COMPLETE ##
 
 ## The stuff below is used for plotting, and model validation
 

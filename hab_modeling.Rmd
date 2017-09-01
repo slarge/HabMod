@@ -23,14 +23,29 @@ The intent of this work is to use environmental variables and NEFSC Bottom Trawl
 
 The BTS is a stratified random survey.
 
-Here, we use a two-stage modeling procedure that links relationships between species occurance and abundance. First, we use species distribution models (SDM) to predict the probability of occurance (occupancy) of each stock. Second, the predicted occupancy is regressed against abundance data and habitat variables with Random Forest regression (RF). Co-occuring species are also included as covariates within the RF regression model to account for potential biotic effects.  
+Here, we use a two-stage modeling procedure that links relationships between species occurance and abundance. First, we use random forest classification to predict the probability of occurance (occupancy) for each stock. Second, the predicted occupancy is regressed against abundance data and habitat variables with random forest regression. Co-occuring species are also included as covariates within the RF regression model to account for potential biotic effects. 
 
 This approach allows for species abundance and occurrence to be controlled by different environmental factors. 
 
 ## Methods
 
 <em>Data</em>
-Considerable work has gone into aggregating the survey data and the environmental parameters. Kevin et al should provide simple documentation on how these data are prepared and caveats to their use. Random Forest requires complete observations (i.e., no missing values for a station), so we subdivided the survey data into several distinct datasets. For the occupancy model, we tried to select the variables with the longest time-series and the fewest missing observations. This dataset was randomly subdivided into a training and testing dataset to evaluate the ensemble models. For the RF analysis, we selected most relevant variables - regardless of time0series length. 
+Considerable work has gone into aggregating the survey data and the environmental parameters. Kevin et al should provide simple documentation on how these data are prepared and caveats to their use. D
+
+<em>Statistical modelling</em>
+Random forest (RF) models were used to model species' distribution and abundance. Random forest is machine learning method that uses bootstrap-based classification and regression trees (Cutler et al 2007). Data are randomly split (50/50) into two data sets: one for modelling occupancy and abundance.   
+
+* Occupancy model:
+Abundance and environmental parameters were reported at the station level. Not all species were caught at each station so we added zero observations using a simple heueristic --- if a species was not found in a year, stratum, and station but is found in the corresponding year and stratum, we considered it "absent" at that station. These abundance data with added zero sites were converted into presence-absence. Variable selection was carried out according to (Genuer et al 2010) using the VSURF package (Genuer, et al 2015) which uses random forest permutation-based score of importance and uses a stepwise forward strategy for variable selection. Variables selection can be optimized for prediction or interpretation. We chose interpretation. With the variables selected using VSURF, we modelled occupancy using a random forest implementation based on a conditional inference framework. Here, classification trees find optimal binary splits in the selected covariates to partition the sample recursively into increasingly homogenous areas with respect to the class variable. Under the conditional inference framework, unbiased variable selection is achieved by using a linear statistic to test the relationship between covariate and response, selecting the covariate with the minimum <em>P</em>--value. 
+
+* Spatial autocorrelation
+To account for spatial autocorrelation, we included an index of the presence-absence in nearby stations as a spatial autocovariate (SAC). Observations that are close to each other in space have related values, which violates the assumption of independent observations. Correlograms are a measure of Moran's I as a function of distance between them. A zero value indicates an absence of spatial autocorrelatoin. Significant deviation from zero suggests that models are not accounting for spatial autocorrelation. We note that our models showed reductions in residual spataila autocorrelation when compared to raw data.  
+
+* Abundance model:
+Using 
+
+Random forest requires complete observations (i.e., no missing values for a station), so survey data were subdivided to maximize the amount of data reported. Therefore, several environmental parameters were removed from the analyses if they contained many missing values. 
+
 
 knitr::kable() of the environmental parameters
 
@@ -41,6 +56,13 @@ We evaluated the correlation between environmental parameters. If two parameters
 
 
 
+
+Variable selection was carried out according to (Genuer et al 2010) using the VSURF package (Genuer, et al 2015) which uses random forest permutation-based score of importance and uses a stepwise forward strategy for variable 
+
+From Genuer et al 2015: Variable selection is a crucial issue in many applied classification and regression problems (see e.g. Hastie et al., 2001). It is of interest for statistical analysis as well as for modelisation or prediction purposes to remove irrelevant variables, to select all important ones or to determine a sufficient subset for prediction. These main different objectives from a statistical learning perspective involve variable selection to simplify statistical problems, to help diagnosis and interpretation, and to speed up data processing.
+
+Here this is further complicated because not all data are available for all responses
+
 <em>Models</em>
 Species distribution models. Given the nature of the BTS, we have presence-only data. Since Random Forest
 
@@ -48,6 +70,9 @@ Questions:
 * Identify the modeling benefits of using presence-only SDM vs. abundance RF. RF do not allow missing data. We have quite a few covariates but many of them are only available for recent years. 
 * Instead of using presence-only SDM, could we just use RF on abundance for long timeseries? The other ms that use presence-only convert from 
 * Think about the fundamental relationship between the area of occupancy and abundance for marine fishes
+* Spatial autocorrelation (SAC) may be a problem. 
+
+* We used a two-stage approach to model abundance. First, we evaluated the occupancy using 
 
 ## Results
 Data cleaning steps
@@ -64,6 +89,15 @@ Here, we use a novel two-step approach to model marine species abundance.
 
 
 ## References
+Genuer, Robin, Jean-Michel Poggi, and Christine Tuleau-Malot. "VSURF: An R Package for Variable Selection Using Random Forests." R Journal 7.2 (2015).
+
+
+
+1) conclude if Cod and Haddock are the way to go
+2) turn around and develop predictive habitat maps for them
+3) Raster for SAC
+4) Raster for the presence absence
+5) AutoKrige AKIMA (Spline will extrapolate and fill in edges)
 
 
 ## Supplementary information

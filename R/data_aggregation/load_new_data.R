@@ -6,12 +6,13 @@ library(dplyr)
 
 # need to do this: https://github.com/tidyverse/googledrive/issues/79
 options(httr_oob_default=TRUE) 
-drive_auth(new_user = TRUE) 
+drive_auth() 
 
-x <- drive_path("~/hab_mod/data/")
+x <- "~/hab_mod/data/"
 
-lapply(drive_ls(x)$name, function(x) drive_download(file = x, path = paste0("data/", x)))
+lapply(x$name, function(x) drive_download(file = x, path = paste0("data/", x)))
 
+drive_download(x$id[1], path = "~/")
 
 drive_download(file = drive_ls(x)[1,], path = "data/spring.data.RData")
 
