@@ -1,0 +1,50 @@
+R version 3.3.2 (2016-10-31) -- "Sincere Pumpkin Patch"
+Copyright (C) 2016 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> setwd("/home/gcube/tomcat/webapps/wps/config/../ecocfg/rscr_1c4c1ff4-6508-48e2-93bb-d533cfb5960f/VSURF")
+> source('/home/gcube/tomcat/webapps/wps/config/../ecocfg/rscr_1c4c1ff4-6508-48e2-93bb-d533cfb5960f/VSURF/fce0d73c-dc28-43e1-b460-be0be72e4bdevsurf.R')
+start log
+Initiating the service at: 2017-08-29 23:49:54.
+The following packages are loaded: VSURF parallel doParallel 
+You have loaded a file with 221 observations of 250 predictors.
+Now we're starting the VSURF process with 15 cores.
+Here is the summary:
+
+ VSURF computation time: 2.3 mins 
+
+ VSURF selected: 
+	23 variables at thresholding step (in 36 secs)
+	19 variables at interpretation step (in 22.6 secs)
+	8 variables at prediction step (in 1.4 mins)
+
+ VSURF ran in parallel on a FORK cluster and used 15 cores 
+
+Total script took:
+2.347848
+Now saving the output
+
+> paste("out->",output_file)
+[1] "out-> smooth_dogfish_BO_output_2017-08-29_23_52_14.rds"
+> write.csv(output_file,file="/home/gcube/tomcat/webapps/wps/config/../ecocfg/rscr_1c4c1ff4-6508-48e2-93bb-d533cfb5960f/VSURF/output_file",row.names=FALSE,append=F,fileEncoding="UTF-8",eol = "\n")
+> q()
+null
+Loading required package: iterators
+Warning message:
+In write.csv(output_file, file = "/home/gcube/tomcat/webapps/wps/config/../ecocfg/rscr_1c4c1ff4-6508-48e2-93bb-d533cfb5960f/VSURF/output_file",  :
+  attempt to set 'append' ignored
+null

@@ -1,0 +1,182 @@
+---
+title: "Habitat model construction for witch flounder"
+author:
+  - Scott I. Large
+  - Kevin Friedland
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+    bookdown::html_document2:
+    fig_caption: yes
+    reference_docx: templates/template.docx
+bibliography: references.bib
+csl: fish-and-fisheries.csl
+abstract: |
+  Text of abstract
+keywords: |
+  keyword 1; keyword 2; keyword 3
+highlights: |
+  These are the highlights. 
+---
+
+
+<!-- This is the format for text comments that will be ignored during renderings. Do not put R code in these comments because it will not be ignored. -->
+
+```{r, setup, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  warning = FALSE,
+  message = FALSE,
+  echo = FALSE,
+  comment = "#>",
+  fig.path = "../figures/"
+)
+
+library(habitatmodel)
+library(citr)
+```
+
+Here is a citation [@Marwick2017]
+
+# Introduction
+
+A principal element of stock assessments is fishery independent indices of abundance which provide both quantitative and qualitative information in the development of management advice. It is recognized that sample designs for surveys and the nature of survey gear produce catch rate data that is noisy and at times biased, which has spurred interest in remedies to improve the accuracy and precision of the signal from these surveys (Hattab et al 2013, Thorson et al. 2015). A common approach has been to develop models that describe the species distribution in time associated with environmental data and habitat characteristics, including both dynamic and static variables (Elith and Leathwick, 2009). These models have grown in sophistication in the forms of data used in model building to include models that draw on the dimensional structure of the ecosystem and the formation of gradients or fronts (Alabia et al., 2016; Duron et al. 2016).
+
+Ocean fronts play a key role in marine ecosystems, affecting every trophic level across a wide range of spatio-temporal scales, from meters to thousands of kilometers, and from days to millions of years (Belkin et al., 2014). Fronts are associated with elevated primary and secondary production, in addition to commercially important fish stocks (Tseng et al., 2014). Many species are linked to fronts at certain life stages, e.g. spawning, feeding, ontogenetic development, migrations, etc., sometimes using different fronts at different life stages. The nature and strength of front-biota links depend on physical nature and scales of the front as well as the species and their life stages in question. Fronts thus support different niches and habitats over a wide range of spatio-temporal scales. Studies of biophysical interactions at fronts (Le Fevre, 1986) lead to a growing realization of the importance of fronts to marine ecosystems. New technologies, particularly satellite remote sensing, facilitated recent advances in this field, including introduction of frontal data in operational applications and ecosystem-based fisheries management (Wilson, 2011).
+
+We use habitat variables that have been linked to the station records of the NEFSC bottom trawl survey as an expanded set of independent variables to model index survey abundance beyond the data available in the station logs of the survey (top and bottom temperature and salinity and depth). The information provided here includes multiple measures of benthic habitat complexity and structure related to its three dimensional structure and sediment characteristics. Also, the station records are linked to remote sensing data including sea surface temperature and chlorophyll concentration at three spatial resolutions, 4km, 9km, and 25km. And, records are linked to the gradient magnitudes of the SST and chlorophyll data (frontal structure). 
+
+The intent of this work is to use environmental variables and NEFSC Bottom Trawl Survey abundance data to accurately predict the presence and abundance of principle stocks in the northwestern Atlantic. Further, we also seek a deeper understanding of how environmental variables influence stock dynamics.
+
+Here, we use a two-stage modeling procedure that links relationships between species occurance and biomass. First, we use random forest classification to predict the probability of occurance (occupancy) for each stock. Second, the predicted occupancy is regressed against biomass data and habitat variables with random forest regression. Co-occuring species are also included as covariates within the RF regression model to account for potential biotic effects. 
+
+This approach allows for species biomass and occurrence to be controlled by different environmental factors. 
+
+# Methods
+
+<em>Data</em>
+Considerable work has gone into aggregating the survey data and the environmental parameters. Kevin et al should provide simple documentation on how these data are prepared and caveats to their use.
+
+<em>Statistical modelling</em>
+Random forest (RF) models were used to model species' distribution and abundance. Random forest is machine learning method that uses bootstrap-based classification and regression trees (Cutler et al 2007). Data are randomly split (50/50) into two data sets: one for modelling occupancy and abundance.   
+
+* Occupancy model:
+Biomass and environmental parameters were reported at the station level. Not all species were caught at each station so we added zero observations using a simple heueristic --- if a species was not found in a year, stratum, and station but was found in the corresponding year and stratum, we considered the species "absent" from that station. These biomass data with added zero sites were converted into presence-absence.
+
+Random forests with correlated features can be biased towards variables with more categories, so selecting a proper suite of important variables is important. Variable selection was carried out according to (Genuer et al 2010) using the VSURF package (Genuer, et al 2015) which uses random forest permutation-based score of importance and uses a stepwise forward strategy for variable selection. Variables selection can be optimized for prediction or interpretation. We chose interpretation. With the variables selected using VSURF, we modelled occupancy using a random forest implementation based on a conditional inference framework. Here, classification trees find optimal binary splits in the selected covariates to partition the sample recursively into increasingly homogenous areas with respect to the class variable. Under the conditional inference framework, unbiased variable selection is achieved by using a linear statistic to test the relationship between covariate and response, selecting the covariate with the minimum <em>P</em>--value. 
+
+* Spatial autocorrelation
+To account for spatial autocorrelation, we included an index of the presence-absence in nearby stations as a spatial autocovariate (SAC). Observations that are close to each other in space have related values, which violates the assumption of independent observations. Correlograms are a measure of Moran's I as a function of distance between them. A zero value indicates an absence of spatial autocorrelatoin. Significant deviation from zero suggests that models are not accounting for spatial autocorrelation. We note that our models showed reductions in residual spataila autocorrelation when compared to raw data.  
+
+"samples from within the range
+of spatial autocorrelation around a data point will add
+little independent information (depending on the
+strength of autocorrelation), but unduly inflate sample
+size, and thus degrees of freedom of model residuals,
+thereby influencing statistical inference." Dormann et al 2007
+
+* Abundance model:
+Using 
+
+Random forest requires complete observations (i.e., no missing values for a station), so survey data were subdivided to maximize the amount of data reported. Therefore, several environmental parameters were removed from the analyses if they contained many missing values. 
+
+
+knitr::kable() of the environmental parameters
+
+Abundance data were transformed into presence and absences. If a given species was found at a station it was considered present. If a given species was not found at a station, it would be considered absent only if it was found within the station's stratum during that survey year. If the species was not found within that station's stratum during that survey year, that station was not considered in the analysis for the species.   
+
+
+We evaluated the correlation between environmental parameters. If two parameters were correlated above 0.7 or below -0.7 we used expert judgement to select the parameter that had the greatest likelihood to influence occupancy. Occupancy was evaluated with a longer data set and included fewer parameters. Abundance was modeled with a shorter data set including more parameters. Observations that were used in occupancy model training were excluded from further analyses. 
+
+
+
+
+Variable selection was carried out according to (Genuer et al 2010) using the VSURF package (Genuer, et al 2015) which uses random forest permutation-based score of importance and uses a stepwise forward strategy for variable 
+
+From Genuer et al 2015: Variable selection is a crucial issue in many applied classification and regression problems (see e.g. Hastie et al., 2001). It is of interest for statistical analysis as well as for modelisation or prediction purposes to remove irrelevant variables, to select all important ones or to determine a sufficient subset for prediction. These main different objectives from a statistical learning perspective involve variable selection to simplify statistical problems, to help diagnosis and interpretation, and to speed up data processing.
+
+Here this is further complicated because not all data are available for all responses
+
+<em>Models</em>
+Species distribution models. Given the nature of the BTS, we have presence-only data. Since Random Forest
+
+Questions:
+* Identify the modeling benefits of using presence-only SDM vs. abundance RF. RF do not allow missing data. We have quite a few covariates but many of them are only available for recent years. 
+* Instead of using presence-only SDM, could we just use RF on abundance for long timeseries? The other ms that use presence-only convert from 
+* Think about the fundamental relationship between the area of occupancy and abundance for marine fishes
+* Spatial autocorrelation (SAC) may be a problem. 
+
+* We used a two-stage approach to model abundance. First, we evaluated the occupancy using 
+
+## Results
+Data cleaning steps
+
+Variable importance
+
+Ensemble model
+
+Random Forest
+
+## Discussion
+
+Here, we use a novel two-step approach to model marine species abundance. 
+
+
+## References
+Genuer, Robin, Jean-Michel Poggi, and Christine Tuleau-Malot. "VSURF: An R Package for Variable Selection Using Random Forests." R Journal 7.2 (2015).
+
+
+
+1) conclude if Cod and Haddock are the way to go
+2) turn around and develop predictive habitat maps for them
+3) Raster for SAC
+4) Raster for the presence absence
+5) AutoKrige AKIMA (Spline will extrapolate and fill in edges)
+
+
+## Supplementary information
+Code link (github)
+
+FIG: Correlation plot
+FIG: NA matrix
+FIG: presence-absence and predicted map
+
+
+# Background
+
+```{r demo, eval = FALSE}
+1 + 1
+```
+
+# Methods
+
+# Results
+
+```{r get-data, eval = FALSE}
+# Note the path that we need to use to access our data files when rendering this document
+my_data <- readr::read_csv("../data/raw_data/my_csv_file.csv")
+```
+
+# Discussion
+
+# Conclusion
+
+# Acknowledgements
+
+# References 
+
+### Colophon
+
+This report was generated on `r Sys.time()` using the following computational environment and dependencies: 
+
+```{r colophon, cache = FALSE}
+# which R packages and versions?
+devtools::session_info()
+```
+
+The current Git commit details are:
+
+```{r}
+# what commit is this file at? You may need to change the path value
+# if your Rmd is not in analysis/paper/
+git2r::repository("../..")
+```

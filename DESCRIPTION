@@ -1,0 +1,30 @@
+Package: habitatmodel
+Title: What the Package Does (one line, title case)
+Version: 0.0.0.9000
+Authors@R: person("Scott", "Large", email = "largesi@gmail.com", role = c("aut", "cre"))
+Description: What the package does (one paragraph).
+Depends: R (>= 3.4.1)
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports: bookdown,
+         dplyr,
+         tidyr,
+         ggplot2,
+         caret,
+         parallel,
+         doParallel,
+         httr,
+         xml2,
+         viridis,
+         spdep,
+         googledrive,
+         citr,
+         cowplot,
+         randomForest,
+         raster,
+         automap,
+         maps,
+         marmap
+Depends: purrr
+RoxygenNote: 6.0.1
