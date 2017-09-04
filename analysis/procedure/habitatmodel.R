@@ -1,8 +1,10 @@
 rm(list = ls())
 set.seed(627)
+library(dplyr)
+library(tidyr)
 
 # Using Data Miner with R
-source("http://svn.research-infrastructures.eu/public/d4science/gcube/trunk/data-analysis/RConfiguration/RD4SFunctions/workspace_interaction.r")
+# source("http://svn.research-infrastructures.eu/public/d4science/gcube/trunk/data-analysis/RConfiguration/RD4SFunctions/workspace_interaction.r")
 
 #SETTING USERNAME AND TOKEN - NOT NEEDED WHEN USING RSTUDIO ON THE PORTAL
 if(file.exists("analysis/data/raw_data/keys.csv")){
@@ -163,7 +165,7 @@ if(length(grep("-biomass_habmod", list.files("analysis/data/raw_data"))) == 0) {
   save(all_dat_op, file = paste0("analysis/data/raw_data/", gsub(".log", ".rdata", log_file)))
 }
 
-sp.list <- c(13, 22, 73, 74, 105, 107)[2]
+sp.list <- c(13, 22, 73, 74, 105, 107)
 
 for(sp.i in sp.list) {
 
