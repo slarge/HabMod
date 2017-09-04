@@ -5,3 +5,4 @@
 .httr-oauth
 analysis/data/raw_data/**/*.rdata
 analysis/data/raw_data/**/*.RData
+analysis/data/raw_data/keys.csv
