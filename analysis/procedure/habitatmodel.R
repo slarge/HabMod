@@ -1,7 +1,5 @@
 rm(list = ls())
 set.seed(627)
-library(dplyr)
-library(tidyr)
 
 # Using Data Miner with R
 # source("http://svn.research-infrastructures.eu/public/d4science/gcube/trunk/data-analysis/RConfiguration/RD4SFunctions/workspace_interaction.r")
@@ -9,8 +7,8 @@ library(tidyr)
 #SETTING USERNAME AND TOKEN - NOT NEEDED WHEN USING RSTUDIO ON THE PORTAL
 if(file.exists("analysis/data/raw_data/keys.csv")){
   keys <- read.csv("analysis/data/raw_data/keys.csv", stringsAsFactors = FALSE)
-  username <- keys$username
-  token <- keys$token
+  username <<- keys$username
+  token <<- keys$token
   rm(keys)
 }
 
@@ -26,12 +24,12 @@ svspp_dat <- read.csv("analysis/data/raw_data/SVSPP.csv",
                       stringsAsFactors = FALSE)
 
 svspp_dat <- svspp_dat %>%
-  mutate(COMNAME = tolower(COMNAME)) %>%
+  dplyr::mutate(COMNAME = tolower(COMNAME)) %>%
   dplyr::select(COMNAME, SVSPP) %>%
-  mutate(COMNAME = gsub("atlantic", "Atlantic", COMNAME),
+  dplyr::mutate(COMNAME = gsub("atlantic", "Atlantic", COMNAME),
          COMNAME = gsub("american", "American", COMNAME),
          COMNAME = gsub("acadian", "Acadian", COMNAME)) %>%
-  distinct(.keep_all = TRUE)
+  dplyr::distinct(.keep_all = TRUE)
 
 species_list <- c(101,102,103,104,105,
                   106,107,108,109,112,
@@ -78,7 +76,7 @@ if(length(grep("-biomass_habmod", list.files("analysis/data/raw_data"))) == 0) {
     dplyr::filter(SVSPP %in% species_list) %>%
     dplyr::select(-TOW,
                   -CATCHSEX,
-                  -one_of(bad_dat)) %>%
+                  -dplyr::one_of(bad_dat)) %>%
     dplyr::distinct(.keep_all = TRUE)
 
   rm(list = c("spring.data"))
@@ -95,17 +93,17 @@ if(length(grep("-biomass_habmod", list.files("analysis/data/raw_data"))) == 0) {
   # nor is found in that year stratum, they are NA and removed.
 
   pa_table <- spring_dat %>%
-    group_by(YEAR, SVSPP, STRATUM, STATION) %>%
-    summarize(count = n()) %>%
+    dplyr::group_by(YEAR, SVSPP, STRATUM, STATION) %>%
+    dplyr::summarize(count = n()) %>%
     tidyr::spread(SVSPP, value = count) %>%
-    mutate_all(funs(replace(., is.na(.), 0))) %>%
+    dplyr::mutate_all(dplyr::funs(replace(., is.na(.), 0))) %>%
     tidyr::gather(SVSPP, value = count, -YEAR, -STRATUM, -STATION) %>%
-    group_by(YEAR, SVSPP, STRATUM) %>%
-    mutate(stratum_sum = sum(count), #
-           PRESENCE = case_when(count == 0 & stratum_sum >= 1 ~ 0, # Not at station but in stratum
-                                count == 1 & stratum_sum >= 0 ~ 1, # Present
-                                count == 0 & stratum_sum == 0 ~ NA_real_, # Not at station or in stratum
-                                TRUE ~ NA_real_)) %>%
+    dplyr::group_by(YEAR, SVSPP, STRATUM) %>%
+    dplyr::mutate(stratum_sum = sum(count), #
+                  PRESENCE = dplyr::case_when(count == 0 & stratum_sum >= 1 ~ 0, # Not at station but in stratum
+                                              count == 1 & stratum_sum >= 0 ~ 1, # Present
+                                              count == 0 & stratum_sum == 0 ~ NA_real_, # Not at station or in stratum
+                                              TRUE ~ NA_real_)) %>%
     dplyr::filter(!is.na(PRESENCE))
 
   # Create a data.frame of just the station data
@@ -117,9 +115,9 @@ if(length(grep("-biomass_habmod", list.files("analysis/data/raw_data"))) == 0) {
 
   # join the p/a data with the station data
   pa_dat <- pa_table %>%
-    ungroup %>%
-    mutate(SVSPP = as.numeric(SVSPP)) %>%
-    left_join(station_dat, by = c("YEAR", "STRATUM", "STATION")) %>%
+    dplyr::ungroup() %>%
+    dplyr::mutate(SVSPP = as.numeric(SVSPP)) %>%
+    dplyr::left_join(station_dat, by = c("YEAR", "STRATUM", "STATION")) %>%
     dplyr::select(-stratum_sum, -count)
 
   # join the p/a data with abundance and biomass data
@@ -130,8 +128,8 @@ if(length(grep("-biomass_habmod", list.files("analysis/data/raw_data"))) == 0) {
     dplyr::distinct(.keep_all = TRUE)
 
   all_dat <- pa_dat %>%
-    left_join(bio_dat, by = join_names) %>%
-    mutate(ABUNDANCE = ifelse(is.na(ABUNDANCE),
+    dplyr::left_join(bio_dat, by = join_names) %>%
+    dplyr::mutate(ABUNDANCE = ifelse(is.na(ABUNDANCE),
                               0,
                               ABUNDANCE),
            ABUNDANCE = as.numeric(ABUNDANCE),
@@ -143,7 +141,7 @@ if(length(grep("-biomass_habmod", list.files("analysis/data/raw_data"))) == 0) {
   ## Here, instead of creating SAC, we will do it later if SAC is present. The dat_maker
   ## function finds the max row/col of data for each species.
   all_dat_op <- lapply(unique(all_dat$SVSPP), dat_maker) %>%
-    bind_rows
+    dplyr::bind_rows()
 
   # ## Split the datasets into PA and Biomass/Abundance partitions
   # data_part_list <- lapply(unique(all_dat_op$SVSPP), function(x)
@@ -242,7 +240,7 @@ for(sp.i in sp.list) {
   }
 
   if(stop_condition_success) {
-    output_url <- xml_text(xml_find_all(read_xml(out1), ".//d4science:Data"))
+    output_url <- xml2::xml_text(xml2::xml_find_all(xml2::read_xml(out1), ".//d4science:Data"))
     output_df <- data.frame(NAME = paste0(name, "_PA"),
                             LOG = output_url[1],
                             OUTPUT = output_url[2],
@@ -289,7 +287,7 @@ for(sp.i in sp.list) {
   ## Fit P/A RF model ##
   ## ~~~~~~~~~~~~~~~~ ##
   #Randomly select 75% of the data to enable 10 fold cross validation
-  selection <- createDataPartition(y = pa_rf[, "PRESENCE"],
+  selection <- caret::createDataPartition(y = pa_rf[, "PRESENCE"],
                                    p = 0.75,
                                    list = FALSE)
 
@@ -310,7 +308,7 @@ for(sp.i in sp.list) {
                                        number = 10,
                                        search = "random",
                                        classProbs = TRUE,
-                                       summaryFunction = twoClassSummary,
+                                       summaryFunction = caret::twoClassSummary,
                                        allowParallel = TRUE,
                                        verboseIter = TRUE)
 
@@ -337,19 +335,19 @@ for(sp.i in sp.list) {
   myroc <- pROC::roc(pa_rf_test$PRESENCE, as.vector(predRoc[,2]))
 
   roc_plot <- pROC::ggroc(myroc) +
-    geom_abline(intercept = 1, slope = 1, col = "grey70") +
-    labs(title = gsub("_", " ", name),
+    ggplot2::geom_abline(intercept = 1, slope = 1, col = "grey70") +
+    ggplot2::labs(title = gsub("_", " ", name),
          subtitle = paste("AUC =",sprintf("%.3f",myroc$auc))) +
-    theme_bw() +
-    coord_equal()
+    ggplot2::theme_bw() +
+    ggplot2::coord_equal()
 
-  ggsave(paste0("analysis/figures/", name, "_roc.png"), plot = roc_plot)
+  ggplot2::ggsave(paste0("analysis/figures/", name, "_roc.png"), plot = roc_plot)
 
   ##adjust optimal cut-off threshold for class probabilities
   threshold <- pROC::coords(myroc, x="best", best.method = "closest.topleft")[[1]] #get optimal cutoff threshold
   predCut <- factor( ifelse(predRoc[, "PRESENT"] > threshold, "PRESENT", "ABSENT") )
 
-  curConfusionMatrix <- confusionMatrix(predCut, pa_rf_test$PRESENCE, positive = "PRESENT")
+  curConfusionMatrix <- caret::confusionMatrix(predCut, pa_rf_test$PRESENCE, positive = "PRESENT")
 
   log_con <- file(log_name, open = "a")
   cat(paste0("PA rf completed. Accuracy = ",
@@ -383,7 +381,7 @@ for(sp.i in sp.list) {
   log_con <- file(log_name, open = "a")
   cat(paste0("Now we fit the biomass VSURF model with ",
              nrow(bm_x), " observations and ",
-             ncol(bm_x), " explanatory variables./n"),
+             ncol(bm_x), " explanatory variables.\n"),
       file = log_con)
   close(log_con)
 
@@ -413,7 +411,7 @@ for(sp.i in sp.list) {
 
   log_con <- file(log_name, open = "a")
   cat(paste0("Sent to BB and will monitor: ", bm_url,
-             " \nevery", round(sleepy/60, 2), " minutes.\n"), file = log_con)
+             " \nevery ", round(sleepy/60, 2), " minutes.\n"), file = log_con)
   close(log_con)
 
   ## CHECK THE STATUS OF THE COMPUTATION UNTIL COMPLETION ##
@@ -434,7 +432,7 @@ for(sp.i in sp.list) {
   }
 
   if(stop_condition_success) {
-    output_bm_url <- xml_text(xml_find_all(read_xml(out1), ".//d4science:Data"))
+    output_bm_url <- xml2::xml_text(xml2::xml_find_all(xml2::read_xml(out1), ".//d4science:Data"))
     output_bm_df <- data.frame(NAME = paste0(name, "_BM"),
                                LOG = output_bm_url[1],
                                OUTPUT = output_bm_url[2],
@@ -472,11 +470,11 @@ for(sp.i in sp.list) {
   cat("Biomass VSURF model identified ", bm_rf_vars, " as the best variables for interpretation.\n", file = log_con)
   close(log_con)
 
-  bm_rf <- bm_data[, c("BIOMASS", bm_rf_vars, "LAT", "LON")]
+  bm_rf <- bm_data[bm_data$BIOMASS != 0, c("BIOMASS", bm_rf_vars, "LAT", "LON")]
   bm_rf <- Filter(var, bm_rf)
 
   #Randomly select 75% of the data to enable 10 fold cross validation
-  bm_selection <- createDataPartition(y = bm_rf[, "BIOMASS"],
+  bm_selection <- caret::createDataPartition(y = bm_rf[, "BIOMASS"],
                                       p = 0.75,
                                       list = FALSE)
 
@@ -502,7 +500,6 @@ for(sp.i in sp.list) {
                         method = "rf",
                         trControl = train_control,
                         importance = TRUE,
-                        weights = h,
                         metric = "RMSE",
                         preProc = c("center", "scale"))
 
@@ -525,7 +522,8 @@ for(sp.i in sp.list) {
   ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ##
   ## Fit BIOMASS VSURF model (w/o PA) ##
   ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ##
-  bo_data <- all_dat_op[all_dat_op$SVSPP == sp.i,]
+  bo_data <- all_dat_op[all_dat_op$SVSPP == sp.i &
+                        all_dat_op$BIOMASS != 0, ]
 
   bo_y <- bo_data[, "BIOMASS"]
   bo_x <- bo_data[, !colnames(bo_data) %in% c("LAT", "LON", "BIOMASS",
@@ -562,8 +560,6 @@ for(sp.i in sp.list) {
 
   stop_condition_fail <- stop_condition_success <- FALSE
 
-
-
   sleepy <- ifelse(length(bo_y) <= 600,
                    length(bo_y), 600)
 
@@ -590,7 +586,7 @@ for(sp.i in sp.list) {
   }
 
   if(stop_condition_success) {
-    output_bo_url <- xml_text(xml_find_all(read_xml(out1), ".//d4science:Data"))
+    output_bo_url <- xml2::xml_text(xml2::xml_find_all(xml2::read_xml(out1), ".//d4science:Data"))
     output_bo_df <- data.frame(NAME = paste0(name, "_BM"),
                                LOG = output_bo_url[1],
                                OUTPUT = output_bo_url[2],
@@ -608,7 +604,6 @@ for(sp.i in sp.list) {
     close(log_con)
     next
   }
-
 
   download.file(output_bo_df$LOG,
                 paste0("analysis/data/derived_data/", name, "-BO-VSURFlog.txt"),
@@ -633,9 +628,9 @@ for(sp.i in sp.list) {
   bo_rf <- Filter(var, bo_rf)
 
   #Randomly select 75% of the data to enable 10 fold cross validation
-  bo_selection <- createDataPartition(y = bo_rf[, "BIOMASS"],
-                                      p = 0.75,
-                                      list = FALSE)
+  bo_selection <- caret::createDataPartition(y = bo_rf[, "BIOMASS"],
+                                             p = 0.75,
+                                             list = FALSE)
 
   bo_train <- bo_rf[bo_selection,]
   bo_test<- bo_rf[-bo_selection,]
@@ -670,7 +665,7 @@ for(sp.i in sp.list) {
   log_con <- file(log_name, open = "a")
   cat(paste0("Biomass rf completed. R2 = ",
              round(tail(rf_bo$finalModel$rsq, 1), 2), ", and RMSE = ",
-             round(tail(sqrt(rf_bo$finalModel$mse), 1), 2), "\n"),
+             round(tail(sqrt(rf_bo$finalModel$mse), 1), 2), "\n\n~~~~~~~~~~~~~~~~~~\n"),
       file = log_con)
   close(log_con)
 
