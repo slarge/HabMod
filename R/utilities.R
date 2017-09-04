@@ -42,6 +42,7 @@ vsurf_bb <- function(file_x,
                      token = "1ba80d8d-15ea-4ff1-9420-f8c97ea15d40-843339462") {
 
   # source("http://svn.research-infrastructures.eu/public/d4science/gcube/trunk/data-analysis/RConfiguration/RD4SFunctions/WPS4D4Science.r")
+  source("http://svn.research-infrastructures.eu/public/d4science/gcube/trunk/data-analysis/RConfiguration/RD4SFunctions/workspace_interaction.r")
 
   #INPUT PARAMETERS
   wps_uri = "http://dataminer-prototypes.d4science.org/wps/WebProcessingService"
@@ -56,7 +57,7 @@ vsurf_bb <- function(file_x,
   wsfolder <-  paste0("/Home/", username, "/Workspace/TestUploads/") #REMOTE DESTINATION FOLDER
 
   overwrite <- T
-  y_upload <- uploadWS(wsfolder, file_name_y, overwrite) #UPLOAD THE FILE TO THE WS
+  y_upload <- uploadWS(path = wsfolder, file = file_name_y, overwrite = overwrite) #UPLOAD THE FILE TO THE WS
   x_upload <- uploadWS(wsfolder, file_name_x, overwrite) #UPLOAD THE FILE TO THE WS
 
   ## Retreive public urls from the uploaded files
