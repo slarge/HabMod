@@ -38,12 +38,23 @@ vsurf_bb <- function(file_x,
                      save_template = FALSE,
                      seed = 627,
                      name = "",
-                     username = "largesi",
-                     token = "1ba80d8d-15ea-4ff1-9420-f8c97ea15d40-843339462") {
+                     username = NULL,
+                     token = NULL) {
 
   # source("http://svn.research-infrastructures.eu/public/d4science/gcube/trunk/data-analysis/RConfiguration/RD4SFunctions/WPS4D4Science.r")
   source("http://svn.research-infrastructures.eu/public/d4science/gcube/trunk/data-analysis/RConfiguration/RD4SFunctions/workspace_interaction.r")
 
+  if(!is.null(username) &
+     !is.null(token)){
+    username <<- username
+    token <<- token
+  }  
+  
+  if(is.null(username) |
+     is.null(token)){
+    set_keys(save_key = FALSE)    
+  } 
+  
   #INPUT PARAMETERS
   wps_uri = "http://dataminer-prototypes.d4science.org/wps/WebProcessingService"
 
@@ -156,7 +167,7 @@ vsurf_bb <- function(file_x,
 
 dat_maker <- function(svspp) {
   wf_dat <- all_dat %>%
-    filter(SVSPP == svspp)
+    dplyr::filter(SVSPP == svspp)
 
   name <- gsub(" ", "_", svspp_dat$COMNAME[svspp_dat$SVSPP == svspp])
 
@@ -166,19 +177,19 @@ dat_maker <- function(svspp) {
 
   # Count of the number of NAs in each column for each year and sum for each variable
   na_count <- wf_dat %>%
-    dplyr::select(-one_of(join_names[!join_names %in% c("YEAR")])) %>%
-    group_by(YEAR) %>%
-    summarize_all(funs(sum(is.na(.)))) %>%
-    ungroup() %>%
+    dplyr::select(-dplyr::one_of(join_names[!join_names %in% c("YEAR")])) %>%
+    dplyr::group_by(YEAR) %>%
+    dplyr::summarize_all(dplyr::funs(sum(is.na(.)))) %>%
+    dplyr::ungroup() %>%
     dplyr::select(-YEAR) %>%
-    summarize_all(funs(sum)) %>%
-    gather(key = COLS, value = NAs)
+    dplyr::summarize_all(dplyr::funs(sum)) %>%
+    tidyr::gather(key = COLS, value = NAs)
 
   # Return the complete cases dimensions
   dim_maker <- function(x){
     dd <- wf_dat %>%
-      dplyr::select(-one_of(na_count$COLS[na_count$NAs >= x]),
-             -one_of(join_names[!join_names %in% c("YEAR")])) %>%
+      dplyr::select(-dplyr::one_of(na_count$COLS[na_count$NAs >= x]),
+             -dplyr::one_of(join_names[!join_names %in% c("YEAR")])) %>%
       na.omit
     dd <- data.frame(NCOL = ncol(dd),
                      NROW = nrow(dd),
@@ -197,8 +208,8 @@ dat_maker <- function(svspp) {
   na_nums <- na_select$NAs[na_select$sum_NAs == max(na_select$sum_NAs)]
 
   wf_lt <- wf_dat %>%
-    dplyr::select(-one_of(na_count$COLS[na_count$NAs >= na_nums]),
-           -one_of(join_names),
+    dplyr::select(-dplyr::one_of(na_count$COLS[na_count$NAs >= na_nums]),
+           -dplyr::one_of(join_names),
            LAT, LON) %>%
     na.omit %>%
     as.data.frame
