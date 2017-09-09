@@ -48,8 +48,8 @@ join_names <- c("CRUISE6", "STRATUM", "STATION", "SVVESSEL", "YEAR", "SEASON", "
 bad_dat <- c("rast_necrm_bpi", "rast_necrm_vrm" ,
              "rast_bpi_3_25_layer", "rast_bpi_30_250_layer",
              "rast_mab_sed", "rast_gdepth",
-             "rast_gravel_fraction","rast_mud_fraction",
-             "rast_phi_fraction","rast_sand_fraction")
+             "rast_gravel_fraction", "rast_mud_fraction",
+             "rast_phi_fraction", "rast_sand_fraction", "rast_plcurv20km", "rast_plcurv2km", "rast_plcurv10km")
 
 if(length(grep("-biomass_habmod", list.files("analysis/data/raw_data"))) != 0) {
 
@@ -57,25 +57,30 @@ if(length(grep("-biomass_habmod", list.files("analysis/data/raw_data"))) != 0) {
                         grep("-biomass_habmod",
                              list.files("analysis/data/raw_data"),
                              value = TRUE))
-  load(habmod_file)
+  all_dat_op <- readRDS(habmod_file)
+  # load(habmod_file)
 
-  log_name <- gsub(".rdata", ".log", habmod_file)
+  log_name <- gsub(".rds", ".log", habmod_file)
   log_name <- gsub("raw_data", "derived_data", log_name)
   rm(habmod_file)
 }
 
-if(length(grep("-biomass_habmod", list.files("analysis/data/raw_data"))) == 0) {
+if(length(grep("-biomass_habmod.rds", list.files("analysis/data/raw_data"))) == 0) {
   load("analysis/data/raw_data/spring.data.RData")
 
   ## ~~~~~~~~~~~~~~~~~ ##
   ## Clean up the data ##
   ## ~~~~~~~~~~~~~~~~~ ##
   names(spring.data) <- sub(" ", "", names(spring.data))
-
+  lag_dat <- grep("_[1-9]d", colnames(spring.data), value = TRUE)
+  zoo_static_dat <- grep("zoo_spr_clim_", colnames(spring.data), value = TRUE)
+  
   spring_dat <- spring.data %>%
     dplyr::filter(SVSPP %in% species_list) %>%
     dplyr::select(-TOW,
                   -CATCHSEX,
+                  -dplyr::one_of(lag_dat),
+                  -dplyr::one_of(zoo_static_dat),
                   -dplyr::one_of(bad_dat)) %>%
     dplyr::distinct(.keep_all = TRUE)
 
@@ -127,8 +132,9 @@ if(length(grep("-biomass_habmod", list.files("analysis/data/raw_data"))) == 0) {
                   join_names) %>%
     dplyr::distinct(.keep_all = TRUE)
 
-  all_dat <- pa_dat %>%
+  all_dat_op <- pa_dat %>%
     dplyr::left_join(bio_dat, by = join_names) %>%
+    dplyr::left_join(svspp_dat, by = "SVSPP") %>%
     dplyr::mutate(ABUNDANCE = ifelse(is.na(ABUNDANCE),
                               0,
                               ABUNDANCE),
@@ -136,12 +142,20 @@ if(length(grep("-biomass_habmod", list.files("analysis/data/raw_data"))) == 0) {
            BIOMASS = ifelse(is.na(BIOMASS),
                             0,
                             BIOMASS),
-           BIOMASS = log10(as.numeric(BIOMASS) + 1))
+           BIOMASS = log10(as.numeric(BIOMASS) + 1),
+           SVSPP = as.numeric(SVSPP),
+           name = as.character(gsub(" ", "_", COMNAME))) %>% 
+    dplyr::select(-dplyr::one_of(join_names),
+                  -COMNAME,
+                  SVSPP, LON, LAT, YEAR) %>%
+    as.data.frame
 
+    # na.omit %>%
+  
   ## Here, instead of creating SAC, we will do it later if SAC is present. The dat_maker
   ## function finds the max row/col of data for each species.
-  all_dat_op <- lapply(unique(all_dat$SVSPP), dat_maker) %>%
-    dplyr::bind_rows()
+  # all_dat_op <- lapply(unique(all_dat$SVSPP), dat_maker) %>%
+    # dplyr::bind_rows()
 
   # ## Split the datasets into PA and Biomass/Abundance partitions
   # data_part_list <- lapply(unique(all_dat_op$SVSPP), function(x)
@@ -160,17 +174,19 @@ if(length(grep("-biomass_habmod", list.files("analysis/data/raw_data"))) == 0) {
 
   log_file <- paste(gsub("-", "", Sys.Date()), "-biomass_habmod.log", sep="")
   log_name <- paste0("analysis/data/derived_data/", log_file)
-  save(all_dat_op, file = paste0("analysis/data/raw_data/", gsub(".log", ".rdata", log_file)))
+  saveRDS(all_dat_op, file = paste0("analysis/data/raw_data/", gsub(".log", ".rds", log_file)))
 }
 
-sp.list <- c(13, 22, 73, 74, 105, 107)
-
+sp.list <- c(22, 73, 74, 105, 107)
+sp.i <- 15
 for(sp.i in sp.list) {
 
   ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ##
   ## Split data into P/A model and Biomass model ##
   ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ##
-  pa_data <- all_dat_op[all_dat_op$SVSPP == sp.i,]
+  pa_data <- all_dat_op %>% 
+    dplyr::filter(SVSPP == sp.i) %>% 
+    na.omit
 
   name <- unique(pa_data$name)
 
@@ -183,13 +199,13 @@ for(sp.i in sp.list) {
   ## ~~~~~~~~~~~~~~~~~~~~ ##
   pa_y <- pa_data[, "PRESENCE"]
   pa_x <- pa_data[, !colnames(pa_data) %in% c("LAT", "LON", "BIOMASS",
-                                              "PRESENCE", "ABUNDANCE", "SAC.az", "SAC.pa",
-                                              "SAC.bm", "name", "SVSPP")]
+                                              "PRESENCE", "ABUNDANCE", 
+                                              "name", "SVSPP", "YEAR")]
   ## A few columns are all zeros... might as well remove columns with identical values, too
   pa_x <- Filter(var, pa_x)
 
   log_con <- file(log_name, open = "a")
-  cat(paste0("First we'll fit the occupancy model with ",  nrow(pa_x),
+  cat(paste0("\n\nFirst we'll fit the occupancy model with ",  nrow(pa_x),
              " observations and ", ncol(pa_x), " explanatory variables.\n"), file = log_con)
   close(log_con)
 
@@ -199,7 +215,7 @@ for(sp.i in sp.list) {
                         ntree = 500,
                         mtry =  floor(sqrt(ncol(pa_x))),
                         nfor_thres = 50,
-                        nmin = 1,
+                        nmin = 5,
                         nfor_interp = 25,
                         nsd = 1,
                         nfor_pred = 25,
@@ -272,13 +288,14 @@ for(sp.i in sp.list) {
   ## Extract important variables ##
   ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~ ##
   temp_vsurf <- readRDS(paste0("analysis/data/derived_data/", name, "-PA-VSURFoutput.rds"))
-  pa_rf_vars <- names(pa_x)[temp_vsurf$varselect.interp]
+  pa_rf_vars <- names(pa_x)[temp_vsurf$varselect.pred]
+  pa_rf_vars <- names(pa_x)[1:5]
 
   log_con <- file(log_name, open = "a")
-  cat("P/A VSURF model identified ", pa_rf_vars, " as the best variables for interpretation.\n", file = log_con)
+  cat("P/A VSURF model identified ", pa_rf_vars, " as the best variables for prediction.\n", file = log_con)
   close(log_con)
 
-  pa_rf <- pa_data[, c("PRESENCE", pa_rf_vars, "LAT", "LON")]
+  pa_rf <- pa_data[, c("PRESENCE", pa_rf_vars)]
   pa_rf <- Filter(var, pa_rf)
   pa_rf[, "PRESENCE"] <- as.factor(pa_rf[, "PRESENCE"])
   pa_rf[, "PRESENCE"] <- dplyr::recode_factor(pa_rf[, "PRESENCE"], `0` = "ABSENT", `1` = "PRESENT")
@@ -301,7 +318,7 @@ for(sp.i in sp.list) {
   h <- ifelse(pa_rf_train[, "PRESENCE"] == "ABSENT", 1/(unname(table(pa_rf_train[, "PRESENCE"])["ABSENT"])/length(pa_rf_train[, "PRESENCE"])),
               ifelse(pa_rf_train[, "PRESENCE"] == "PRESENT", 1/(unname(table(pa_rf_train[, "PRESENCE"])["PRESENT"])/length(pa_rf_train[, "PRESENCE"])),
                      0))
-
+library(methods)
   strt_time <- Sys.time()
   train_control <- caret::trainControl(method = "repeatedcv",
                                        repeats = 5,
@@ -312,7 +329,7 @@ for(sp.i in sp.list) {
                                        allowParallel = TRUE,
                                        verboseIter = TRUE)
 
-  cluster <- parallel::makeCluster(parallel::detectCores() - 1, type = "PSOCK")
+  cluster <- parallel::makeCluster(parallel::detectCores() - 1, type = "FORK")
   doParallel::registerDoParallel(cluster)
 
   wf_pa <- caret::train(x = trainX,
@@ -352,7 +369,7 @@ for(sp.i in sp.list) {
   log_con <- file(log_name, open = "a")
   cat(paste0("PA rf completed. Accuracy = ",
              round(curConfusionMatrix$overall[1], 2), ", and Kappa = ",
-             round(curConfusionMatrix$overall[2], 2), "\n"),
+             round(curConfusionMatrix$overall[2], 2), " and threshold = ", threshold, "\n"),
       file = log_con)
   close(log_con)
 
@@ -362,8 +379,12 @@ for(sp.i in sp.list) {
   ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ##
   ## Split data for Biomass model ##
   ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ##
-  bm_data <- all_dat_op[all_dat_op$SVSPP == sp.i,]
+  # bm_data <- all_dat_op[all_dat_op$SVSPP == sp.i,]
 
+  bm_data <- all_dat_op %>% 
+    dplyr::filter(SVSPP == sp.i) %>% 
+    na.omit
+  
   # Add the probability of occurance to the Biomass data
   bm_data$PRESPROB <- predict(wf_pa, newdata = bm_data, type = "prob")[, 2]
 
@@ -373,8 +394,9 @@ for(sp.i in sp.list) {
 
   bm_y <- bm_data[, "BIOMASS"]
   bm_x <- bm_data[, !colnames(bm_data) %in% c("LAT", "LON", "BIOMASS",
-                                              "PRESENCE", "ABUNDANCE", "SAC.az", "SAC.bm",
-                                              "SAC.pa", "name", "SVSPP")]
+                                              "PRESENCE", "ABUNDANCE",
+                                              "name", "SVSPP", "YEAR")]
+  
   ## A few columns are all zeros... might as well remove columns with identical values, too
   bm_x <- Filter(var, bm_x)
 
@@ -391,7 +413,7 @@ for(sp.i in sp.list) {
                      ntree = 500,
                      mtry = max(floor(ncol(bm_x)/3), 1),
                      nfor_thres = 50,
-                     nmin = 1,
+                     nmin = 5,
                      nfor_interp = 25,
                      nsd = 1,
                      nfor_pred = 25,
@@ -464,13 +486,13 @@ for(sp.i in sp.list) {
   ## Extract important variables ##
   ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~ ##
   temp_vsurf <- readRDS(paste0("analysis/data/derived_data/", name, "-BM-VSURFoutput.rds"))
-  bm_rf_vars <- names(bm_x)[temp_vsurf$varselect.interp]
+  bm_rf_vars <- names(bm_x)[temp_vsurf$varselect.pred]
 
   log_con <- file(log_name, open = "a")
-  cat("Biomass VSURF model identified ", bm_rf_vars, " as the best variables for interpretation.\n", file = log_con)
+  cat("Biomass VSURF model identified ", bm_rf_vars, " as the best variables for prediction.\n", file = log_con)
   close(log_con)
 
-  bm_rf <- bm_data[bm_data$BIOMASS != 0, c("BIOMASS", bm_rf_vars, "LAT", "LON")]
+  bm_rf <- bm_data[bm_data$BIOMASS != 0, c("BIOMASS", bm_rf_vars)]
   bm_rf <- Filter(var, bm_rf)
 
   #Randomly select 75% of the data to enable 10 fold cross validation
@@ -522,13 +544,18 @@ for(sp.i in sp.list) {
   ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ##
   ## Fit BIOMASS VSURF model (w/o PA) ##
   ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ##
-  bo_data <- all_dat_op[all_dat_op$SVSPP == sp.i &
-                        all_dat_op$BIOMASS != 0, ]
+  bo_data <- all_dat_op %>% 
+    dplyr::filter(SVSPP == sp.i,
+                  BIOMASS != 0) %>% 
+    na.omit
+  
+  # bo_data <- all_dat_op[all_dat_op$SVSPP == sp.i &
+  #                       all_dat_op$BIOMASS != 0, ]
 
   bo_y <- bo_data[, "BIOMASS"]
   bo_x <- bo_data[, !colnames(bo_data) %in% c("LAT", "LON", "BIOMASS",
-                                              "PRESENCE", "ABUNDANCE", "SAC.az",
-                                              "SAC.pa", "SAC.bm", "name", "SVSPP")]
+                                              "PRESENCE", "ABUNDANCE",
+                                              "name", "SVSPP", "YEAR")]
   ## A few columns are all zeros... might as well remove columns with identical values, too
   bo_x <- Filter(var, bo_x)
 
@@ -545,7 +572,7 @@ for(sp.i in sp.list) {
                      ntree = 500,
                      mtry = max(floor(ncol(bo_x)/3), 1),
                      nfor_thres = 50,
-                     nmin = 1,
+                     nmin = 5,
                      nfor_interp = 25,
                      nsd = 1,
                      nfor_pred = 25,
@@ -618,13 +645,13 @@ for(sp.i in sp.list) {
   ## Extract important variables ##
   ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~ ##
   temp_vsurf <- readRDS(paste0("analysis/data/derived_data/", name, "-BO-VSURFoutput.rds"))
-  bo_rf_vars <- names(bo_x)[temp_vsurf$varselect.interp]
+  bo_rf_vars <- names(bo_x)[temp_vsurf$varselect.pred]
 
   log_con <- file(log_name, open = "a")
-  cat("Biomass VSURF (w/o PA) model identified ", bo_rf_vars, " as the best variables for interpretation.\n", file = log_con)
+  cat("Biomass VSURF (w/o PA) model identified ", bo_rf_vars, " as the best variables for prediction.\n", file = log_con)
   close(log_con)
 
-  bo_rf <- bo_data[, c("BIOMASS", bo_rf_vars, "LAT", "LON")]
+  bo_rf <- bo_data[, c("BIOMASS", bo_rf_vars)]
   bo_rf <- Filter(var, bo_rf)
 
   #Randomly select 75% of the data to enable 10 fold cross validation
