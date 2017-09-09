@@ -1,5 +1,6 @@
 rm(list = ls())
-set.seed(627)
+seed <- 627
+set.seed(seed)
 
 # Using Data Miner with R
 # source("http://svn.research-infrastructures.eu/public/d4science/gcube/trunk/data-analysis/RConfiguration/RD4SFunctions/workspace_interaction.r")
@@ -178,7 +179,7 @@ if(length(grep("-biomass_habmod.rds", list.files("analysis/data/raw_data"))) == 
 }
 
 sp.list <- c(22, 73, 74, 105, 107)
-sp.i <- 15
+
 for(sp.i in sp.list) {
 
   ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ##
@@ -191,7 +192,7 @@ for(sp.i in sp.list) {
   name <- unique(pa_data$name)
 
   log_con <- file(log_name, open = "a")
-  cat(paste0("Starting ", name, " at ",  Sys.time(), ".\n"), file = log_con)
+  cat(paste0("Starting ", name, " at ",  Sys.time(), ".\n To recreate, make sure: set.seed(", seed, ")"), file = log_con)
   close(log_con)
 
   ## ~~~~~~~~~~~~~~~~~~~~ ##
@@ -222,7 +223,7 @@ for(sp.i in sp.list) {
                         parallel = "true",
                         ncores = 20,
                         clusterType = "FORK",
-                        seed = 627,
+                        seed = seed,
                         name = paste0(name, "_PA"),
                         save_template = FALSE,
                         username = username,
@@ -289,7 +290,6 @@ for(sp.i in sp.list) {
   ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~ ##
   temp_vsurf <- readRDS(paste0("analysis/data/derived_data/", name, "-PA-VSURFoutput.rds"))
   pa_rf_vars <- names(pa_x)[temp_vsurf$varselect.pred]
-  pa_rf_vars <- names(pa_x)[1:5]
 
   log_con <- file(log_name, open = "a")
   cat("P/A VSURF model identified ", pa_rf_vars, " as the best variables for prediction.\n", file = log_con)
@@ -318,7 +318,7 @@ for(sp.i in sp.list) {
   h <- ifelse(pa_rf_train[, "PRESENCE"] == "ABSENT", 1/(unname(table(pa_rf_train[, "PRESENCE"])["ABSENT"])/length(pa_rf_train[, "PRESENCE"])),
               ifelse(pa_rf_train[, "PRESENCE"] == "PRESENT", 1/(unname(table(pa_rf_train[, "PRESENCE"])["PRESENT"])/length(pa_rf_train[, "PRESENCE"])),
                      0))
-library(methods)
+  
   strt_time <- Sys.time()
   train_control <- caret::trainControl(method = "repeatedcv",
                                        repeats = 5,
@@ -329,7 +329,7 @@ library(methods)
                                        allowParallel = TRUE,
                                        verboseIter = TRUE)
 
-  cluster <- parallel::makeCluster(parallel::detectCores() - 1, type = "FORK")
+  cluster <- parallel::makeCluster(parallel::detectCores() - 1, type = "PSOCK")
   doParallel::registerDoParallel(cluster)
 
   wf_pa <- caret::train(x = trainX,
@@ -354,7 +354,7 @@ library(methods)
   roc_plot <- pROC::ggroc(myroc) +
     ggplot2::geom_abline(intercept = 1, slope = 1, col = "grey70") +
     ggplot2::labs(title = gsub("_", " ", name),
-         subtitle = paste("AUC =",sprintf("%.3f",myroc$auc))) +
+         subtitle = paste("AUC =", sprintf("%.3f",myroc$auc))) +
     ggplot2::theme_bw() +
     ggplot2::coord_equal()
 
@@ -367,9 +367,10 @@ library(methods)
   curConfusionMatrix <- caret::confusionMatrix(predCut, pa_rf_test$PRESENCE, positive = "PRESENT")
 
   log_con <- file(log_name, open = "a")
-  cat(paste0("PA rf completed. Accuracy = ",
-             round(curConfusionMatrix$overall[1], 2), ", and Kappa = ",
-             round(curConfusionMatrix$overall[2], 2), " and threshold = ", threshold, "\n"),
+  cat(paste0("PA rf completed.\n", capture.output(stp_time - strt_time),
+             "\nAccuracy = ",
+             round(curConfusionMatrix$overall[1], 2), ", Kappa = ",
+             round(curConfusionMatrix$overall[2], 2), ", and threshold = ", threshold, ".\n"),
       file = log_con)
   close(log_con)
 
@@ -420,7 +421,7 @@ library(methods)
                      parallel = "true",
                      ncores = 20,
                      clusterType = "FORK",
-                     seed = 627,
+                     seed = seed,
                      name = paste0(name, "_BM"),
                      save_template = FALSE,
                      username = username,
@@ -532,7 +533,8 @@ library(methods)
   stp_time - strt_time
 
   log_con <- file(log_name, open = "a")
-  cat(paste0("Biomass rf completed. R2 = ",
+  cat(paste0("Biomass rf completed.\n", capture.output(stp_time - strt_time),
+             ".\nR2 = ",
              round(tail(rf_bm$finalModel$rsq, 1), 2), ", and RMSE = ",
              round(tail(sqrt(rf_bm$finalModel$mse), 1), 2), "\n"),
       file = log_con)
@@ -579,7 +581,7 @@ library(methods)
                      parallel = "true",
                      ncores = 20,
                      clusterType = "FORK",
-                     seed = 627,
+                     seed = seed,
                      name = paste0(name, "_BO"),
                      save_template = FALSE,
                      username = username,
@@ -690,7 +692,7 @@ library(methods)
   stp_time - strt_time
 
   log_con <- file(log_name, open = "a")
-  cat(paste0("Biomass rf completed. R2 = ",
+  cat(paste0("Biomass rf completed.\n", capture.output(stp_time - strt_time), "\nR2 = ",
              round(tail(rf_bo$finalModel$rsq, 1), 2), ", and RMSE = ",
              round(tail(sqrt(rf_bo$finalModel$mse), 1), 2), "\n\n~~~~~~~~~~~~~~~~~~\n"),
       file = log_con)
