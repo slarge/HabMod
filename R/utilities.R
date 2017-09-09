@@ -210,7 +210,7 @@ dat_maker <- function(svspp) {
   wf_lt <- wf_dat %>%
     dplyr::select(-dplyr::one_of(na_count$COLS[na_count$NAs >= na_nums]),
            -dplyr::one_of(join_names),
-           LAT, LON) %>%
+           LAT, LON, YEAR) %>%
     na.omit %>%
     as.data.frame
 
