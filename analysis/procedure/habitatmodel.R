@@ -1,19 +1,22 @@
-rm(list = ls())
+# rm(list = ls())
 seed <- 627
 set.seed(seed)
 
+raw_path <- "analysis/data/raw_data/"
+derived_path <- "analysis/data/derived_data/"
+
 # Using Data Miner with R
-# source("http://svn.research-infrastructures.eu/public/d4science/gcube/trunk/data-analysis/RConfiguration/RD4SFunctions/workspace_interaction.r")
+source("http://svn.research-infrastructures.eu/public/d4science/gcube/trunk/data-analysis/RConfiguration/RD4SFunctions/workspace_interaction.r")
 
 #SETTING USERNAME AND TOKEN - NOT NEEDED WHEN USING RSTUDIO ON THE PORTAL
-if(file.exists("analysis/data/raw_data/keys.csv")){
+if(file.exists(paste0(raw_path, "keys.csv"))){
   keys <- read.csv("analysis/data/raw_data/keys.csv", stringsAsFactors = FALSE)
   username <<- keys$username
   token <<- keys$token
   rm(keys)
 }
 
-if(!file.exists("analysis/data/raw_data/keys.csv")) {
+if(!file.exists(paste0(raw_path, "keys.csv"))) {
   cat("To use the vsurf_bb functionality, go to: https://i-marine.d4science.org/group/stockassessment \nand enter your username and personal token")
   set_keys(save_key = TRUE)
 }
@@ -21,7 +24,7 @@ if(!file.exists("analysis/data/raw_data/keys.csv")) {
 ## ~~~~~~~~~~~~~ ##
 ## Load the data ##
 ## ~~~~~~~~~~~~~ ##
-svspp_dat <- read.csv("analysis/data/raw_data/SVSPP.csv",
+svspp_dat <- read.csv(paste0(raw_path, "SVSPP.csv"),
                       stringsAsFactors = FALSE)
 
 svspp_dat <- svspp_dat %>%
@@ -50,33 +53,47 @@ bad_dat <- c("rast_necrm_bpi", "rast_necrm_vrm" ,
              "rast_bpi_3_25_layer", "rast_bpi_30_250_layer",
              "rast_mab_sed", "rast_gdepth",
              "rast_gravel_fraction", "rast_mud_fraction",
-             "rast_phi_fraction", "rast_sand_fraction", "rast_plcurv20km", "rast_plcurv2km", "rast_plcurv10km")
+             "rast_phi_fraction", "rast_sand_fraction", 
+             "rast_plcurv20km", "rast_plcurv2km",
+             "rast_plcurv10km", "SURFTEMP", "BOTTEMP")
 
-if(length(grep("-biomass_habmod", list.files("analysis/data/raw_data"))) != 0) {
+season <- "fall"
+
+if(length(grep(paste0("-biomass_habmod-", season), 
+               list.files("analysis/data/raw_data"))) != 0) {
 
   habmod_file <- paste0("analysis/data/raw_data/",
-                        grep("-biomass_habmod",
+                        grep(paste0("-biomass_habmod-", season),
                              list.files("analysis/data/raw_data"),
                              value = TRUE))
   all_dat_op <- readRDS(habmod_file)
-  # load(habmod_file)
 
   log_name <- gsub(".rds", ".log", habmod_file)
   log_name <- gsub("raw_data", "derived_data", log_name)
   rm(habmod_file)
 }
 
-if(length(grep("-biomass_habmod.rds", list.files("analysis/data/raw_data"))) == 0) {
-  load("analysis/data/raw_data/spring.data.RData")
+if(length(grep(paste0("-biomass_habmod-", season, ".rds"),
+               list.files("analysis/data/raw_data"))) == 0) {
+  load(paste0("analysis/data/raw_data/", season, ".data.RData"))
+  if(season == "fall"){
+    season.data <- fall.data
+    rm(list = c("fall.data"))
+  }
+  
+  if(season == "spring"){
+    season.data <- spring.data
+    rm(list = c("spring.data"))
+  }
 
   ## ~~~~~~~~~~~~~~~~~ ##
   ## Clean up the data ##
   ## ~~~~~~~~~~~~~~~~~ ##
-  names(spring.data) <- sub(" ", "", names(spring.data))
-  lag_dat <- grep("_[1-9]d", colnames(spring.data), value = TRUE)
-  zoo_static_dat <- grep("zoo_spr_clim_", colnames(spring.data), value = TRUE)
+  names(season.data) <- sub(" ", "", names(season.data))
+  lag_dat <- grep("_[1-9]d", colnames(season.data), value = TRUE)
+  zoo_static_dat <- grep("zoo_spr_clim_", colnames(season.data), value = TRUE)
   
-  spring_dat <- spring.data %>%
+  season_dat <- season.data %>%
     dplyr::filter(SVSPP %in% species_list) %>%
     dplyr::select(-TOW,
                   -CATCHSEX,
@@ -85,7 +102,7 @@ if(length(grep("-biomass_habmod.rds", list.files("analysis/data/raw_data"))) == 
                   -dplyr::one_of(bad_dat)) %>%
     dplyr::distinct(.keep_all = TRUE)
 
-  rm(list = c("spring.data"))
+  rm(list = c("season.data"))
 
   ## ~~~~~~~~~~~~~~ ##
   ## Add zero sites ##
@@ -98,7 +115,7 @@ if(length(grep("-biomass_habmod.rds", list.files("analysis/data/raw_data"))) == 
   # but is found in that year stratum, they are considered "absent" or 0. If a species is not found in a year, stratum, station
   # nor is found in that year stratum, they are NA and removed.
 
-  pa_table <- spring_dat %>%
+  pa_table <- season_dat %>%
     dplyr::group_by(YEAR, SVSPP, STRATUM, STATION) %>%
     dplyr::summarize(count = n()) %>%
     tidyr::spread(SVSPP, value = count) %>%
@@ -113,7 +130,7 @@ if(length(grep("-biomass_habmod.rds", list.files("analysis/data/raw_data"))) == 
     dplyr::filter(!is.na(PRESENCE))
 
   # Create a data.frame of just the station data
-  station_dat <- spring_dat %>%
+  station_dat <- season_dat %>%
     dplyr::select(-SVSPP,
                   -ABUNDANCE,
                   -BIOMASS) %>%
@@ -127,7 +144,7 @@ if(length(grep("-biomass_habmod.rds", list.files("analysis/data/raw_data"))) == 
     dplyr::select(-stratum_sum, -count)
 
   # join the p/a data with abundance and biomass data
-  bio_dat <- spring_dat %>%
+  bio_dat <- season_dat %>%
     dplyr::select(ABUNDANCE,
                   BIOMASS,
                   join_names) %>%
@@ -173,13 +190,18 @@ if(length(grep("-biomass_habmod.rds", list.files("analysis/data/raw_data"))) == 
   # data_partition$SVSPP <- unique(all_dat_op$SVSPP)
   # data_partition <- unnest(data_partition)
 
-  log_file <- paste(gsub("-", "", Sys.Date()), "-biomass_habmod.log", sep="")
-  log_name <- paste0("analysis/data/derived_data/", log_file)
-  saveRDS(all_dat_op, file = paste0("analysis/data/raw_data/", gsub(".log", ".rds", log_file)))
+  log_file <- paste(gsub("-", "", Sys.Date()), "-biomass_habmod-", season,".log", sep="")
+  log_name <- paste0(derived_path, season, "/", log_file)
+  saveRDS(all_dat_op, 
+          file = paste0(raw_path, gsub(".log", ".rds", log_file)))
 }
 
-sp.list <- c(22, 73, 74, 105, 107)
-
+# sp.list <- c(22, 28, 73, 74, 105, 107, 141)
+sp.list <- c(28, 73, 74, 105, 107, 141)
+# sp.list <- c(141, 32, 72, 112, 163, 197)
+# sp.list <- c(112, 163, 197)
+# sp.list <- 22
+# sp.i <- 22
 for(sp.i in sp.list) {
 
   ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ##
@@ -277,18 +299,18 @@ for(sp.i in sp.list) {
   }
 
   download.file(output_df$LOG,
-                paste0("analysis/data/derived_data/", name, "-PA-VSURFlog.txt"),
+                paste0(derived_path, season, "/", name, "-PA-VSURFlog.txt"),
                 mode = "wb",
                 cacheOK = FALSE)
   download.file(output_df$OUTPUT,
-                paste0("analysis/data/derived_data/", name, "-PA-VSURFoutput.rds"),
+                paste0(derived_path, season, "/", name, "-PA-VSURFoutput.rds"),
                 mode = "wb",
                 cacheOK = FALSE)
 
   ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~ ##
   ## Extract important variables ##
   ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~ ##
-  temp_vsurf <- readRDS(paste0("analysis/data/derived_data/", name, "-PA-VSURFoutput.rds"))
+  temp_vsurf <- readRDS(paste0(derived_path, season, "/", name, "-PA-VSURFoutput.rds"))
   pa_rf_vars <- names(pa_x)[temp_vsurf$varselect.pred]
 
   log_con <- file(log_name, open = "a")
@@ -337,6 +359,8 @@ for(sp.i in sp.list) {
                         method = "rf",
                         trControl = train_control,
                         weights = h,
+                        keep.inbag = TRUE,
+                        replace = TRUE,
                         importance = TRUE,
                         metric = "ROC",
                         preProc = c("center", "scale"))
@@ -358,7 +382,7 @@ for(sp.i in sp.list) {
     ggplot2::theme_bw() +
     ggplot2::coord_equal()
 
-  ggplot2::ggsave(paste0("analysis/figures/", name, "_roc.png"), plot = roc_plot)
+  ggplot2::ggsave(paste0("analysis/figures/", name, "-", season, "-", "roc.png"), plot = roc_plot)
 
   ##adjust optimal cut-off threshold for class probabilities
   threshold <- pROC::coords(myroc, x="best", best.method = "closest.topleft")[[1]] #get optimal cutoff threshold
@@ -375,7 +399,8 @@ for(sp.i in sp.list) {
   close(log_con)
 
   rf_name <- paste0(name, "-PA-RFmodel")
-  saveRDS(assign(value = wf_pa, x = rf_name), paste0("analysis/data/derived_data/", rf_name, ".rds"))
+  saveRDS(assign(value = wf_pa, x = rf_name), 
+          paste0(derived_path, season, "/", rf_name, ".rds"))
 
   ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ##
   ## Split data for Biomass model ##
@@ -475,18 +500,18 @@ for(sp.i in sp.list) {
   }
 
   download.file(output_bm_df$LOG,
-                paste0("analysis/data/derived_data/", name, "-BM-VSURFlog.txt"),
+                paste0("analysis/data/derived_data/", season, "/", name, "-BM-VSURFlog.txt"),
                 mode = "wb",
                 cacheOK = FALSE)
   download.file(output_bm_df$OUTPUT,
-                paste0("analysis/data/derived_data/", name, "-BM-VSURFoutput.rds"),
+                paste0("analysis/data/derived_data/", season, "/", name, "-BM-VSURFoutput.rds"),
                 mode = "wb",
                 cacheOK = FALSE)
 
   ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~ ##
   ## Extract important variables ##
   ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~ ##
-  temp_vsurf <- readRDS(paste0("analysis/data/derived_data/", name, "-BM-VSURFoutput.rds"))
+  temp_vsurf <- readRDS(paste0(derived_path, season, "/", name, "-BM-VSURFoutput.rds"))
   bm_rf_vars <- names(bm_x)[temp_vsurf$varselect.pred]
 
   log_con <- file(log_name, open = "a")
@@ -523,8 +548,9 @@ for(sp.i in sp.list) {
                         method = "rf",
                         trControl = train_control,
                         importance = TRUE,
-                        metric = "RMSE",
-                        preProc = c("center", "scale"))
+                        keep.inbag = TRUE,
+                        replace = TRUE,
+                        metric = "RMSE")
 
   parallel::stopCluster(cluster)
   foreach::registerDoSEQ()
@@ -541,7 +567,8 @@ for(sp.i in sp.list) {
   close(log_con)
 
   rf_name <- paste0(name, "-BM-RFmodel")
-  saveRDS(assign(value = rf_bm, x = rf_name), paste0("analysis/data/derived_data/", rf_name, ".rds"))
+  saveRDS(assign(value = rf_bm, x = rf_name), 
+          paste0(derived_path, season, "/", rf_name, ".rds"))
 
   ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ##
   ## Fit BIOMASS VSURF model (w/o PA) ##
@@ -635,18 +662,18 @@ for(sp.i in sp.list) {
   }
 
   download.file(output_bo_df$LOG,
-                paste0("analysis/data/derived_data/", name, "-BO-VSURFlog.txt"),
+                paste0("analysis/data/derived_data/", season, "/", name,  "-BO-VSURFlog.txt"),
                 mode = "wb",
                 cacheOK = FALSE)
   download.file(output_bo_df$OUTPUT,
-                paste0("analysis/data/derived_data/", name, "-BO-VSURFoutput.rds"),
+                paste0("analysis/data/derived_data/", season, "/", name,  "-BO-VSURFoutput.rds"),
                 mode = "wb",
                 cacheOK = FALSE)
 
   ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~ ##
   ## Extract important variables ##
   ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~ ##
-  temp_vsurf <- readRDS(paste0("analysis/data/derived_data/", name, "-BO-VSURFoutput.rds"))
+  temp_vsurf <- readRDS(paste0(derived_path, season, "/", name, "-BO-VSURFoutput.rds"))
   bo_rf_vars <- names(bo_x)[temp_vsurf$varselect.pred]
 
   log_con <- file(log_name, open = "a")
@@ -683,7 +710,8 @@ for(sp.i in sp.list) {
                         method = "rf",
                         trControl = train_control,
                         importance = TRUE,
-                        preProc = c("center", "scale"))
+                        keep.inbag = TRUE,
+                        replace = TRUE)
 
   parallel::stopCluster(cluster)
   foreach::registerDoSEQ()
@@ -699,5 +727,6 @@ for(sp.i in sp.list) {
   close(log_con)
 
   rf_name <- paste0(name, "-BO-RFmodel")
-  saveRDS(assign(value = rf_bo, x = rf_name), paste0("analysis/data/derived_data/", rf_name, ".rds"))
+  saveRDS(assign(value = rf_bo, x = rf_name),
+          paste0(derived_path, season, "/", rf_name, ".rds"))
 }
