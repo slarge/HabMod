@@ -1,0 +1,2291 @@
+Starting barndoor_skate at 2017-09-11 10:40:32.
+ To recreate, make sure: set.seed(627)
+
+First we'll fit the occupancy model with 1678 observations and 87 explanatory variables.
+Sent to BB and will monitor: http://dataminer0-proto.d4science.org:80/wps/RetrieveResultServlet?id=f3616d32-9f5e-41c5-ba7e-3e464a360d2e 
+every 10 minutes.
+Checking in at 2017-09-11 10:40:45.
+Checking in at 2017-09-11 10:50:46.
+Checking in at 2017-09-11 11:00:47.
+Checking in at 2017-09-11 11:10:47.
+Success!  barndoor_skate is all finished and output files can be found:  http://data.d4science.org/K2JtdlFmZHdYb1BkbWZmNjFySlh6ZjhCQzE2NUFGVGxHbWJQNStIS0N6Yz0-VLT http://data.d4science.org/MGpUb2VrZWpNcVBkbWZmNjFySlh6ZUgyNmIvcUFIaTFHbWJQNStIS0N6Yz0-VLT 
+
+P/A VSURF model identified  sst_f_clim_10_0d zoo_spr_ann_volume rast_slpslp20km rast_prcurv20km sst_f_clim_04_0d zoo_spr_ann_para sst_f_clim_03_0d BOTSALIN sst_f_clim_02_0d rast_slp20km sst_r_clim_03_0d zoo_spr_ann_hyper rast_slp2km sst_r_clim_11_0d  as the best variables for prediction.
+PA rf completed.
+Time difference of 1.828619 mins
+Accuracy = 0.7, Kappa = 0.41, and threshold = 0.348.
+Now we fit the biomass VSURF model with 1678 observations and 88 explanatory variables.
+Sent to BB and will monitor: http://dataminer1-proto.d4science.org:80/wps/RetrieveResultServlet?id=67c8c05c-4a8e-4abc-976a-f8fc74b431e9 
+every 10 minutes.
+Checking in at 2017-09-11 11:23:02.
+Checking in at 2017-09-11 11:33:02.
+Checking in at 2017-09-11 11:43:02.
+Checking in at 2017-09-11 11:53:03.
+Checking in at 2017-09-11 12:03:04.
+Checking in at 2017-09-11 12:13:04.
+Checking in at 2017-09-11 12:23:04.
+Checking in at 2017-09-11 12:33:04.
+Checking in at 2017-09-11 12:43:06.
+Checking in at 2017-09-11 12:53:06.
+Checking in at 2017-09-11 13:03:06.
+Checking in at 2017-09-11 13:13:08.
+Checking in at 2017-09-11 13:23:09.
+Checking in at 2017-09-11 13:33:09.
+Starting barndoor_skate at 2017-09-11 15:02:53.
+ To recreate, make sure: set.seed(627)
+
+First we'll fit the occupancy model with 1678 observations and 87 explanatory variables.
+Sent to BB and will monitor: http://dataminer0-proto.d4science.org:80/wps/RetrieveResultServlet?id=6cc379f1-2098-4a33-859b-5317526e3158 
+every 10 minutes.
+Checking in at 2017-09-11 15:03:14.
+Checking in at 2017-09-11 15:13:14.
+Checking in at 2017-09-11 15:23:16.
+Checking in at 2017-09-11 15:33:18.
+Success!  barndoor_skate is all finished and output files can be found:  http://data.d4science.org/T2JmbDN2ME1Ed0hkbWZmNjFySlh6ZHYrZDV5Tmp4SjdHbWJQNStIS0N6Yz0-VLT http://data.d4science.org/T2JmbDN2ME1Ed0hkbWZmNjFySlh6ZGRsWkQvQkNnbkJHbWJQNStIS0N6Yz0-VLT 
+
+P/A VSURF model identified  sst_f_clim_10_0d zoo_spr_ann_volume rast_slpslp20km rast_prcurv20km sst_f_clim_04_0d zoo_spr_ann_para sst_f_clim_03_0d BOTSALIN sst_f_clim_02_0d rast_slp20km sst_r_clim_03_0d zoo_spr_ann_pseudo chl_f_clim_08_0d zoo_spr_ann_hyper chl_r_clim_09_0d rast_slp2km sst_f_clim_11_0d  as the best variables for prediction.
+PA rf completed.
+Time difference of 2.111187 mins
+Accuracy = 0.7, Kappa = 0.41, and threshold = 0.373.
+Now we fit the biomass VSURF model with 1678 observations and 88 explanatory variables.
+Sent to BB and will monitor: http://dataminer1-proto.d4science.org:80/wps/RetrieveResultServlet?id=7ef9fb6f-9e2d-4f0e-b32a-e22916ed4fa6 
+every 10 minutes.
+Checking in at 2017-09-11 15:46:05.
+Checking in at 2017-09-11 15:56:07.
+Checking in at 2017-09-11 16:06:09.
+Checking in at 2017-09-11 16:16:11.
+Checking in at 2017-09-11 16:26:13.
+Checking in at 2017-09-11 16:36:15.
+Checking in at 2017-09-11 16:46:17.
+Checking in at 2017-09-11 16:56:19.
+Checking in at 2017-09-11 17:06:20.
+Checking in at 2017-09-11 17:16:22.
+Checking in at 2017-09-11 17:26:24.
+Checking in at 2017-09-11 17:36:26.
+Checking in at 2017-09-11 17:46:28.
+Checking in at 2017-09-11 17:56:30.
+Success!  barndoor_skate is all finished and output files can be found:  http://data.d4science.org/MWpjQk9aTTZ2dlRnN1lMRmprYnk2T1VEU1JuM3IzUS9HbWJQNStIS0N6Yz0-VLT http://data.d4science.org/MWpjQk9aTTZ2dlRnN1lMRmprYnk2SDJDVitpb0VPUm5HbWJQNStIS0N6Yz0-VLT 
+
+Biomass VSURF model identified  PRESPROB BOTSALIN BT_SD rast_vortfa rast_namera_bpi rast_slp20km zoo_spr_ann_para sst_f_clim_04_0d chl_r_clim_03_0d zoo_spr_ann_volume sst_r_clim_10_0d chl_r_clim_10_0d chl_f_clim_12_0d sst_f_clim_12_0d chl_r_clim_07_0d rast_prcurv2km sst_r_clim_03_0d rast_namera_vrm zoo_spr_ann_calfin  as the best variables for prediction.
+Biomass rf completed.
+Time difference of 1.905876 mins.
+R2 = 0.37, and RMSE = 0.33
+Now we fit the biomass VSURF model (w/o PA) with 737 observations and 87 explanatory variables. 
+Sent to BB and will monitor: http://dataminer0-proto.d4science.org:80/wps/RetrieveResultServlet?id=3484252c-329f-419a-951e-a81037005146 
+every 10 minutes.
+Checking in at 2017-09-11 18:08:52.
+Checking in at 2017-09-11 18:18:54.
+Checking in at 2017-09-11 18:28:56.
+Checking in at 2017-09-11 18:38:57.
+Success!  barndoor_skate is all finished and output files can be found:  http://data.d4science.org/N1JQNS9iZ3dLK1RkbWZmNjFySlh6WDhSb25uUWlnY25HbWJQNStIS0N6Yz0-VLT http://data.d4science.org/N1JQNS9iZ3dLK1RkbWZmNjFySlh6U1pKK1EzcExDWndHbWJQNStIS0N6Yz0-VLT 
+
+Biomass VSURF (w/o PA) model identified  BOTSALIN rast_vortfa BT_SD rast_namera_bpi rast_vortwi zoo_spr_ann_volume chl_r_clim_03_0d chl_r_clim_07_0d sst_r_clim_10_0d zoo_spr_ann_oithspp sst_r_clim_03_0d chl_r_clim_02_0d zoo_spr_ann_calfin rast_namera_vrm  as the best variables for prediction.
+Biomass rf completed.
+Time difference of 1.775154 mins
+R2 = 0.4, and RMSE = 0.32
+
+~~~~~~~~~~~~~~~~~~
+Starting thorny_skate at 2017-09-11 18:50:59.
+ To recreate, make sure: set.seed(627)
+
+First we'll fit the occupancy model with 1820 observations and 87 explanatory variables.
+Sent to BB and will monitor: http://dataminer1-proto.d4science.org:80/wps/RetrieveResultServlet?id=de52f47b-3b6b-4777-911b-6b2998c80b34 
+every 10 minutes.
+Checking in at 2017-09-11 18:51:18.
+Checking in at 2017-09-11 19:01:18.
+Checking in at 2017-09-11 19:11:18.
+Checking in at 2017-09-11 19:21:18.
+Success!  thorny_skate is all finished and output files can be found:  http://data.d4science.org/Mmp1bHAvSWwrUGJnN1lMRmprYnk2T2VlZnZ6QzZaVUZHbWJQNStIS0N6Yz0-VLT http://data.d4science.org/Mmp1bHAvSWwrUGJnN1lMRmprYnk2QXNSb3BackNwNDlHbWJQNStIS0N6Yz0-VLT 
+
+P/A VSURF model identified  sst_r_clim_11_0d sst_r_clim_01_0d sst_r_clim_12_0d sst_r_clim_03_0d sst_r_clim_05_0d chl_r_clim_11_0d chl_r_clim_04_0d sst_r_clim_10_0d rast_prcurv10km sst_f_clim_11_0d chl_r_clim_06_0d zoo_spr_ann_echino chl_f_clim_04_0d  as the best variables for prediction.
+PA rf completed.
+Time difference of 1.777163 mins
+Accuracy = 0.65, Kappa = 0.29, and threshold = 0.403.
+Now we fit the biomass VSURF model with 1820 observations and 88 explanatory variables.
+Sent to BB and will monitor: http://dataminer0-proto.d4science.org:80/wps/RetrieveResultServlet?id=36d2cea7-74e4-45c9-8185-6986854376d7 
+every 10 minutes.
+Checking in at 2017-09-11 19:33:41.
+Checking in at 2017-09-11 19:43:42.
+Checking in at 2017-09-11 19:53:44.
+Checking in at 2017-09-11 20:03:46.
+Checking in at 2017-09-11 20:13:48.
+Checking in at 2017-09-11 20:23:50.
+Success!  thorny_skate is all finished and output files can be found:  http://data.d4science.org/UGl1am9JMmNpVmpkbWZmNjFySlh6YjN0eWJZWlNGUzZHbWJQNStIS0N6Yz0-VLT http://data.d4science.org/dlVoamZyd0ZGM3JkbWZmNjFySlh6WkFYSkkzTnBmaHhHbWJQNStIS0N6Yz0-VLT 
+
+Biomass VSURF model identified  PRESPROB sst_r_clim_11_0d sst_r_clim_12_0d zoo_spr_ann_para sst_f_clim_11_0d sst_r_clim_01_0d sst_r_clim_09_0d rast_slpslp10km sst_r_clim_03_0d zoo_spr_ann_gas rast_slpslp20km ST_SD  as the best variables for prediction.
+Biomass rf completed.
+Time difference of 1.476304 mins.
+R2 = 0.15, and RMSE = 0.29
+Now we fit the biomass VSURF model (w/o PA) with 727 observations and 87 explanatory variables. 
+Sent to BB and will monitor: http://dataminer1-proto.d4science.org:80/wps/RetrieveResultServlet?id=e7b8c790-7d61-4980-847e-0d1f2974887e 
+every 10 minutes.
+Checking in at 2017-09-11 20:35:43.
+Checking in at 2017-09-11 20:45:45.
+Checking in at 2017-09-11 20:55:47.
+Success!  thorny_skate is all finished and output files can be found:  http://data.d4science.org/bExJN3RXWkZnT2JnN1lMRmprYnk2TVBhVWdVVi9SU2JHbWJQNStIS0N6Yz0-VLT http://data.d4science.org/bExJN3RXWkZnT2JnN1lMRmprYnk2Si9zbHVRYnV5djlHbWJQNStIS0N6Yz0-VLT 
+
+Biomass VSURF (w/o PA) model identified  zoo_spr_ann_para zoo_spr_ann_gas zoo_spr_ann_volume zoo_spr_ann_calfin zoo_spr_ann_oithspp sst_r_clim_03_0d rast_prcurv20km zoo_spr_ann_mlucens rast_slpslp10km chl_r_clim_03_0d zoo_spr_ann_tlong sst_f_clim_12_0d sst_r_clim_02_0d rast_soft_sed sst_r_clim_04_0d sst_r_clim_09_0d  as the best variables for prediction.
+Biomass rf completed.
+Time difference of 1.907026 mins
+R2 = 0.18, and RMSE = 0.28
+
+~~~~~~~~~~~~~~~~~~
+Starting Atlantic_cod at 2017-09-11 21:07:57.
+ To recreate, make sure: set.seed(627)
+
+First we'll fit the occupancy model with 3434 observations and 87 explanatory variables.
+Sent to BB and will monitor: http://dataminer0-proto.d4science.org:80/wps/RetrieveResultServlet?id=3827761c-3d45-417f-a3ab-ecf860137181 
+every 10 minutes.
+Checking in at 2017-09-11 21:08:21.
+Checking in at 2017-09-11 21:18:21.
+Checking in at 2017-09-11 21:28:21.
+Checking in at 2017-09-11 21:38:23.
+Checking in at 2017-09-11 21:48:25.
+Checking in at 2017-09-11 21:58:27.
+Checking in at 2017-09-11 22:08:29.
+Checking in at 2017-09-11 22:18:31.
+Checking in at 2017-09-11 22:28:33.
+Success!  Atlantic_cod is all finished and output files can be found:  http://data.d4science.org/RWpUcjFtOUJNRGJkbWZmNjFySlh6WVQxcGd2aG5LZkxHbWJQNStIS0N6Yz0-VLT http://data.d4science.org/RWpUcjFtOUJNRGJkbWZmNjFySlh6UjhZdS9hTTlCckpHbWJQNStIS0N6Yz0-VLT 
+
+P/A VSURF model identified  sst_r_clim_09_0d sst_r_clim_08_0d sst_r_clim_04_0d sst_r_clim_05_0d sst_r_clim_07_0d sst_r_clim_06_0d sst_r_clim_01_0d chl_r_clim_05_0d zoo_spr_ann_larvaceans sst_r_clim_02_0d zoo_spr_ann_tlong chl_r_clim_09_0d sst_f_clim_05_0d zoo_spr_ann_chaeto zoo_spr_ann_para BOTSALIN rast_namera_bpi sst_f_clim_01_0d zoo_spr_ann_gas  as the best variables for prediction.
+PA rf completed.
+Time difference of 4.016183 mins
+Accuracy = 0.74, Kappa = 0.48, and threshold = 0.48.
+Now we fit the biomass VSURF model with 3434 observations and 88 explanatory variables.
+Sent to BB and will monitor: http://dataminer1-proto.d4science.org:80/wps/RetrieveResultServlet?id=32f0dbb1-cd6d-409b-8a57-a7af1b8ef57a 
+every 10 minutes.
+Checking in at 2017-09-12 10:20:35.
+Checking in at 2017-09-12 10:30:37.
+Checking in at 2017-09-12 10:40:39.
+Checking in at 2017-09-12 10:50:41.
+Checking in at 2017-09-12 11:00:41.
+Checking in at 2017-09-12 11:10:41.
+Checking in at 2017-09-12 11:20:43.
+Checking in at 2017-09-12 11:30:46.
+Checking in at 2017-09-12 11:40:46.
+Checking in at 2017-09-12 11:50:48.
+Checking in at 2017-09-12 12:00:50.
+Checking in at 2017-09-12 12:10:52.
+Checking in at 2017-09-12 12:20:54.
+Checking in at 2017-09-12 12:30:56.
+Checking in at 2017-09-12 12:40:58.
+Checking in at 2017-09-12 12:51:00.
+Checking in at 2017-09-12 13:01:02.
+Checking in at 2017-09-12 13:11:04.
+Checking in at 2017-09-12 13:21:06.
+Checking in at 2017-09-12 13:31:07.
+Checking in at 2017-09-12 13:41:09.
+Checking in at 2017-09-12 13:51:11.
+Checking in at 2017-09-12 14:01:13.
+Checking in at 2017-09-12 14:11:15.
+Checking in at 2017-09-12 14:21:17.
+Checking in at 2017-09-12 14:31:19.
+Checking in at 2017-09-12 14:41:21.
+Checking in at 2017-09-12 14:51:23.
+Checking in at 2017-09-12 15:01:25.
+Checking in at 2017-09-12 15:11:26.
+Checking in at 2017-09-12 15:21:28.
+Checking in at 2017-09-12 15:31:30.
+Checking in at 2017-09-12 15:41:32.
+Checking in at 2017-09-12 15:51:34.
+Checking in at 2017-09-12 16:01:36.
+Checking in at 2017-09-12 16:11:38.
+Checking in at 2017-09-12 16:21:40.
+Checking in at 2017-09-12 16:31:42.
+Checking in at 2017-09-12 16:41:44.
+Checking in at 2017-09-12 16:51:46.
+Checking in at 2017-09-12 17:01:48.
+Checking in at 2017-09-12 17:11:50.
+Checking in at 2017-09-12 17:21:52.
+Checking in at 2017-09-12 17:31:53.
+Checking in at 2017-09-12 17:41:55.
+Checking in at 2017-09-12 17:51:57.
+Checking in at 2017-09-12 18:01:59.
+Checking in at 2017-09-12 18:12:01.
+Checking in at 2017-09-12 18:22:03.
+Checking in at 2017-09-12 18:32:05.
+Checking in at 2017-09-12 18:42:07.
+Checking in at 2017-09-12 18:52:09.
+Checking in at 2017-09-12 19:02:10.
+Checking in at 2017-09-12 19:12:12.
+Checking in at 2017-09-12 19:22:14.
+Checking in at 2017-09-12 19:32:16.
+Checking in at 2017-09-12 19:42:18.
+Checking in at 2017-09-12 19:52:20.
+Checking in at 2017-09-12 20:02:22.
+Checking in at 2017-09-12 20:12:24.
+Checking in at 2017-09-12 20:22:26.
+Checking in at 2017-09-12 20:32:28.
+Checking in at 2017-09-12 20:42:30.
+Checking in at 2017-09-12 20:52:31.
+Checking in at 2017-09-12 21:02:33.
+Checking in at 2017-09-12 21:12:35.
+Checking in at 2017-09-12 21:22:37.
+Checking in at 2017-09-12 21:32:39.
+Checking in at 2017-09-12 21:42:41.
+Checking in at 2017-09-12 21:52:43.
+Checking in at 2017-09-12 22:02:43.
+Checking in at 2017-09-12 22:12:43.
+Success!  Atlantic_cod is all finished and output files can be found:  http://data.d4science.org/cW05Mlc5YjBqTFhnN1lMRmprYnk2TUs3cnVTODJWdFpHbWJQNStIS0N6Yz0-VLT http://data.d4science.org/cW05Mlc5YjBqTFhnN1lMRmprYnk2T29ZK0hZM0NyZjZHbWJQNStIS0N6Yz0-VLT 
+
+Biomass VSURF model identified  PRESPROB sst_r_clim_09_0d sst_r_clim_06_0d sst_r_clim_04_0d sst_r_clim_05_0d sst_r_clim_07_0d sst_r_clim_10_0d rast_slp20km sst_r_clim_11_0d sst_f_clim_09_0d chl_f_clim_01_0d sst_f_clim_10_0d rast_slp10km sst_f_clim_07_0d rast_vortfa chl_f_clim_08_0d sst_r_clim_12_0d chl_f_clim_09_0d rast_prcurv10km rast_slp2km zoo_spr_ann_cham chl_r_clim_07_0d zoo_spr_ann_para chl_r_clim_05_0d BOTSALIN rast_soft_sed chl_r_clim_01_0d zoo_spr_ann_ctyp zoo_spr_ann_hyper zoo_spr_ann_calfin zoo_spr_ann_volume zoo_spr_ann_chaeto BT_SD zoo_spr_ann_larvaceans zoo_spr_ann_tlong rast_namera_bpi zoo_spr_ann_mlucens zoo_spr_ann_echino  as the best variables for prediction.
+Biomass rf completed.
+Time difference of 7.851153 mins.
+R2 = 0.35, and RMSE = 0.41
+Now we fit the biomass VSURF model (w/o PA) with 1758 observations and 87 explanatory variables. 
+Sent to BB and will monitor: http://dataminer0-proto.d4science.org:80/wps/RetrieveResultServlet?id=aff10f98-4203-48ea-abf5-09604c07062f 
+every 10 minutes.
+Checking in at 2017-09-12 22:31:12.
+Checking in at 2017-09-12 22:41:16.
+Checking in at 2017-09-12 22:51:18.
+Checking in at 2017-09-12 23:01:20.
+Checking in at 2017-09-12 23:11:22.
+Checking in at 2017-09-12 23:21:24.
+Checking in at 2017-09-12 23:31:26.
+Checking in at 2017-09-12 23:41:28.
+Checking in at 2017-09-12 23:51:30.
+Checking in at 2017-09-13 00:01:31.
+Checking in at 2017-09-13 00:11:32.
+Checking in at 2017-09-13 00:21:32.
+Checking in at 2017-09-13 00:31:32.
+Checking in at 2017-09-13 00:41:32.
+Checking in at 2017-09-13 00:51:32.
+Checking in at 2017-09-13 01:01:32.
+Checking in at 2017-09-13 01:11:32.
+Checking in at 2017-09-13 01:21:33.
+Checking in at 2017-09-13 01:31:33.
+Checking in at 2017-09-13 01:41:33.
+Checking in at 2017-09-13 01:51:33.
+Checking in at 2017-09-13 02:01:33.
+Checking in at 2017-09-13 02:11:33.
+Success!  Atlantic_cod is all finished and output files can be found:  http://data.d4science.org/L0pMeUt5TFV4M0RkbWZmNjFySlh6UVBvZlNSbG5kdkJHbWJQNStIS0N6Yz0-VLT http://data.d4science.org/SklCMUI0V1Z1N0RkbWZmNjFySlh6WFpQc0MzejliV0RHbWJQNStIS0N6Yz0-VLT 
+
+Biomass VSURF (w/o PA) model identified  sst_r_clim_04_0d rast_slp20km sst_r_clim_10_0d sst_r_clim_06_0d chl_f_clim_02_0d zoo_spr_ann_para sst_r_clim_11_0d chl_f_clim_09_0d zoo_spr_ann_cham zoo_spr_ann_volume sst_r_clim_12_0d chl_r_clim_01_0d BOTSALIN chl_f_clim_07_0d zoo_spr_ann_calfin zoo_spr_ann_tlong SURFSALIN BT_SD zoo_spr_ann_echino zoo_spr_ann_ctyp ST_SD zoo_spr_ann_hyper  as the best variables for prediction.
+Biomass rf completed.
+Time difference of 6.519984 mins
+R2 = 0.35, and RMSE = 0.42
+
+~~~~~~~~~~~~~~~~~~
+Starting haddock at 2017-09-13 02:28:29.
+ To recreate, make sure: set.seed(627)
+
+First we'll fit the occupancy model with 2854 observations and 87 explanatory variables.
+Sent to BB and will monitor: http://dataminer0-proto.d4science.org:80/wps/RetrieveResultServlet?id=fe6c8e9b-7016-4d76-b7b1-50c397c01465 
+every 10 minutes.
+Checking in at 2017-09-13 02:28:49.
+Checking in at 2017-09-13 02:38:50.
+Checking in at 2017-09-13 02:48:50.
+Checking in at 2017-09-13 02:58:52.
+Checking in at 2017-09-13 03:08:53.
+Checking in at 2017-09-13 03:18:55.
+Checking in at 2017-09-13 03:28:57.
+Checking in at 2017-09-13 03:38:59.
+Success!  haddock is all finished and output files can be found:  http://data.d4science.org/S0JsbWk1K1hRS3ZkbWZmNjFySlh6ZGlhaVdLOXBOVEpHbWJQNStIS0N6Yz0-VLT http://data.d4science.org/QU1rZzcxM1BUbXpkbWZmNjFySlh6ZWk5RDBsRktjaGtHbWJQNStIS0N6Yz0-VLT 
+
+P/A VSURF model identified  rast_soft_sed sst_r_clim_10_0d sst_r_clim_07_0d zoo_spr_ann_gas chl_f_clim_02_0d sst_r_clim_11_0d zoo_spr_ann_chaeto zoo_spr_ann_para zoo_spr_ann_pseudo chl_r_clim_05_0d chl_f_clim_01_0d chl_f_clim_07_0d rast_prcurv10km zoo_spr_ann_ctyp BOTSALIN zoo_spr_ann_calfin BT_SD zoo_spr_ann_tlong  as the best variables for prediction.
+Starting haddock at 2017-09-13 09:08:42.
+ To recreate, make sure: set.seed(627)
+
+First we'll fit the occupancy model with 2854 observations and 87 explanatory variables.
+Sent to BB and will monitor: http://dataminer1-proto.d4science.org:80/wps/RetrieveResultServlet?id=2920b5e6-d0a5-4bd3-994f-005112751e07 
+every 10 minutes.
+Checking in at 2017-09-13 09:08:52.
+Checking in at 2017-09-13 09:18:52.
+Checking in at 2017-09-13 09:28:52.
+Checking in at 2017-09-13 09:38:52.
+Checking in at 2017-09-13 09:48:53.
+Checking in at 2017-09-13 09:58:53.
+Checking in at 2017-09-13 10:08:54.
+Checking in at 2017-09-13 10:18:54.
+Checking in at 2017-09-13 10:28:54.
+Success!  haddock is all finished and output files can be found:  http://data.d4science.org/SnA3RXlkQVdWQy9nN1lMRmprYnk2TjUxQ05kaFJ2UG9HbWJQNStIS0N6Yz0-VLT http://data.d4science.org/SnA3RXlkQVdWQy9nN1lMRmprYnk2Ry95clppb2xzY0NHbWJQNStIS0N6Yz0-VLT 
+
+P/A VSURF model identified  rast_soft_sed sst_r_clim_10_0d sst_r_clim_07_0d zoo_spr_ann_gas chl_f_clim_02_0d sst_r_clim_11_0d zoo_spr_ann_chaeto zoo_spr_ann_para zoo_spr_ann_pseudo chl_r_clim_05_0d chl_f_clim_01_0d chl_f_clim_07_0d chl_r_clim_06_0d BOTSALIN BT_SD zoo_spr_ann_calfin zoo_spr_ann_acarspp zoo_spr_ann_tlong rast_namera_bpi rast_vortwi chl_r_clim_12_0d  as the best variables for prediction.
+PA rf completed.
+Time difference of 3.224957 mins
+Accuracy = 0.74, Kappa = 0.49, and threshold = 0.595.
+Now we fit the biomass VSURF model with 2854 observations and 88 explanatory variables.
+Sent to BB and will monitor: http://dataminer0-proto.d4science.org:80/wps/RetrieveResultServlet?id=18fdaba5-4c34-4179-88fd-f40bdc39425b 
+every 10 minutes.
+Checking in at 2017-09-13 10:42:29.
+Checking in at 2017-09-13 10:52:29.
+Checking in at 2017-09-13 11:02:29.
+Checking in at 2017-09-13 11:12:30.
+Checking in at 2017-09-13 11:22:30.
+Checking in at 2017-09-13 11:32:31.
+Checking in at 2017-09-13 11:42:31.
+Checking in at 2017-09-13 11:52:31.
+Checking in at 2017-09-13 12:02:32.
+Checking in at 2017-09-13 12:12:32.
+Checking in at 2017-09-13 12:22:32.
+Checking in at 2017-09-13 12:32:33.
+Checking in at 2017-09-13 12:42:33.
+Checking in at 2017-09-13 12:52:33.
+Checking in at 2017-09-13 13:02:33.
+Checking in at 2017-09-13 13:12:34.
+Checking in at 2017-09-13 13:22:34.
+Checking in at 2017-09-13 13:32:34.
+Checking in at 2017-09-13 13:42:35.
+Checking in at 2017-09-13 13:52:35.
+Checking in at 2017-09-13 14:02:35.
+Checking in at 2017-09-13 14:12:36.
+Checking in at 2017-09-13 14:22:36.
+Checking in at 2017-09-13 14:32:36.
+Checking in at 2017-09-13 14:42:37.
+Checking in at 2017-09-13 14:52:37.
+Checking in at 2017-09-13 15:02:37.
+Checking in at 2017-09-13 15:12:38.
+Checking in at 2017-09-13 15:22:38.
+Checking in at 2017-09-13 15:32:38.
+Checking in at 2017-09-13 15:42:39.
+Checking in at 2017-09-13 15:52:39.
+Checking in at 2017-09-13 16:02:39.
+Success!  haddock is all finished and output files can be found:  http://data.d4science.org/eCtyT3FtWEhzcnpkbWZmNjFySlh6UzlWU0RjK3JBa2VHbWJQNStIS0N6Yz0-VLT http://data.d4science.org/aUZvM1BuR1lCUHJkbWZmNjFySlh6VmUxN2IxQ1ZaRTlHbWJQNStIS0N6Yz0-VLT 
+
+Biomass VSURF model identified  PRESPROB zoo_spr_ann_chaeto sst_r_clim_10_0d sst_r_clim_08_0d sst_r_clim_09_0d sst_r_clim_07_0d chl_r_clim_06_0d rast_soft_sed rast_prcurv20km zoo_spr_ann_mlucens zoo_spr_ann_para sst_r_clim_05_0d zoo_spr_ann_gas rast_vortfa sst_r_clim_03_0d sst_r_clim_02_0d chl_f_clim_04_0d zoo_spr_ann_ctyp chl_f_clim_02_0d sst_r_clim_06_0d SURFSALIN chl_f_clim_06_0d zoo_spr_ann_pseudo zoo_spr_ann_tlong chl_f_clim_09_0d zoo_spr_ann_larvaceans zoo_spr_ann_hyper zoo_spr_ann_cirr zoo_spr_ann_echino  as the best variables for prediction.
+Biomass rf completed.
+Time difference of 4.434123 mins.
+R2 = 0.45, and RMSE = 0.55
+Now we fit the biomass VSURF model (w/o PA) with 1582 observations and 87 explanatory variables. 
+Sent to BB and will monitor: http://dataminer0-proto.d4science.org:80/wps/RetrieveResultServlet?id=089abf41-7c71-4a3b-8f71-e63396902fd2 
+every 10 minutes.
+Checking in at 2017-09-13 16:17:22.
+Checking in at 2017-09-13 16:27:22.
+Checking in at 2017-09-13 16:37:23.
+Checking in at 2017-09-13 16:47:23.
+Checking in at 2017-09-13 16:57:23.
+Checking in at 2017-09-13 17:07:24.
+Checking in at 2017-09-13 17:17:24.
+Checking in at 2017-09-13 17:27:25.
+Checking in at 2017-09-13 17:37:25.
+Checking in at 2017-09-13 17:47:26.
+Checking in at 2017-09-13 17:57:26.
+Checking in at 2017-09-13 18:07:26.
+Checking in at 2017-09-13 18:17:26.
+Checking in at 2017-09-13 18:27:27.
+Checking in at 2017-09-13 18:37:27.
+Checking in at 2017-09-13 18:47:27.
+Checking in at 2017-09-13 18:57:27.
+Success!  haddock is all finished and output files can be found:  http://data.d4science.org/dzNOR1J0Y0lRcFBkbWZmNjFySlh6U0xaMHhBUE1mMzdHbWJQNStIS0N6Yz0-VLT http://data.d4science.org/djhxWXBJVXVzZ3JkbWZmNjFySlh6Vjc1enZCbHkvZHZHbWJQNStIS0N6Yz0-VLT 
+
+Biomass VSURF (w/o PA) model identified  zoo_spr_ann_chaeto sst_r_clim_09_0d zoo_spr_ann_mlucens sst_r_clim_10_0d rast_prcurv20km sst_r_clim_08_0d zoo_spr_ann_gas sst_r_clim_12_0d chl_r_clim_06_0d sst_r_clim_01_0d zoo_spr_ann_para sst_r_clim_07_0d chl_f_clim_06_0d SURFSALIN sst_r_clim_03_0d sst_r_clim_05_0d zoo_spr_ann_ctyp zoo_spr_ann_tlong zoo_spr_ann_larvaceans chl_r_clim_05_0d BOTSALIN zoo_spr_ann_pseudo zoo_spr_ann_echino chl_f_clim_09_0d zoo_spr_ann_cirr rast_slp20km rast_namera_bpi zoo_spr_ann_hyper zoo_spr_ann_calfin zoo_spr_ann_oithspp  as the best variables for prediction.
+Biomass rf completed.
+Time difference of 5.597985 mins
+R2 = 0.47, and RMSE = 0.54
+
+~~~~~~~~~~~~~~~~~~
+Starting yellowtail_flounder at 2017-09-13 19:13:13.
+ To recreate, make sure: set.seed(627)
+
+First we'll fit the occupancy model with 3111 observations and 87 explanatory variables.
+Sent to BB and will monitor: http://dataminer0-proto.d4science.org:80/wps/RetrieveResultServlet?id=5ffb15a3-7503-46a3-9318-bb51b3519ffc 
+every 10 minutes.
+Checking in at 2017-09-13 19:13:25.
+Checking in at 2017-09-13 19:23:25.
+Checking in at 2017-09-13 19:33:26.
+Checking in at 2017-09-13 19:43:26.
+Checking in at 2017-09-13 19:53:26.
+Checking in at 2017-09-13 20:03:27.
+Checking in at 2017-09-13 20:13:27.
+Checking in at 2017-09-13 20:23:27.
+Checking in at 2017-09-13 20:33:28.
+Checking in at 2017-09-13 20:43:28.
+Checking in at 2017-09-13 20:53:29.
+Success!  yellowtail_flounder is all finished and output files can be found:  http://data.d4science.org/Zi9CN3p0alJ5TXJkbWZmNjFySlh6Zmt0Tk5TUmgwNThHbWJQNStIS0N6Yz0-VLT http://data.d4science.org/Zi9CN3p0alJ5TXJkbWZmNjFySlh6VWNZMzl2aXNQVVhHbWJQNStIS0N6Yz0-VLT 
+
+P/A VSURF model identified  chl_r_clim_06_0d chl_r_clim_07_0d BOTSALIN rast_vortsu sst_r_clim_10_0d chl_f_clim_03_0d sst_r_clim_12_0d sst_r_clim_09_0d sst_r_clim_05_0d zoo_spr_ann_cirr chl_f_clim_07_0d zoo_spr_ann_mlucens zoo_spr_ann_pseudo rast_slpslp10km zoo_spr_ann_ctyp zoo_spr_ann_para BT_SD ST_SD  as the best variables for prediction.
+PA rf completed.
+Time difference of 3.392149 mins
+Accuracy = 0.77, Kappa = 0.53, and threshold = 0.607.
+Now we fit the biomass VSURF model with 3111 observations and 88 explanatory variables.
+Sent to BB and will monitor: http://dataminer1-proto.d4science.org:80/wps/RetrieveResultServlet?id=309b7227-cbae-4241-b3af-324709bad8c0 
+every 10 minutes.
+Checking in at 2017-09-13 21:07:16.
+Checking in at 2017-09-13 21:17:16.
+Checking in at 2017-09-13 21:27:17.
+Checking in at 2017-09-13 21:37:17.
+Checking in at 2017-09-13 21:47:17.
+Checking in at 2017-09-13 21:57:18.
+Checking in at 2017-09-13 22:07:19.
+Checking in at 2017-09-13 22:17:19.
+Checking in at 2017-09-13 22:27:20.
+Checking in at 2017-09-13 22:37:20.
+Checking in at 2017-09-13 22:47:20.
+Checking in at 2017-09-13 22:57:20.
+Checking in at 2017-09-13 23:07:21.
+Checking in at 2017-09-13 23:17:21.
+Checking in at 2017-09-13 23:27:21.
+Checking in at 2017-09-13 23:37:22.
+Checking in at 2017-09-13 23:47:22.
+Checking in at 2017-09-13 23:57:22.
+Checking in at 2017-09-14 00:07:22.
+Checking in at 2017-09-14 00:17:22.
+Checking in at 2017-09-14 00:27:22.
+Checking in at 2017-09-14 00:37:23.
+Checking in at 2017-09-14 00:47:23.
+Checking in at 2017-09-14 00:57:23.
+Checking in at 2017-09-14 01:07:24.
+Checking in at 2017-09-14 01:17:24.
+Checking in at 2017-09-14 01:27:24.
+Checking in at 2017-09-14 01:37:25.
+Checking in at 2017-09-14 01:47:25.
+Checking in at 2017-09-14 01:57:25.
+Checking in at 2017-09-14 02:07:26.
+Checking in at 2017-09-14 02:17:26.
+Checking in at 2017-09-14 02:27:26.
+Checking in at 2017-09-14 02:37:27.
+Checking in at 2017-09-14 02:47:27.
+Checking in at 2017-09-14 02:57:27.
+Checking in at 2017-09-14 03:07:28.
+Checking in at 2017-09-14 03:17:28.
+Checking in at 2017-09-14 03:27:28.
+Checking in at 2017-09-14 03:37:28.
+Checking in at 2017-09-14 03:47:29.
+Checking in at 2017-09-14 03:57:29.
+Checking in at 2017-09-14 04:07:30.
+Checking in at 2017-09-14 04:17:30.
+Checking in at 2017-09-14 04:27:30.
+Success!  yellowtail_flounder is all finished and output files can be found:  http://data.d4science.org/ZGU4RzlBN1p4N0xnN1lMRmprYnk2RXRXYUdnYTVIVVRHbWJQNStIS0N6Yz0-VLT http://data.d4science.org/Y0cyVCtZU2duQUxnN1lMRmprYnk2Q2E3SWM5UGk5b3NHbWJQNStIS0N6Yz0-VLT 
+
+Biomass VSURF model identified  PRESPROB sst_r_clim_04_0d sst_r_clim_10_0d sst_r_clim_09_0d sst_r_clim_06_0d sst_r_clim_05_0d sst_r_clim_12_0d chl_r_clim_06_0d rast_vortwi rast_prcurv20km zoo_spr_ann_cham zoo_spr_ann_tlong sst_f_clim_03_0d zoo_spr_ann_para sst_r_clim_07_0d chl_f_clim_09_0d zoo_spr_ann_chaeto zoo_spr_ann_ctyp zoo_spr_ann_oithspp zoo_spr_ann_volume BT_SD zoo_spr_ann_gas chl_f_clim_07_0d zoo_spr_ann_hyper  as the best variables for prediction.
+Biomass rf completed.
+Time difference of 5.849674 mins.
+R2 = 0.48, and RMSE = 0.29
+Now we fit the biomass VSURF model (w/o PA) with 1819 observations and 87 explanatory variables. 
+Sent to BB and will monitor: http://dataminer0-proto.d4science.org:80/wps/RetrieveResultServlet?id=6192d71a-5707-40a6-b7b2-de15301a2374 
+every 10 minutes.
+Checking in at 2017-09-14 04:43:39.
+Checking in at 2017-09-14 04:53:40.
+Checking in at 2017-09-14 05:03:40.
+Checking in at 2017-09-14 05:13:40.
+Checking in at 2017-09-14 05:23:41.
+Checking in at 2017-09-14 05:33:41.
+Checking in at 2017-09-14 05:43:41.
+Checking in at 2017-09-14 05:53:41.
+Checking in at 2017-09-14 06:03:42.
+Checking in at 2017-09-14 06:13:42.
+Checking in at 2017-09-14 06:23:42.
+Checking in at 2017-09-14 06:33:42.
+Checking in at 2017-09-14 06:43:42.
+Checking in at 2017-09-14 06:53:43.
+Checking in at 2017-09-14 07:03:43.
+Checking in at 2017-09-14 07:13:43.
+Checking in at 2017-09-14 07:23:44.
+Checking in at 2017-09-14 07:33:44.
+Checking in at 2017-09-14 07:43:45.
+Success!  yellowtail_flounder is all finished and output files can be found:  http://data.d4science.org/aXBMdVRLVmFJbC9kbWZmNjFySlh6YnVhZkhiTUxRRTRHbWJQNStIS0N6Yz0-VLT http://data.d4science.org/bmdxTFBkY1NuZ0hkbWZmNjFySlh6ZEF3MGlaKy9aQ1BHbWJQNStIS0N6Yz0-VLT 
+
+Biomass VSURF (w/o PA) model identified  sst_r_clim_04_0d sst_r_clim_10_0d sst_r_clim_09_0d sst_r_clim_06_0d sst_r_clim_05_0d sst_f_clim_03_0d sst_r_clim_11_0d sst_r_clim_08_0d zoo_spr_ann_cham sst_r_clim_12_0d chl_r_clim_11_0d zoo_spr_ann_tlong sst_f_clim_11_0d rast_vortwi sst_f_clim_08_0d zoo_spr_ann_para chl_f_clim_09_0d zoo_spr_ann_oithspp zoo_spr_ann_ctyp chl_r_clim_08_0d zoo_spr_ann_volume ST_SD BT_SD chl_r_clim_04_0d  as the best variables for prediction.
+Biomass rf completed.
+Time difference of 4.540138 mins
+R2 = 0.49, and RMSE = 0.28
+
+~~~~~~~~~~~~~~~~~~
+Starting witch_flounder at 2017-09-14 07:58:26.
+ To recreate, make sure: set.seed(627)
+
+First we'll fit the occupancy model with 2957 observations and 87 explanatory variables.
+Sent to BB and will monitor: http://dataminer1-proto.d4science.org:80/wps/RetrieveResultServlet?id=fd4590ee-ab80-4db1-941e-03df1bed9f4d 
+every 10 minutes.
+Checking in at 2017-09-14 07:58:38.
+Checking in at 2017-09-14 08:08:38.
+Checking in at 2017-09-14 08:18:39.
+Checking in at 2017-09-14 08:28:39.
+Checking in at 2017-09-14 08:38:39.
+Checking in at 2017-09-14 08:48:39.
+Success!  witch_flounder is all finished and output files can be found:  http://data.d4science.org/WDh1NzVmOEErc3pnN1lMRmprYnk2T1V6dXVERUc2dzZHbWJQNStIS0N6Yz0-VLT http://data.d4science.org/WDh1NzVmOEErc3pnN1lMRmprYnk2S3hDYWR5eWtkN1ZHbWJQNStIS0N6Yz0-VLT 
+
+P/A VSURF model identified  sst_f_clim_12_0d chl_r_clim_02_0d chl_r_clim_05_0d sst_f_clim_11_0d sst_r_clim_10_0d chl_r_clim_03_0d rast_prcurv20km rast_soft_sed rast_namera_bpi zoo_spr_ann_chaeto rast_slpslp10km rast_slpslp2km sst_r_clim_12_0d zoo_spr_ann_larvaceans  as the best variables for prediction.
+PA rf completed.
+Time difference of 2.279792 mins
+Accuracy = 0.74, Kappa = 0.48, and threshold = 0.627.
+Now we fit the biomass VSURF model with 2957 observations and 88 explanatory variables.
+Sent to BB and will monitor: http://dataminer0-proto.d4science.org:80/wps/RetrieveResultServlet?id=8972a02d-7cbc-4c38-a956-dfef01c46d72 
+every 10 minutes.
+Checking in at 2017-09-14 09:01:19.
+Checking in at 2017-09-14 09:11:19.
+Checking in at 2017-09-14 09:21:19.
+Checking in at 2017-09-14 09:31:20.
+Checking in at 2017-09-14 09:41:20.
+Checking in at 2017-09-14 09:51:21.
+Checking in at 2017-09-14 10:01:21.
+Checking in at 2017-09-14 10:11:22.
+Checking in at 2017-09-14 10:21:22.
+Checking in at 2017-09-14 10:31:22.
+Checking in at 2017-09-14 10:41:22.
+Checking in at 2017-09-14 10:51:22.
+Checking in at 2017-09-14 11:01:22.
+Checking in at 2017-09-14 11:11:23.
+Checking in at 2017-09-14 11:21:23.
+Checking in at 2017-09-14 11:31:23.
+Success!  witch_flounder is all finished and output files can be found:  http://data.d4science.org/QnVXcENaRHp0NXZkbWZmNjFySlh6YkQ2cm9sOFN4SkpHbWJQNStIS0N6Yz0-VLT http://data.d4science.org/eFNwWXdzSnM2U1hkbWZmNjFySlh6WjhxTWF6dlUyVmhHbWJQNStIS0N6Yz0-VLT 
+
+Biomass VSURF model identified  PRESPROB sst_f_clim_01_0d sst_f_clim_12_0d chl_r_clim_03_0d chl_r_clim_02_0d sst_f_clim_03_0d zoo_spr_ann_volume zoo_spr_ann_chaeto sst_r_clim_10_0d BT_SD rast_slp10km chl_r_clim_04_0d rast_prcurv20km zoo_spr_ann_ctyp rast_vortsp chl_f_clim_06_0d chl_f_clim_09_0d rast_namera_bpi chl_r_clim_01_0d  as the best variables for prediction.
+Biomass rf completed.
+Time difference of 5.102326 mins.
+R2 = 0.28, and RMSE = 0.17
+Now we fit the biomass VSURF model (w/o PA) with 1639 observations and 87 explanatory variables. 
+Sent to BB and will monitor: http://dataminer0-proto.d4science.org:80/wps/RetrieveResultServlet?id=7cec2c6f-8705-4bb2-af1d-49817fb9917c 
+every 10 minutes.
+Checking in at 2017-09-14 11:46:47.
+Checking in at 2017-09-14 11:56:47.
+Checking in at 2017-09-14 12:06:48.
+Checking in at 2017-09-14 12:16:48.
+Checking in at 2017-09-14 12:26:49.
+Checking in at 2017-09-14 12:36:49.
+Checking in at 2017-09-14 12:46:49.
+Checking in at 2017-09-14 12:56:49.
+Checking in at 2017-09-14 13:06:49.
+Checking in at 2017-09-14 13:16:50.
+Checking in at 2017-09-14 13:26:50.
+Checking in at 2017-09-14 13:36:50.
+Checking in at 2017-09-14 13:46:50.
+Checking in at 2017-09-14 13:56:50.
+Checking in at 2017-09-14 14:06:51.
+Checking in at 2017-09-14 14:16:51.
+Checking in at 2017-09-14 14:26:51.
+Checking in at 2017-09-14 14:36:51.
+Checking in at 2017-09-14 14:46:51.
+Checking in at 2017-09-14 14:56:51.
+Checking in at 2017-09-14 15:06:51.
+Checking in at 2017-09-14 15:16:52.
+Checking in at 2017-09-14 15:26:52.
+Checking in at 2017-09-14 15:36:53.
+Checking in at 2017-09-14 15:46:53.
+Checking in at 2017-09-14 15:56:53.
+Checking in at 2017-09-14 16:06:53.
+Checking in at 2017-09-14 16:16:54.
+Checking in at 2017-09-14 16:26:54.
+Checking in at 2017-09-14 16:36:54.
+Checking in at 2017-09-14 16:46:54.
+Checking in at 2017-09-14 16:56:54.
+Checking in at 2017-09-14 17:06:55.
+Checking in at 2017-09-14 17:16:55.
+Checking in at 2017-09-14 17:26:55.
+Checking in at 2017-09-14 17:36:56.
+Checking in at 2017-09-14 17:46:56.
+Checking in at 2017-09-14 17:56:56.
+Checking in at 2017-09-14 18:06:56.
+Checking in at 2017-09-14 18:16:56.
+Checking in at 2017-09-14 18:26:56.
+Checking in at 2017-09-14 18:36:56.
+Checking in at 2017-09-14 18:46:57.
+Checking in at 2017-09-14 18:56:57.
+Checking in at 2017-09-14 19:06:58.
+Checking in at 2017-09-14 19:16:58.
+Checking in at 2017-09-14 19:26:58.
+Checking in at 2017-09-14 19:36:58.
+Checking in at 2017-09-14 19:46:58.
+Checking in at 2017-09-14 19:56:58.
+Checking in at 2017-09-14 20:06:59.
+Checking in at 2017-09-14 20:16:59.
+Checking in at 2017-09-14 20:26:59.
+Checking in at 2017-09-14 20:36:59.
+Checking in at 2017-09-14 20:46:59.
+Checking in at 2017-09-14 20:57:00.
+Checking in at 2017-09-14 21:07:00.
+Checking in at 2017-09-14 21:17:00.
+Checking in at 2017-09-14 21:27:00.
+Checking in at 2017-09-14 21:37:01.
+Checking in at 2017-09-14 21:47:01.
+Checking in at 2017-09-14 21:57:01.
+Checking in at 2017-09-14 22:07:02.
+Checking in at 2017-09-14 22:17:02.
+Checking in at 2017-09-14 22:27:02.
+Checking in at 2017-09-14 22:37:02.
+Checking in at 2017-09-14 22:47:02.
+Checking in at 2017-09-14 22:57:03.
+Checking in at 2017-09-14 23:07:03.
+Checking in at 2017-09-14 23:17:03.
+Checking in at 2017-09-14 23:27:04.
+Checking in at 2017-09-14 23:37:04.
+Checking in at 2017-09-14 23:47:04.
+Checking in at 2017-09-14 23:57:04.
+Checking in at 2017-09-15 00:07:05.
+Checking in at 2017-09-15 00:17:05.
+Checking in at 2017-09-15 00:27:05.
+Checking in at 2017-09-15 00:37:05.
+Checking in at 2017-09-15 00:47:05.
+Checking in at 2017-09-15 00:57:06.
+Checking in at 2017-09-15 01:07:06.
+Checking in at 2017-09-15 01:17:06.
+Checking in at 2017-09-15 01:27:06.
+Checking in at 2017-09-15 01:37:07.
+Checking in at 2017-09-15 01:47:07.
+Checking in at 2017-09-15 01:57:08.
+Checking in at 2017-09-15 02:07:08.
+Checking in at 2017-09-15 02:17:08.
+Checking in at 2017-09-15 02:27:08.
+Checking in at 2017-09-15 02:37:08.
+Checking in at 2017-09-15 02:47:08.
+Checking in at 2017-09-15 02:57:09.
+Checking in at 2017-09-15 03:07:09.
+Checking in at 2017-09-15 03:17:09.
+Checking in at 2017-09-15 03:27:10.
+Checking in at 2017-09-15 03:37:10.
+Checking in at 2017-09-15 03:47:10.
+Checking in at 2017-09-15 03:57:11.
+Checking in at 2017-09-15 04:07:11.
+Checking in at 2017-09-15 04:17:11.
+Checking in at 2017-09-15 04:27:11.
+Checking in at 2017-09-15 04:37:11.
+Checking in at 2017-09-15 04:47:12.
+Checking in at 2017-09-15 04:57:12.
+Checking in at 2017-09-15 05:07:12.
+Checking in at 2017-09-15 05:17:12.
+Checking in at 2017-09-15 05:27:13.
+Checking in at 2017-09-15 05:37:13.
+Checking in at 2017-09-15 05:47:13.
+Checking in at 2017-09-15 05:57:13.
+Checking in at 2017-09-15 06:07:13.
+Checking in at 2017-09-15 06:17:13.
+Checking in at 2017-09-15 06:27:13.
+Checking in at 2017-09-15 06:37:14.
+Checking in at 2017-09-15 06:47:14.
+Checking in at 2017-09-15 06:57:14.
+Checking in at 2017-09-15 07:07:14.
+Checking in at 2017-09-15 07:17:14.
+Checking in at 2017-09-15 07:27:14.
+Checking in at 2017-09-15 07:37:14.
+Checking in at 2017-09-15 07:47:15.
+Checking in at 2017-09-15 07:57:15.
+Checking in at 2017-09-15 08:07:15.
+Checking in at 2017-09-15 08:17:15.
+Checking in at 2017-09-15 08:27:15.
+Checking in at 2017-09-15 08:37:16.
+Checking in at 2017-09-15 08:47:16.
+Checking in at 2017-09-15 08:57:17.
+Checking in at 2017-09-15 09:07:17.
+Checking in at 2017-09-15 09:17:17.
+Checking in at 2017-09-15 09:27:17.
+Checking in at 2017-09-15 09:37:18.
+Checking in at 2017-09-15 09:47:18.
+Checking in at 2017-09-15 09:57:18.
+Checking in at 2017-09-15 10:07:18.
+Checking in at 2017-09-15 10:17:18.
+Checking in at 2017-09-15 10:27:18.
+Checking in at 2017-09-15 10:37:18.
+Checking in at 2017-09-15 10:47:19.
+Checking in at 2017-09-15 10:57:19.
+Checking in at 2017-09-15 11:07:19.
+Checking in at 2017-09-15 11:17:19.
+Checking in at 2017-09-15 11:27:19.
+Checking in at 2017-09-15 11:37:19.
+Checking in at 2017-09-15 11:47:20.
+Checking in at 2017-09-15 11:57:20.
+Checking in at 2017-09-15 12:07:20.
+Checking in at 2017-09-15 12:17:21.
+Checking in at 2017-09-15 12:27:21.
+Checking in at 2017-09-15 12:37:21.
+Checking in at 2017-09-15 12:47:21.
+Checking in at 2017-09-15 12:57:21.
+Checking in at 2017-09-15 13:07:21.
+Checking in at 2017-09-15 13:17:21.
+Checking in at 2017-09-15 13:27:22.
+Checking in at 2017-09-15 13:37:23.
+Checking in at 2017-09-15 13:47:23.
+Checking in at 2017-09-15 13:57:23.
+Checking in at 2017-09-15 14:07:23.
+Checking in at 2017-09-15 14:17:23.
+Checking in at 2017-09-15 14:27:23.
+Checking in at 2017-09-15 14:37:23.
+Checking in at 2017-09-15 14:47:24.
+Checking in at 2017-09-15 14:57:24.
+Checking in at 2017-09-15 15:07:24.
+Checking in at 2017-09-15 15:17:24.
+Checking in at 2017-09-15 15:27:24.
+Checking in at 2017-09-15 15:37:24.
+Checking in at 2017-09-15 15:47:24.
+Checking in at 2017-09-15 15:57:25.
+Checking in at 2017-09-15 16:07:25.
+Checking in at 2017-09-15 16:17:25.
+Checking in at 2017-09-15 16:27:25.
+Checking in at 2017-09-15 16:37:25.
+Checking in at 2017-09-15 16:47:26.
+Checking in at 2017-09-15 16:57:27.
+Checking in at 2017-09-15 17:07:28.
+Checking in at 2017-09-15 17:17:28.
+Checking in at 2017-09-15 17:27:28.
+Checking in at 2017-09-15 17:37:28.
+Checking in at 2017-09-15 17:47:29.
+Checking in at 2017-09-15 17:57:29.
+Checking in at 2017-09-15 18:07:29.
+Checking in at 2017-09-15 18:17:30.
+Checking in at 2017-09-15 18:27:30.
+Checking in at 2017-09-15 18:37:30.
+Checking in at 2017-09-15 18:47:30.
+Checking in at 2017-09-15 18:57:30.
+Checking in at 2017-09-15 19:07:31.
+Checking in at 2017-09-15 19:17:31.
+Checking in at 2017-09-15 19:27:31.
+Checking in at 2017-09-15 19:37:31.
+Checking in at 2017-09-15 19:47:31.
+Checking in at 2017-09-15 19:57:31.
+Checking in at 2017-09-15 20:07:32.
+Checking in at 2017-09-15 20:17:32.
+Checking in at 2017-09-15 20:27:32.
+Checking in at 2017-09-15 20:37:32.
+Checking in at 2017-09-15 20:47:32.
+Checking in at 2017-09-15 20:57:32.
+Checking in at 2017-09-15 21:07:32.
+Checking in at 2017-09-15 21:17:33.
+Checking in at 2017-09-15 21:27:33.
+Checking in at 2017-09-15 21:37:33.
+Checking in at 2017-09-15 21:47:33.
+Checking in at 2017-09-15 21:57:33.
+Checking in at 2017-09-15 22:07:33.
+Checking in at 2017-09-15 22:17:33.
+Checking in at 2017-09-15 22:27:34.
+Checking in at 2017-09-15 22:37:34.
+Checking in at 2017-09-15 22:47:34.
+Checking in at 2017-09-15 22:57:34.
+Checking in at 2017-09-15 23:07:35.
+Checking in at 2017-09-15 23:17:35.
+Checking in at 2017-09-15 23:27:35.
+Checking in at 2017-09-15 23:37:35.
+Checking in at 2017-09-15 23:47:36.
+Checking in at 2017-09-15 23:57:36.
+Checking in at 2017-09-16 00:07:36.
+Checking in at 2017-09-16 00:17:37.
+Checking in at 2017-09-16 00:27:37.
+Checking in at 2017-09-16 00:37:37.
+Checking in at 2017-09-16 00:47:37.
+Checking in at 2017-09-16 00:57:37.
+Checking in at 2017-09-16 01:07:37.
+Checking in at 2017-09-16 01:17:37.
+Checking in at 2017-09-16 01:27:38.
+Checking in at 2017-09-16 01:37:38.
+Checking in at 2017-09-16 01:47:38.
+Checking in at 2017-09-16 01:57:38.
+Checking in at 2017-09-16 02:07:38.
+Checking in at 2017-09-16 02:17:38.
+Checking in at 2017-09-16 02:27:39.
+Checking in at 2017-09-16 02:37:39.
+Checking in at 2017-09-16 02:47:39.
+Checking in at 2017-09-16 02:57:39.
+Checking in at 2017-09-16 03:07:40.
+Checking in at 2017-09-16 03:17:40.
+Checking in at 2017-09-16 03:27:40.
+Checking in at 2017-09-16 03:37:40.
+Checking in at 2017-09-16 03:47:40.
+Checking in at 2017-09-16 03:57:41.
+Checking in at 2017-09-16 04:07:41.
+Checking in at 2017-09-16 04:17:42.
+Checking in at 2017-09-16 04:27:42.
+Checking in at 2017-09-16 04:37:42.
+Checking in at 2017-09-16 04:47:42.
+Checking in at 2017-09-16 04:57:42.
+Checking in at 2017-09-16 05:07:42.
+Checking in at 2017-09-16 05:17:43.
+Checking in at 2017-09-16 05:27:43.
+Checking in at 2017-09-16 05:37:43.
+Checking in at 2017-09-16 05:47:43.
+Checking in at 2017-09-16 05:57:44.
+Checking in at 2017-09-16 06:07:44.
+Checking in at 2017-09-16 06:17:44.
+Checking in at 2017-09-16 06:27:44.
+Checking in at 2017-09-16 06:37:44.
+Checking in at 2017-09-16 06:47:44.
+Checking in at 2017-09-16 06:57:45.
+Checking in at 2017-09-16 07:07:45.
+Checking in at 2017-09-16 07:17:45.
+Checking in at 2017-09-16 07:27:45.
+Checking in at 2017-09-16 07:37:45.
+Checking in at 2017-09-16 07:47:45.
+Checking in at 2017-09-16 07:57:46.
+Checking in at 2017-09-16 08:07:46.
+Checking in at 2017-09-16 08:17:46.
+Checking in at 2017-09-16 08:27:47.
+Checking in at 2017-09-16 08:37:47.
+Checking in at 2017-09-16 08:47:47.
+Checking in at 2017-09-16 08:57:47.
+Checking in at 2017-09-16 09:07:47.
+Checking in at 2017-09-16 09:17:47.
+Checking in at 2017-09-16 09:27:47.
+Checking in at 2017-09-16 09:37:48.
+Checking in at 2017-09-16 09:47:48.
+Checking in at 2017-09-16 09:57:48.
+Checking in at 2017-09-16 10:07:48.
+Checking in at 2017-09-16 10:17:48.
+Checking in at 2017-09-16 10:27:48.
+Checking in at 2017-09-16 10:37:49.
+Checking in at 2017-09-16 10:47:49.
+Checking in at 2017-09-16 10:57:49.
+Checking in at 2017-09-16 11:07:49.
+Checking in at 2017-09-16 11:17:50.
+Checking in at 2017-09-16 11:27:50.
+Checking in at 2017-09-16 11:37:50.
+Checking in at 2017-09-16 11:47:50.
+Checking in at 2017-09-16 11:57:50.
+Checking in at 2017-09-16 12:07:51.
+Checking in at 2017-09-16 12:17:51.
+Checking in at 2017-09-16 12:27:51.
+Checking in at 2017-09-16 12:37:51.
+Checking in at 2017-09-16 12:47:51.
+Checking in at 2017-09-16 12:57:51.
+Checking in at 2017-09-16 13:07:51.
+Checking in at 2017-09-16 13:17:52.
+Checking in at 2017-09-16 13:27:52.
+Checking in at 2017-09-16 13:37:53.
+Checking in at 2017-09-16 13:47:53.
+Checking in at 2017-09-16 13:57:53.
+Checking in at 2017-09-16 14:07:53.
+Checking in at 2017-09-16 14:17:53.
+Checking in at 2017-09-16 14:27:53.
+Checking in at 2017-09-16 14:37:53.
+Checking in at 2017-09-16 14:47:54.
+Checking in at 2017-09-16 14:57:54.
+Checking in at 2017-09-16 15:07:54.
+Checking in at 2017-09-16 15:17:54.
+Checking in at 2017-09-16 15:27:54.
+Checking in at 2017-09-16 15:37:54.
+Checking in at 2017-09-16 15:47:54.
+Checking in at 2017-09-16 15:57:55.
+Checking in at 2017-09-16 16:07:55.
+Checking in at 2017-09-16 16:17:56.
+Checking in at 2017-09-16 16:27:56.
+Checking in at 2017-09-16 16:37:56.
+Checking in at 2017-09-16 16:47:56.
+Checking in at 2017-09-16 16:57:56.
+Checking in at 2017-09-16 17:07:56.
+Checking in at 2017-09-16 17:17:57.
+Checking in at 2017-09-16 17:27:57.
+Checking in at 2017-09-16 17:37:57.
+Checking in at 2017-09-16 17:47:58.
+Checking in at 2017-09-16 17:57:58.
+Checking in at 2017-09-16 18:07:58.
+Checking in at 2017-09-16 18:17:58.
+Checking in at 2017-09-16 18:27:59.
+Checking in at 2017-09-16 18:37:59.
+Checking in at 2017-09-16 18:47:59.
+Checking in at 2017-09-16 18:57:59.
+Checking in at 2017-09-16 19:07:59.
+Checking in at 2017-09-16 19:18:00.
+Checking in at 2017-09-16 19:28:00.
+Checking in at 2017-09-16 19:38:00.
+Checking in at 2017-09-16 19:48:00.
+Checking in at 2017-09-16 19:58:00.
+Checking in at 2017-09-16 20:08:00.
+Checking in at 2017-09-16 20:18:00.
+Checking in at 2017-09-16 20:28:01.
+Checking in at 2017-09-16 20:38:01.
+Checking in at 2017-09-16 20:48:01.
+Checking in at 2017-09-16 20:58:01.
+Checking in at 2017-09-16 21:08:01.
+Checking in at 2017-09-16 21:18:01.
+Checking in at 2017-09-16 21:28:02.
+Checking in at 2017-09-16 21:38:02.
+Checking in at 2017-09-16 21:48:02.
+Checking in at 2017-09-16 21:58:03.
+Checking in at 2017-09-16 22:08:03.
+Checking in at 2017-09-16 22:18:04.
+Checking in at 2017-09-16 22:28:04.
+Checking in at 2017-09-16 22:38:04.
+Checking in at 2017-09-16 22:48:04.
+Checking in at 2017-09-16 22:58:04.
+Checking in at 2017-09-16 23:08:04.
+Checking in at 2017-09-16 23:18:04.
+Checking in at 2017-09-16 23:28:05.
+Checking in at 2017-09-16 23:38:05.
+Checking in at 2017-09-16 23:48:05.
+Checking in at 2017-09-16 23:58:05.
+Checking in at 2017-09-17 00:08:05.
+Checking in at 2017-09-17 00:18:05.
+Checking in at 2017-09-17 00:28:05.
+Checking in at 2017-09-17 00:38:06.
+Checking in at 2017-09-17 00:48:06.
+Checking in at 2017-09-17 00:58:06.
+Checking in at 2017-09-17 01:08:06.
+Checking in at 2017-09-17 01:18:06.
+Checking in at 2017-09-17 01:28:06.
+Checking in at 2017-09-17 01:38:06.
+Checking in at 2017-09-17 01:48:07.
+Checking in at 2017-09-17 01:58:07.
+Checking in at 2017-09-17 02:08:07.
+Checking in at 2017-09-17 02:18:07.
+Checking in at 2017-09-17 02:28:07.
+Checking in at 2017-09-17 02:38:08.
+Checking in at 2017-09-17 02:48:08.
+Checking in at 2017-09-17 02:58:08.
+Checking in at 2017-09-17 03:08:09.
+Checking in at 2017-09-17 03:18:09.
+Checking in at 2017-09-17 03:28:09.
+Checking in at 2017-09-17 03:38:09.
+Checking in at 2017-09-17 03:48:09.
+Checking in at 2017-09-17 03:58:09.
+Checking in at 2017-09-17 04:08:09.
+Checking in at 2017-09-17 04:18:10.
+Checking in at 2017-09-17 04:28:10.
+Checking in at 2017-09-17 04:38:11.
+Checking in at 2017-09-17 04:48:11.
+Checking in at 2017-09-17 04:58:11.
+Checking in at 2017-09-17 05:08:11.
+Checking in at 2017-09-17 05:18:11.
+Checking in at 2017-09-17 05:28:11.
+Checking in at 2017-09-17 05:38:11.
+Checking in at 2017-09-17 05:48:12.
+Checking in at 2017-09-17 05:58:12.
+Checking in at 2017-09-17 06:08:12.
+Checking in at 2017-09-17 06:18:12.
+Checking in at 2017-09-17 06:28:12.
+Checking in at 2017-09-17 06:38:12.
+Checking in at 2017-09-17 06:48:12.
+Checking in at 2017-09-17 06:58:13.
+Checking in at 2017-09-17 07:08:13.
+Checking in at 2017-09-17 07:18:13.
+Checking in at 2017-09-17 07:28:13.
+Checking in at 2017-09-17 07:38:13.
+Checking in at 2017-09-17 07:48:13.
+Checking in at 2017-09-17 07:58:13.
+Checking in at 2017-09-17 08:08:14.
+Checking in at 2017-09-17 08:18:14.
+Checking in at 2017-09-17 08:28:14.
+Checking in at 2017-09-17 08:38:15.
+Checking in at 2017-09-17 08:48:15.
+Checking in at 2017-09-17 08:58:15.
+Checking in at 2017-09-17 09:08:15.
+Checking in at 2017-09-17 09:18:15.
+Checking in at 2017-09-17 09:28:15.
+Checking in at 2017-09-17 09:38:16.
+Checking in at 2017-09-17 09:48:16.
+Checking in at 2017-09-17 09:58:16.
+Checking in at 2017-09-17 10:08:16.
+Checking in at 2017-09-17 10:18:16.
+Checking in at 2017-09-17 10:28:16.
+Checking in at 2017-09-17 10:38:16.
+Checking in at 2017-09-17 10:48:17.
+Checking in at 2017-09-17 10:58:17.
+Checking in at 2017-09-17 11:08:17.
+Checking in at 2017-09-17 11:18:18.
+Checking in at 2017-09-17 11:28:18.
+Checking in at 2017-09-17 11:38:18.
+Checking in at 2017-09-17 11:48:18.
+Checking in at 2017-09-17 11:58:18.
+Checking in at 2017-09-17 12:08:18.
+Checking in at 2017-09-17 12:18:19.
+Checking in at 2017-09-17 12:28:19.
+Checking in at 2017-09-17 12:38:19.
+Checking in at 2017-09-17 12:48:19.
+Checking in at 2017-09-17 12:58:19.
+Checking in at 2017-09-17 13:08:20.
+Checking in at 2017-09-17 13:18:20.
+Checking in at 2017-09-17 13:28:20.
+Checking in at 2017-09-17 13:38:20.
+Checking in at 2017-09-17 13:48:21.
+Checking in at 2017-09-17 13:58:21.
+Checking in at 2017-09-17 14:08:21.
+Checking in at 2017-09-17 14:18:21.
+Checking in at 2017-09-17 14:28:21.
+Checking in at 2017-09-17 14:38:21.
+Checking in at 2017-09-17 14:48:21.
+Checking in at 2017-09-17 14:58:22.
+Checking in at 2017-09-17 15:08:22.
+Checking in at 2017-09-17 15:18:22.
+Checking in at 2017-09-17 15:28:22.
+Checking in at 2017-09-17 15:38:22.
+Checking in at 2017-09-17 15:48:22.
+Checking in at 2017-09-17 15:58:22.
+Checking in at 2017-09-17 16:08:23.
+Checking in at 2017-09-17 16:18:23.
+Checking in at 2017-09-17 16:28:24.
+Checking in at 2017-09-17 16:38:24.
+Checking in at 2017-09-17 16:48:24.
+Checking in at 2017-09-17 16:58:24.
+Checking in at 2017-09-17 17:08:24.
+Checking in at 2017-09-17 17:18:25.
+Checking in at 2017-09-17 17:28:25.
+Checking in at 2017-09-17 17:38:25.
+Checking in at 2017-09-17 17:48:25.
+Checking in at 2017-09-17 17:58:26.
+Checking in at 2017-09-17 18:08:26.
+Checking in at 2017-09-17 18:18:26.
+Checking in at 2017-09-17 18:28:26.
+Checking in at 2017-09-17 18:38:26.
+Checking in at 2017-09-17 18:48:26.
+Checking in at 2017-09-17 18:58:26.
+Checking in at 2017-09-17 19:08:27.
+Checking in at 2017-09-17 19:18:27.
+Checking in at 2017-09-17 19:28:27.
+Now we fit the biomass VSURF model (w/o PA) with 1639 observations and 87 explanatory variables. 
+Sent to BB and will monitor: http://dataminer1-proto.d4science.org:80/wps/RetrieveResultServlet?id=688d453a-8c12-4c66-886f-4a448cbb0f14 
+every 10 minutes.
+Checking in at 2017-09-17 19:32:00.
+Checking in at 2017-09-17 19:42:01.
+Checking in at 2017-09-17 19:52:01.
+Checking in at 2017-09-17 20:02:01.
+Checking in at 2017-09-17 20:12:01.
+Checking in at 2017-09-17 20:22:01.
+Checking in at 2017-09-17 20:32:01.
+Checking in at 2017-09-17 20:42:01.
+Success!  witch_flounder is all finished and output files can be found:  http://data.d4science.org/MjJSWm5BWHRqMXcxT1NyNmVQSHNFYktmUmlkRmNzWWlHbWJQNStIS0N6Yz0-VLT http://data.d4science.org/MjJSWm5BWHRqMXcxT1NyNmVQSHNFY1dTa0x5ajNBZTZHbWJQNStIS0N6Yz0-VLT 
+
+Biomass VSURF (w/o PA) model identified  sst_f_clim_01_0d sst_f_clim_12_0d zoo_spr_ann_para sst_f_clim_02_0d sst_f_clim_03_0d chl_r_clim_03_0d zoo_spr_ann_ctyp rast_slp10km zoo_spr_ann_chaeto rast_namera_bpi chl_f_clim_06_0d chl_f_clim_09_0d sst_r_clim_04_0d BT_SD  as the best variables for prediction.
+Biomass rf completed.
+Time difference of 3.400632 mins
+R2 = 0.26, and RMSE = 0.17
+
+~~~~~~~~~~~~~~~~~~
+Starting black_sea_bass at 2017-09-17 21:13:06.
+ To recreate, make sure: set.seed(627)
+
+First we'll fit the occupancy model with 1297 observations and 87 explanatory variables.
+Sent to BB and will monitor: http://dataminer0-proto.d4science.org:80/wps/RetrieveResultServlet?id=877bd663-7745-49a5-a7df-48b8a26e4090 
+every 10 minutes.
+Checking in at 2017-09-17 21:13:14.
+Checking in at 2017-09-17 21:23:15.
+Checking in at 2017-09-17 21:33:15.
+Checking in at 2017-09-17 21:43:16.
+Success!  black_sea_bass is all finished and output files can be found:  http://data.d4science.org/RW1wYk13US9rV0Q5V2xxcmZJNEpXRU9KVjRTK0g2d0hHbWJQNStIS0N6Yz0-VLT http://data.d4science.org/RW1wYk13US9rV0Q5V2xxcmZJNEpXS2cxMmwzUnpMallHbWJQNStIS0N6Yz0-VLT 
+
+P/A VSURF model identified  chl_r_clim_10_0d BT_SD ST_SD sst_f_clim_04_0d chl_r_clim_06_0d rast_slp10km BOTSALIN rast_slp20km chl_f_clim_10_0d rast_vortsu chl_f_clim_03_0d zoo_spr_ann_pseudo zoo_spr_ann_para rast_slp2km zoo_spr_ann_volume  as the best variables for prediction.
+PA rf completed.
+Time difference of 1.579073 mins
+Accuracy = 0.68, Kappa = 0.36, and threshold = 0.557.
+Now we fit the biomass VSURF model with 1297 observations and 88 explanatory variables.
+Sent to BB and will monitor: http://dataminer1-proto.d4science.org:80/wps/RetrieveResultServlet?id=cd0a98ba-a4ec-4f86-badd-ed0f26d19f3c 
+every 10 minutes.
+Checking in at 2017-09-17 21:55:05.
+Checking in at 2017-09-17 22:05:06.
+Checking in at 2017-09-17 22:15:06.
+Checking in at 2017-09-17 22:25:06.
+Checking in at 2017-09-17 22:35:06.
+Success!  black_sea_bass is all finished and output files can be found:  http://data.d4science.org/QnY0MzJZWDFtTWMxT1NyNmVQSHNFZm1qSXZySEpBeG9HbWJQNStIS0N6Yz0-VLT http://data.d4science.org/eWpZT0tCeU5OL2cxT1NyNmVQSHNFZVNONDJVNWdYNHRHbWJQNStIS0N6Yz0-VLT 
+
+Biomass VSURF model identified  chl_r_clim_10_0d PRESPROB sst_r_clim_01_0d chl_r_clim_01_0d chl_r_clim_07_0d BOTSALIN sst_f_clim_03_0d zoo_spr_ann_chaeto chl_f_clim_04_0d ST_SD rast_slpslp2km chl_r_clim_08_0d zoo_spr_ann_mlucens  as the best variables for prediction.
+Biomass rf completed.
+Time difference of 1.25042 mins.
+R2 = 0.34, and RMSE = 0.32
+Now we fit the biomass VSURF model (w/o PA) with 616 observations and 87 explanatory variables. 
+Sent to BB and will monitor: http://dataminer0-proto.d4science.org:80/wps/RetrieveResultServlet?id=26b63c8b-5e21-4e92-af92-ed2a7ecbc77e 
+every 10 minutes.
+Checking in at 2017-09-17 22:46:31.
+Checking in at 2017-09-17 22:56:31.
+Checking in at 2017-09-17 23:06:31.
+Success!  black_sea_bass is all finished and output files can be found:  http://data.d4science.org/WnBuaC83Q2JZMmI5V2xxcmZJNEpXT2R6bUp5ZDVlcHlHbWJQNStIS0N6Yz0-VLT http://data.d4science.org/WnBuaC83Q2JZMmI5V2xxcmZJNEpXS2VKWjJrQWNhdmtHbWJQNStIS0N6Yz0-VLT 
+
+Biomass VSURF (w/o PA) model identified  chl_r_clim_10_0d chl_r_clim_01_0d sst_r_clim_01_0d chl_r_clim_11_0d sst_r_clim_12_0d BOTSALIN rast_prcurv20km chl_f_clim_08_0d zoo_spr_ann_chaeto rast_prcurv10km BT_SD chl_f_clim_04_0d rast_prcurv2km chl_f_clim_10_0d zoo_spr_ann_mlucens ST_SD sst_r_clim_11_0d  as the best variables for prediction.
+Biomass rf completed.
+Time difference of 1.508389 mins
+R2 = 0.37, and RMSE = 0.31
+
+~~~~~~~~~~~~~~~~~~
+Starting Atlantic_herring at 2017-09-17 23:18:07.
+ To recreate, make sure: set.seed(627)
+
+First we'll fit the occupancy model with 5689 observations and 87 explanatory variables.
+Sent to BB and will monitor: http://dataminer1-proto.d4science.org:80/wps/RetrieveResultServlet?id=15afec79-ce88-4a13-93d2-3a23b1811ec1 
+every 10 minutes.
+Checking in at 2017-09-17 23:18:23.
+Checking in at 2017-09-17 23:28:23.
+Checking in at 2017-09-17 23:38:24.
+Checking in at 2017-09-17 23:48:24.
+Checking in at 2017-09-17 23:58:24.
+Checking in at 2017-09-18 00:08:24.
+Checking in at 2017-09-18 00:18:25.
+Checking in at 2017-09-18 00:28:25.
+Checking in at 2017-09-18 00:38:25.
+Success!  Atlantic_herring is all finished and output files can be found:  http://data.d4science.org/YkNLYUZvd1ZuQWMxT1NyNmVQSHNFZGVJWktvRlcwU0hHbWJQNStIS0N6Yz0-VLT http://data.d4science.org/MVlTbnlrcVVIRGMxT1NyNmVQSHNFUkRlYzBEemE5UUVHbWJQNStIS0N6Yz0-VLT 
+
+P/A VSURF model identified  zoo_spr_ann_calfin rast_slpslp10km BT_SD sst_r_clim_07_0d BOTSALIN sst_r_clim_06_0d rast_slpslp20km zoo_spr_ann_para ST_SD sst_r_clim_05_0d  as the best variables for prediction.
+PA rf completed.
+Time difference of 2.849885 mins
+Accuracy = 0.69, Kappa = 0.32, and threshold = 0.727.
+Now we fit the biomass VSURF model with 5689 observations and 88 explanatory variables.
+Sent to BB and will monitor: http://dataminer1-proto.d4science.org:80/wps/RetrieveResultServlet?id=0d719b87-2d15-4f19-af07-f852b369b96c 
+every 10 minutes.
+Checking in at 2017-09-18 00:51:52.
+Checking in at 2017-09-18 01:01:52.
+Checking in at 2017-09-18 01:11:53.
+Checking in at 2017-09-18 01:21:54.
+Checking in at 2017-09-18 01:31:55.
+Checking in at 2017-09-18 01:41:56.
+Checking in at 2017-09-18 01:51:56.
+Checking in at 2017-09-18 02:01:57.
+Checking in at 2017-09-18 02:11:58.
+Checking in at 2017-09-18 02:21:59.
+Checking in at 2017-09-18 02:31:59.
+Checking in at 2017-09-18 02:41:59.
+Checking in at 2017-09-18 02:52:00.
+Checking in at 2017-09-18 03:02:01.
+Checking in at 2017-09-18 03:12:01.
+Checking in at 2017-09-18 03:22:02.
+Checking in at 2017-09-18 03:32:02.
+Checking in at 2017-09-18 03:42:03.
+Checking in at 2017-09-18 03:52:04.
+Checking in at 2017-09-18 04:02:05.
+Checking in at 2017-09-18 04:12:06.
+Checking in at 2017-09-18 04:22:07.
+Checking in at 2017-09-18 04:32:07.
+Checking in at 2017-09-18 04:42:08.
+Checking in at 2017-09-18 04:52:08.
+Checking in at 2017-09-18 05:02:09.
+Checking in at 2017-09-18 05:12:09.
+Checking in at 2017-09-18 05:22:10.
+Checking in at 2017-09-18 05:32:10.
+Checking in at 2017-09-18 05:42:10.
+Checking in at 2017-09-18 05:52:11.
+Checking in at 2017-09-18 06:02:11.
+Checking in at 2017-09-18 06:12:12.
+Checking in at 2017-09-18 06:22:12.
+Checking in at 2017-09-18 06:32:13.
+Checking in at 2017-09-18 06:42:13.
+Checking in at 2017-09-18 06:52:14.
+Checking in at 2017-09-18 07:02:14.
+Checking in at 2017-09-18 07:12:16.
+Checking in at 2017-09-18 07:22:16.
+Checking in at 2017-09-18 07:32:16.
+Checking in at 2017-09-18 07:42:17.
+Checking in at 2017-09-18 07:52:17.
+Checking in at 2017-09-18 08:02:18.
+Checking in at 2017-09-18 08:12:18.
+Checking in at 2017-09-18 08:22:19.
+Checking in at 2017-09-18 08:32:19.
+Checking in at 2017-09-18 08:42:20.
+Checking in at 2017-09-18 08:52:20.
+Checking in at 2017-09-18 09:02:21.
+Checking in at 2017-09-18 09:12:21.
+Checking in at 2017-09-18 09:22:22.
+Checking in at 2017-09-18 09:32:22.
+Checking in at 2017-09-18 09:42:23.
+Checking in at 2017-09-18 09:52:23.
+Checking in at 2017-09-18 10:02:24.
+Checking in at 2017-09-18 10:12:24.
+Checking in at 2017-09-18 10:22:25.
+Checking in at 2017-09-18 10:32:25.
+Checking in at 2017-09-18 10:42:26.
+Checking in at 2017-09-18 10:52:26.
+Checking in at 2017-09-18 11:02:27.
+Checking in at 2017-09-18 11:12:27.
+Checking in at 2017-09-18 11:22:28.
+Checking in at 2017-09-18 11:32:30.
+Checking in at 2017-09-18 11:42:31.
+Checking in at 2017-09-18 11:52:31.
+Checking in at 2017-09-18 12:02:31.
+Checking in at 2017-09-18 12:12:32.
+Checking in at 2017-09-18 12:22:32.
+Checking in at 2017-09-18 12:32:33.
+Checking in at 2017-09-18 12:42:33.
+Checking in at 2017-09-18 12:52:33.
+Checking in at 2017-09-18 13:02:34.
+Checking in at 2017-09-18 13:12:34.
+Checking in at 2017-09-18 13:22:34.
+Checking in at 2017-09-18 13:32:34.
+Checking in at 2017-09-18 13:42:35.
+Checking in at 2017-09-18 13:52:35.
+Checking in at 2017-09-18 14:02:35.
+Checking in at 2017-09-18 14:12:35.
+Checking in at 2017-09-18 14:22:35.
+Checking in at 2017-09-18 14:32:35.
+Checking in at 2017-09-18 14:42:35.
+Checking in at 2017-09-18 14:52:36.
+Checking in at 2017-09-18 15:02:36.
+Checking in at 2017-09-18 15:12:37.
+Checking in at 2017-09-18 15:22:37.
+Checking in at 2017-09-18 15:32:37.
+Checking in at 2017-09-18 15:42:38.
+Checking in at 2017-09-18 15:52:38.
+Checking in at 2017-09-18 16:02:39.
+Checking in at 2017-09-18 16:12:39.
+Checking in at 2017-09-18 16:22:39.
+Checking in at 2017-09-18 16:32:40.
+Checking in at 2017-09-18 16:42:41.
+Checking in at 2017-09-18 16:52:41.
+Checking in at 2017-09-18 17:02:42.
+Checking in at 2017-09-18 17:12:42.
+Checking in at 2017-09-18 17:22:42.
+Checking in at 2017-09-18 17:32:42.
+Checking in at 2017-09-18 17:42:42.
+Checking in at 2017-09-18 17:52:43.
+Checking in at 2017-09-18 18:02:43.
+Success!  Atlantic_herring is all finished and output files can be found:  http://data.d4science.org/MTZHZVpTR2cvR2sxT1NyNmVQSHNFUkpMVU1wRVVCZ2RHbWJQNStIS0N6Yz0-VLT http://data.d4science.org/OGoyTGZ6Z3luZGcxT1NyNmVQSHNFUnZzSFVUV0tKTlNHbWJQNStIS0N6Yz0-VLT 
+
+Biomass VSURF model identified  PRESPROB sst_r_clim_12_0d sst_r_clim_05_0d chl_f_clim_06_0d chl_r_clim_09_0d ST_SD chl_r_clim_02_0d BOTSALIN zoo_spr_ann_volume zoo_spr_ann_cham zoo_spr_ann_calfin BT_SD zoo_spr_ann_tlong rast_slp10km zoo_spr_ann_cirr zoo_spr_ann_gas SURFSALIN zoo_spr_ann_echino zoo_spr_ann_oithspp zoo_spr_ann_mlucens  as the best variables for prediction.
+Biomass rf completed.
+Time difference of 13.33952 mins.
+R2 = 0.21, and RMSE = 0.48
+Now we fit the biomass VSURF model (w/o PA) with 4015 observations and 87 explanatory variables. 
+Sent to BB and will monitor: http://dataminer0-proto.d4science.org:80/wps/RetrieveResultServlet?id=f52e4640-5b63-4468-a8f0-ff5976aff154 
+every 10 minutes.
+Checking in at 2017-09-18 18:26:44.
+Checking in at 2017-09-18 18:36:44.
+Checking in at 2017-09-18 18:46:44.
+Checking in at 2017-09-18 18:56:45.
+Checking in at 2017-09-18 19:06:45.
+Checking in at 2017-09-18 19:16:45.
+Checking in at 2017-09-18 19:26:46.
+Checking in at 2017-09-18 19:36:46.
+Checking in at 2017-09-18 19:46:46.
+Checking in at 2017-09-18 19:56:47.
+Checking in at 2017-09-18 20:06:47.
+Checking in at 2017-09-18 20:16:48.
+Checking in at 2017-09-18 20:26:48.
+Checking in at 2017-09-18 20:36:49.
+Checking in at 2017-09-18 20:46:49.
+Checking in at 2017-09-18 20:56:50.
+Checking in at 2017-09-18 21:06:50.
+Checking in at 2017-09-18 21:16:51.
+Checking in at 2017-09-18 21:26:51.
+Checking in at 2017-09-18 21:36:51.
+Checking in at 2017-09-18 21:46:51.
+Checking in at 2017-09-18 21:56:51.
+Checking in at 2017-09-18 22:06:52.
+Checking in at 2017-09-18 22:16:52.
+Checking in at 2017-09-18 22:26:53.
+Checking in at 2017-09-18 22:36:53.
+Checking in at 2017-09-18 22:46:53.
+Checking in at 2017-09-18 22:56:54.
+Checking in at 2017-09-18 23:06:54.
+Checking in at 2017-09-18 23:16:55.
+Checking in at 2017-09-18 23:26:55.
+Checking in at 2017-09-18 23:36:56.
+Checking in at 2017-09-18 23:46:56.
+Checking in at 2017-09-18 23:56:57.
+Checking in at 2017-09-19 00:06:57.
+Checking in at 2017-09-19 00:16:57.
+Checking in at 2017-09-19 00:26:58.
+Checking in at 2017-09-19 00:36:58.
+Checking in at 2017-09-19 00:46:58.
+Checking in at 2017-09-19 00:56:59.
+Checking in at 2017-09-19 01:06:59.
+Checking in at 2017-09-19 01:16:59.
+Checking in at 2017-09-19 01:27:00.
+Checking in at 2017-09-19 01:37:00.
+Checking in at 2017-09-19 01:47:00.
+Checking in at 2017-09-19 01:57:01.
+Checking in at 2017-09-19 02:07:01.
+Checking in at 2017-09-19 02:17:01.
+Checking in at 2017-09-19 02:27:02.
+Checking in at 2017-09-19 02:37:02.
+Checking in at 2017-09-19 02:47:03.
+Checking in at 2017-09-19 02:57:03.
+Checking in at 2017-09-19 03:07:04.
+Checking in at 2017-09-19 03:17:05.
+Checking in at 2017-09-19 03:27:05.
+Checking in at 2017-09-19 03:37:06.
+Checking in at 2017-09-19 03:47:06.
+Checking in at 2017-09-19 03:57:07.
+Checking in at 2017-09-19 04:07:07.
+Checking in at 2017-09-19 04:17:07.
+Checking in at 2017-09-19 04:27:07.
+Checking in at 2017-09-19 04:37:08.
+Checking in at 2017-09-19 04:47:08.
+Checking in at 2017-09-19 04:57:09.
+Checking in at 2017-09-19 05:07:09.
+Checking in at 2017-09-19 05:17:09.
+Success!  Atlantic_herring is all finished and output files can be found:  http://data.d4science.org/U2tCaVNPaUEvZmY5V2xxcmZJNEpXQXI5Z0dCK0tyTFRHbWJQNStIS0N6Yz0-VLT http://data.d4science.org/MjFOTlBmL2NrYW45V2xxcmZJNEpXQVdKTE9vN2RKNmhHbWJQNStIS0N6Yz0-VLT 
+
+Biomass VSURF (w/o PA) model identified  sst_r_clim_12_0d zoo_spr_ann_para zoo_spr_ann_ctyp chl_r_clim_05_0d chl_r_clim_06_0d chl_f_clim_06_0d sst_r_clim_10_0d chl_f_clim_10_0d BOTSALIN sst_r_clim_04_0d zoo_spr_ann_volume ST_SD zoo_spr_ann_cham zoo_spr_ann_calfin BT_SD zoo_spr_ann_cirr zoo_spr_ann_tlong zoo_spr_ann_gas zoo_spr_ann_echino zoo_spr_ann_mlucens  as the best variables for prediction.
+Biomass rf completed.
+Time difference of 14.08519 mins
+R2 = 0.2, and RMSE = 0.48
+
+~~~~~~~~~~~~~~~~~~
+Starting silver_hake at 2017-09-19 05:41:37.
+ To recreate, make sure: set.seed(627)
+
+First we'll fit the occupancy model with 5664 observations and 87 explanatory variables.
+Sent to BB and will monitor: http://dataminer1-proto.d4science.org:80/wps/RetrieveResultServlet?id=5a2d72e5-aa32-4a89-a337-650196c6fcc1 
+every 10 minutes.
+Checking in at 2017-09-19 05:41:57.
+Checking in at 2017-09-19 05:51:58.
+Checking in at 2017-09-19 06:01:58.
+Checking in at 2017-09-19 06:11:59.
+Checking in at 2017-09-19 06:21:59.
+Checking in at 2017-09-19 06:32:00.
+Checking in at 2017-09-19 06:42:00.
+Checking in at 2017-09-19 06:52:00.
+Checking in at 2017-09-19 07:02:00.
+Checking in at 2017-09-19 07:12:00.
+Checking in at 2017-09-19 07:22:01.
+Checking in at 2017-09-19 07:32:02.
+Checking in at 2017-09-19 07:42:02.
+Success!  silver_hake is all finished and output files can be found:  http://data.d4science.org/cnlOeDQ4SytLeFExT1NyNmVQSHNFVGV4SVBNSVppcERHbWJQNStIS0N6Yz0-VLT http://data.d4science.org/cnlOeDQ4SytLeFExT1NyNmVQSHNFZWRNNUFrL0NiYTNHbWJQNStIS0N6Yz0-VLT 
+
+P/A VSURF model identified  chl_r_clim_03_0d chl_r_clim_02_0d BOTSALIN sst_r_clim_06_0d zoo_spr_ann_para chl_r_clim_06_0d sst_r_clim_08_0d rast_soft_sed BT_SD sst_r_clim_10_0d zoo_spr_ann_mlucens zoo_spr_ann_volume chl_r_clim_07_0d zoo_spr_ann_ctyp rast_namera_bpi zoo_spr_ann_chaeto  as the best variables for prediction.
+PA rf completed.
+Time difference of 4.784356 mins
+Accuracy = 0.77, Kappa = 0.42, and threshold = 0.773.
+Now we fit the biomass VSURF model with 5664 observations and 88 explanatory variables.
+Sent to BB and will monitor: http://dataminer0-proto.d4science.org:80/wps/RetrieveResultServlet?id=45d99607-3458-4970-8dd6-92ce4d41950f 
+every 10 minutes.
+Checking in at 2017-09-19 07:57:26.
+Checking in at 2017-09-19 08:07:27.
+Checking in at 2017-09-19 08:17:28.
+Checking in at 2017-09-19 08:27:29.
+Checking in at 2017-09-19 08:37:29.
+Checking in at 2017-09-19 08:47:30.
+Checking in at 2017-09-19 08:57:30.
+Checking in at 2017-09-19 09:07:31.
+Checking in at 2017-09-19 09:17:31.
+Checking in at 2017-09-19 09:27:32.
+Checking in at 2017-09-19 09:37:32.
+Checking in at 2017-09-19 09:47:33.
+Checking in at 2017-09-19 09:57:33.
+Checking in at 2017-09-19 10:07:33.
+Checking in at 2017-09-19 10:17:34.
+Checking in at 2017-09-19 10:27:35.
+Checking in at 2017-09-19 10:37:35.
+Checking in at 2017-09-19 10:47:36.
+Checking in at 2017-09-19 10:57:36.
+Checking in at 2017-09-19 11:07:37.
+Checking in at 2017-09-19 11:17:37.
+Checking in at 2017-09-19 11:27:38.
+Checking in at 2017-09-19 11:37:40.
+Checking in at 2017-09-19 11:47:40.
+Checking in at 2017-09-19 11:57:41.
+Checking in at 2017-09-19 12:07:42.
+Checking in at 2017-09-19 12:17:42.
+Checking in at 2017-09-19 12:27:43.
+Checking in at 2017-09-19 12:37:43.
+Checking in at 2017-09-19 12:47:43.
+Checking in at 2017-09-19 12:57:43.
+Checking in at 2017-09-19 13:07:43.
+Checking in at 2017-09-19 13:17:44.
+Checking in at 2017-09-19 13:27:44.
+Checking in at 2017-09-19 13:37:45.
+Checking in at 2017-09-19 13:47:46.
+Checking in at 2017-09-19 13:57:46.
+Checking in at 2017-09-19 14:07:47.
+Checking in at 2017-09-19 14:17:47.
+Checking in at 2017-09-19 14:27:48.
+Checking in at 2017-09-19 14:37:48.
+Checking in at 2017-09-19 14:47:48.
+Checking in at 2017-09-19 14:57:49.
+Checking in at 2017-09-19 15:07:49.
+Checking in at 2017-09-19 15:17:49.
+Checking in at 2017-09-19 15:27:50.
+Checking in at 2017-09-19 15:37:50.
+Checking in at 2017-09-19 15:47:50.
+Checking in at 2017-09-19 15:57:51.
+Checking in at 2017-09-19 16:07:52.
+Checking in at 2017-09-19 16:17:52.
+Checking in at 2017-09-19 16:27:53.
+Checking in at 2017-09-19 16:37:54.
+Checking in at 2017-09-19 16:47:54.
+Checking in at 2017-09-19 16:57:55.
+Checking in at 2017-09-19 17:07:56.
+Checking in at 2017-09-19 17:17:56.
+Checking in at 2017-09-19 17:27:57.
+Checking in at 2017-09-19 17:37:57.
+Checking in at 2017-09-19 17:47:58.
+Checking in at 2017-09-19 17:57:58.
+Checking in at 2017-09-19 18:07:58.
+Checking in at 2017-09-19 18:17:59.
+Checking in at 2017-09-19 18:27:59.
+Checking in at 2017-09-19 18:38:00.
+Checking in at 2017-09-19 18:48:01.
+Checking in at 2017-09-19 18:58:01.
+Checking in at 2017-09-19 19:08:02.
+Checking in at 2017-09-19 19:18:02.
+Checking in at 2017-09-19 19:28:03.
+Checking in at 2017-09-19 19:38:03.
+Checking in at 2017-09-19 19:48:04.
+Checking in at 2017-09-19 19:58:04.
+Checking in at 2017-09-19 20:08:05.
+Checking in at 2017-09-19 20:18:05.
+Checking in at 2017-09-19 20:28:05.
+Checking in at 2017-09-19 20:38:05.
+Checking in at 2017-09-19 20:48:05.
+Checking in at 2017-09-19 20:58:06.
+Checking in at 2017-09-19 21:08:06.
+Checking in at 2017-09-19 21:18:07.
+Checking in at 2017-09-19 21:28:07.
+Checking in at 2017-09-19 21:38:08.
+Checking in at 2017-09-19 21:48:08.
+Checking in at 2017-09-19 21:58:09.
+Checking in at 2017-09-19 22:08:09.
+Checking in at 2017-09-19 22:18:09.
+Checking in at 2017-09-19 22:28:10.
+Checking in at 2017-09-19 22:38:11.
+Checking in at 2017-09-19 22:48:11.
+Checking in at 2017-09-19 22:58:11.
+Checking in at 2017-09-19 23:08:11.
+Checking in at 2017-09-19 23:18:12.
+Checking in at 2017-09-19 23:28:12.
+Checking in at 2017-09-19 23:38:12.
+Checking in at 2017-09-19 23:48:13.
+Checking in at 2017-09-19 23:58:13.
+Checking in at 2017-09-20 00:08:14.
+Checking in at 2017-09-20 00:18:14.
+Checking in at 2017-09-20 00:28:15.
+Checking in at 2017-09-20 00:38:15.
+Checking in at 2017-09-20 00:48:15.
+Checking in at 2017-09-20 00:58:16.
+Checking in at 2017-09-20 01:08:16.
+Checking in at 2017-09-20 01:18:17.
+Checking in at 2017-09-20 01:28:17.
+Checking in at 2017-09-20 01:38:17.
+Checking in at 2017-09-20 01:48:18.
+Checking in at 2017-09-20 01:58:18.
+Checking in at 2017-09-20 02:08:18.
+Checking in at 2017-09-20 02:18:19.
+Checking in at 2017-09-20 02:28:19.
+Checking in at 2017-09-20 02:38:20.
+Checking in at 2017-09-20 02:48:20.
+Checking in at 2017-09-20 02:58:21.
+Checking in at 2017-09-20 03:08:21.
+Checking in at 2017-09-20 03:18:22.
+Checking in at 2017-09-20 03:28:22.
+Checking in at 2017-09-20 03:38:23.
+Checking in at 2017-09-20 03:48:23.
+Checking in at 2017-09-20 03:58:25.
+Checking in at 2017-09-20 04:08:25.
+Checking in at 2017-09-20 04:18:26.
+Checking in at 2017-09-20 04:28:26.
+Checking in at 2017-09-20 04:38:27.
+Checking in at 2017-09-20 04:48:28.
+Checking in at 2017-09-20 04:58:28.
+Checking in at 2017-09-20 05:08:29.
+Checking in at 2017-09-20 05:18:29.
+Checking in at 2017-09-20 05:28:29.
+Checking in at 2017-09-20 05:38:29.
+Checking in at 2017-09-20 05:48:29.
+Checking in at 2017-09-20 05:58:29.
+Checking in at 2017-09-20 06:08:30.
+Checking in at 2017-09-20 06:18:30.
+Checking in at 2017-09-20 06:28:30.
+Checking in at 2017-09-20 06:38:31.
+Checking in at 2017-09-20 06:48:32.
+Checking in at 2017-09-20 06:58:32.
+Checking in at 2017-09-20 07:08:33.
+Checking in at 2017-09-20 07:18:33.
+Checking in at 2017-09-20 07:28:34.
+Checking in at 2017-09-20 07:38:34.
+Checking in at 2017-09-20 07:48:35.
+Checking in at 2017-09-20 07:58:35.
+Checking in at 2017-09-20 08:08:36.
+Checking in at 2017-09-20 08:18:36.
+Checking in at 2017-09-20 08:28:37.
+Checking in at 2017-09-20 08:38:37.
+Checking in at 2017-09-20 08:48:38.
+Checking in at 2017-09-20 08:58:38.
+Checking in at 2017-09-20 09:08:39.
+Checking in at 2017-09-20 09:18:39.
+Checking in at 2017-09-20 09:28:40.
+Checking in at 2017-09-20 09:38:40.
+Checking in at 2017-09-20 09:48:41.
+Checking in at 2017-09-20 09:58:41.
+Checking in at 2017-09-20 10:08:41.
+Checking in at 2017-09-20 10:18:41.
+Checking in at 2017-09-20 10:28:42.
+Checking in at 2017-09-20 10:38:43.
+Checking in at 2017-09-20 10:48:44.
+Checking in at 2017-09-20 10:58:44.
+Checking in at 2017-09-20 11:08:44.
+Checking in at 2017-09-20 11:18:44.
+Checking in at 2017-09-20 11:28:44.
+Checking in at 2017-09-20 11:38:44.
+Checking in at 2017-09-20 11:48:45.
+Checking in at 2017-09-20 11:58:45.
+Checking in at 2017-09-20 12:08:45.
+Checking in at 2017-09-20 12:18:46.
+Checking in at 2017-09-20 12:28:46.
+Checking in at 2017-09-20 12:38:47.
+Checking in at 2017-09-20 12:48:47.
+Checking in at 2017-09-20 12:58:48.
+Checking in at 2017-09-20 13:08:49.
+Checking in at 2017-09-20 13:18:49.
+Checking in at 2017-09-20 13:28:50.
+Checking in at 2017-09-20 13:38:50.
+Checking in at 2017-09-20 13:48:51.
+Checking in at 2017-09-20 13:58:52.
+Checking in at 2017-09-20 14:08:52.
+Checking in at 2017-09-20 14:18:53.
+Checking in at 2017-09-20 14:28:53.
+Checking in at 2017-09-20 14:38:54.
+Checking in at 2017-09-20 14:48:54.
+Checking in at 2017-09-20 14:58:55.
+Checking in at 2017-09-20 15:08:55.
+Checking in at 2017-09-20 15:18:55.
+Checking in at 2017-09-20 15:28:56.
+Checking in at 2017-09-20 15:38:56.
+Checking in at 2017-09-20 15:48:57.
+Checking in at 2017-09-20 15:58:57.
+Checking in at 2017-09-20 16:08:57.
+Checking in at 2017-09-20 16:18:57.
+Checking in at 2017-09-20 16:28:57.
+Checking in at 2017-09-20 16:38:58.
+Checking in at 2017-09-20 16:48:58.
+Checking in at 2017-09-20 16:58:59.
+Checking in at 2017-09-20 17:09:00.
+Checking in at 2017-09-20 17:19:00.
+Checking in at 2017-09-20 17:29:00.
+Checking in at 2017-09-20 17:39:00.
+Checking in at 2017-09-20 17:49:01.
+Checking in at 2017-09-20 17:59:01.
+Checking in at 2017-09-20 18:09:02.
+Checking in at 2017-09-20 18:19:02.
+Checking in at 2017-09-20 18:29:03.
+Checking in at 2017-09-20 18:39:04.
+Checking in at 2017-09-20 18:49:04.
+Checking in at 2017-09-20 18:59:04.
+Checking in at 2017-09-20 19:09:05.
+Checking in at 2017-09-20 19:19:05.
+Checking in at 2017-09-20 19:29:06.
+Checking in at 2017-09-20 19:39:06.
+Checking in at 2017-09-20 19:49:07.
+Checking in at 2017-09-20 19:59:07.
+Checking in at 2017-09-20 20:09:08.
+Checking in at 2017-09-20 20:19:08.
+Checking in at 2017-09-20 20:29:09.
+Checking in at 2017-09-20 20:39:09.
+Checking in at 2017-09-20 20:49:10.
+Checking in at 2017-09-20 20:59:10.
+Checking in at 2017-09-20 21:09:11.
+Checking in at 2017-09-20 21:19:11.
+Checking in at 2017-09-20 21:29:12.
+Checking in at 2017-09-20 21:39:13.
+Checking in at 2017-09-20 21:49:13.
+Checking in at 2017-09-20 21:59:14.
+Checking in at 2017-09-20 22:09:15.
+Checking in at 2017-09-20 22:19:16.
+Checking in at 2017-09-20 22:29:16.
+Checking in at 2017-09-20 22:39:16.
+Sent to BB and will monitor: http://dataminer1-proto.d4science.org:80//wps/RetrieveResultServlet?id=fb335858-fd2e-4f35-834f-e0f26f7e365f 
+every 10 minutes.
+Checking in at 2017-09-20 22:44:52.
+Checking in at 2017-09-20 22:54:53.
+Checking in at 2017-09-20 23:04:54.
+Checking in at 2017-09-20 23:14:54.
+Checking in at 2017-09-20 23:24:55.
+Checking in at 2017-09-20 23:34:55.
+Checking in at 2017-09-20 23:44:56.
+Checking in at 2017-09-20 23:54:56.
+Checking in at 2017-09-21 00:04:57.
+Checking in at 2017-09-21 00:14:57.
+Checking in at 2017-09-21 00:24:58.
+Checking in at 2017-09-21 00:34:58.
+Checking in at 2017-09-21 00:44:58.
+Checking in at 2017-09-21 00:54:58.
+Checking in at 2017-09-21 01:04:59.
+Checking in at 2017-09-21 01:14:59.
+Checking in at 2017-09-21 01:25:00.
+Checking in at 2017-09-21 01:35:00.
+Checking in at 2017-09-21 01:45:00.
+Checking in at 2017-09-21 01:55:01.
+Checking in at 2017-09-21 02:05:01.
+Checking in at 2017-09-21 02:15:02.
+Checking in at 2017-09-21 02:25:02.
+Checking in at 2017-09-21 02:35:03.
+Checking in at 2017-09-21 02:45:03.
+Checking in at 2017-09-21 02:55:04.
+Checking in at 2017-09-21 03:05:05.
+Checking in at 2017-09-21 03:15:05.
+Checking in at 2017-09-21 03:25:05.
+Checking in at 2017-09-21 03:35:06.
+Checking in at 2017-09-21 03:45:06.
+Checking in at 2017-09-21 03:55:06.
+Checking in at 2017-09-21 04:05:06.
+Checking in at 2017-09-21 04:15:07.
+Checking in at 2017-09-21 04:25:07.
+Checking in at 2017-09-21 04:35:07.
+Checking in at 2017-09-21 04:45:07.
+Checking in at 2017-09-21 04:55:08.
+Checking in at 2017-09-21 05:05:09.
+Checking in at 2017-09-21 05:15:09.
+Checking in at 2017-09-21 05:25:10.
+Checking in at 2017-09-21 05:35:10.
+Checking in at 2017-09-21 05:45:11.
+Checking in at 2017-09-21 05:55:13.
+Checking in at 2017-09-21 06:05:14.
+Checking in at 2017-09-21 06:15:14.
+Checking in at 2017-09-21 06:25:15.
+Checking in at 2017-09-21 06:35:15.
+Checking in at 2017-09-21 06:45:15.
+Checking in at 2017-09-21 06:55:16.
+Checking in at 2017-09-21 07:05:16.
+Checking in at 2017-09-21 07:15:17.
+Checking in at 2017-09-21 07:25:17.
+Checking in at 2017-09-21 07:35:17.
+Checking in at 2017-09-21 07:45:18.
+Checking in at 2017-09-21 07:55:18.
+Checking in at 2017-09-21 08:05:19.
+Checking in at 2017-09-21 08:15:20.
+Checking in at 2017-09-21 08:25:20.
+Checking in at 2017-09-21 08:35:21.
+Checking in at 2017-09-21 08:45:21.
+Checking in at 2017-09-21 08:55:22.
+Checking in at 2017-09-21 09:05:23.
+Checking in at 2017-09-21 09:15:23.
+Checking in at 2017-09-21 09:25:24.
+Checking in at 2017-09-21 09:35:24.
+Checking in at 2017-09-21 09:45:25.
+Checking in at 2017-09-21 09:55:25.
+Checking in at 2017-09-21 10:05:26.
+Checking in at 2017-09-21 10:15:26.
+Checking in at 2017-09-21 10:25:27.
+Checking in at 2017-09-21 10:35:27.
+Checking in at 2017-09-21 10:45:28.
+Checking in at 2017-09-21 10:55:28.
+Checking in at 2017-09-21 11:05:29.
+Checking in at 2017-09-21 11:15:29.
+Checking in at 2017-09-21 11:25:30.
+Checking in at 2017-09-21 11:35:30.
+Checking in at 2017-09-21 11:45:30.
+Checking in at 2017-09-21 11:55:31.
+Checking in at 2017-09-21 12:05:31.
+Checking in at 2017-09-21 12:15:32.
+Checking in at 2017-09-21 12:25:33.
+Checking in at 2017-09-21 12:35:33.
+Checking in at 2017-09-21 12:45:34.
+Checking in at 2017-09-21 12:55:34.
+Checking in at 2017-09-21 13:05:34.
+Checking in at 2017-09-21 13:15:34.
+Checking in at 2017-09-21 13:25:35.
+Checking in at 2017-09-21 13:35:35.
+Checking in at 2017-09-21 13:45:36.
+Checking in at 2017-09-21 13:55:36.
+Checking in at 2017-09-21 14:05:37.
+Checking in at 2017-09-21 14:15:37.
+Checking in at 2017-09-21 14:25:38.
+Checking in at 2017-09-21 14:35:38.
+Checking in at 2017-09-21 14:45:39.
+Checking in at 2017-09-21 14:55:40.
+Checking in at 2017-09-21 15:05:40.
+Checking in at 2017-09-21 15:15:41.
+Checking in at 2017-09-21 15:25:41.
+Checking in at 2017-09-21 15:35:42.
+Checking in at 2017-09-21 15:45:43.
+Checking in at 2017-09-21 15:55:44.
+Checking in at 2017-09-21 16:05:44.
+Checking in at 2017-09-21 16:15:44.
+Checking in at 2017-09-21 16:25:45.
+Checking in at 2017-09-21 16:35:45.
+Checking in at 2017-09-21 16:45:45.
+Checking in at 2017-09-21 16:55:46.
+Checking in at 2017-09-21 17:05:46.
+Checking in at 2017-09-21 17:15:46.
+Checking in at 2017-09-21 17:25:46.
+Checking in at 2017-09-21 17:35:47.
+Checking in at 2017-09-21 17:45:48.
+Checking in at 2017-09-21 17:55:48.
+Checking in at 2017-09-21 18:05:48.
+Checking in at 2017-09-21 18:15:49.
+Checking in at 2017-09-21 18:25:49.
+Checking in at 2017-09-21 18:35:50.
+Checking in at 2017-09-21 18:45:50.
+Checking in at 2017-09-21 18:55:50.
+Checking in at 2017-09-21 19:05:51.
+Checking in at 2017-09-21 19:15:51.
+Checking in at 2017-09-21 19:25:52.
+Checking in at 2017-09-21 19:35:53.
+Checking in at 2017-09-21 19:45:53.
+Checking in at 2017-09-21 19:55:53.
+Checking in at 2017-09-21 20:05:53.
+Checking in at 2017-09-21 20:15:53.
+Checking in at 2017-09-21 20:25:53.
+Checking in at 2017-09-21 20:35:53.
+Checking in at 2017-09-21 20:45:54.
+Checking in at 2017-09-21 20:55:54.
+Checking in at 2017-09-21 21:05:55.
+Checking in at 2017-09-21 21:15:55.
+Checking in at 2017-09-21 21:25:55.
+Checking in at 2017-09-21 21:35:56.
+Checking in at 2017-09-21 21:45:56.
+Checking in at 2017-09-21 21:55:57.
+Checking in at 2017-09-21 22:05:57.
+Checking in at 2017-09-21 22:15:58.
+Checking in at 2017-09-21 22:25:58.
+Checking in at 2017-09-21 22:35:59.
+Checking in at 2017-09-21 22:45:59.
+Checking in at 2017-09-21 22:55:59.
+Checking in at 2017-09-21 23:06:00.
+Checking in at 2017-09-21 23:16:00.
+Checking in at 2017-09-21 23:26:01.
+Checking in at 2017-09-21 23:36:02.
+Checking in at 2017-09-21 23:46:02.
+Checking in at 2017-09-21 23:56:02.
+Checking in at 2017-09-22 00:06:03.
+Checking in at 2017-09-22 00:16:04.
+Checking in at 2017-09-22 00:26:05.
+Checking in at 2017-09-22 00:36:05.
+Checking in at 2017-09-22 00:46:05.
+Checking in at 2017-09-22 00:56:05.
+Checking in at 2017-09-22 01:06:05.
+Checking in at 2017-09-22 01:16:05.
+Checking in at 2017-09-22 01:26:06.
+Checking in at 2017-09-22 01:36:07.
+Checking in at 2017-09-22 01:46:07.
+Checking in at 2017-09-22 01:56:08.
+Checking in at 2017-09-22 02:06:08.
+Checking in at 2017-09-22 02:16:09.
+Checking in at 2017-09-22 02:26:09.
+Checking in at 2017-09-22 02:36:10.
+Checking in at 2017-09-22 02:46:10.
+Checking in at 2017-09-22 02:56:11.
+Checking in at 2017-09-22 03:06:11.
+Checking in at 2017-09-22 03:16:12.
+Checking in at 2017-09-22 03:26:12.
+Checking in at 2017-09-22 03:36:12.
+Checking in at 2017-09-22 03:46:12.
+Checking in at 2017-09-22 03:56:13.
+Checking in at 2017-09-22 04:06:13.
+Checking in at 2017-09-22 04:16:14.
+Checking in at 2017-09-22 04:26:14.
+Checking in at 2017-09-22 04:36:14.
+Checking in at 2017-09-22 04:46:15.
+Checking in at 2017-09-22 04:56:16.
+Checking in at 2017-09-22 05:06:16.
+Checking in at 2017-09-22 05:16:17.
+Checking in at 2017-09-22 05:26:17.
+Checking in at 2017-09-22 05:36:18.
+Checking in at 2017-09-22 05:46:18.
+Checking in at 2017-09-22 05:56:19.
+Checking in at 2017-09-22 06:06:20.
+Checking in at 2017-09-22 06:16:20.
+Checking in at 2017-09-22 06:26:20.
+Checking in at 2017-09-22 06:36:21.
+Checking in at 2017-09-22 06:46:21.
+Checking in at 2017-09-22 06:56:22.
+Checking in at 2017-09-22 07:06:22.
+Checking in at 2017-09-22 07:16:23.
+Checking in at 2017-09-22 07:26:23.
+Checking in at 2017-09-22 07:36:24.
+Checking in at 2017-09-22 07:46:24.
+Checking in at 2017-09-22 07:56:25.
+Checking in at 2017-09-22 08:06:25.
+Checking in at 2017-09-22 08:16:25.
+Checking in at 2017-09-22 08:26:26.
+Checking in at 2017-09-22 08:36:26.
+Checking in at 2017-09-22 08:46:26.
+Checking in at 2017-09-22 08:56:28.
+Checking in at 2017-09-22 09:06:28.
+Checking in at 2017-09-22 09:16:28.
+Checking in at 2017-09-22 09:26:29.
+Checking in at 2017-09-22 09:36:29.
+Checking in at 2017-09-22 09:46:29.
+Checking in at 2017-09-22 09:56:29.
+Checking in at 2017-09-22 10:06:29.
+Checking in at 2017-09-22 10:16:30.
+Checking in at 2017-09-22 10:26:31.
+Checking in at 2017-09-22 10:36:31.
+Checking in at 2017-09-22 10:46:32.
+Checking in at 2017-09-22 10:56:32.
+Checking in at 2017-09-22 11:06:33.
+Checking in at 2017-09-22 11:16:33.
+Checking in at 2017-09-22 11:26:33.
+Checking in at 2017-09-22 11:36:33.
+Checking in at 2017-09-22 11:46:34.
+Checking in at 2017-09-22 11:56:34.
+Checking in at 2017-09-22 12:06:34.
+Checking in at 2017-09-22 12:16:35.
+Checking in at 2017-09-22 12:26:35.
+Checking in at 2017-09-22 12:36:36.
+Checking in at 2017-09-22 12:46:37.
+Checking in at 2017-09-22 12:56:38.
+Checking in at 2017-09-22 13:06:39.
+Checking in at 2017-09-22 13:16:39.
+Checking in at 2017-09-22 13:26:39.
+Checking in at 2017-09-22 13:36:39.
+Checking in at 2017-09-22 13:46:39.
+Checking in at 2017-09-22 13:56:39.
+Checking in at 2017-09-22 14:06:40.
+Checking in at 2017-09-22 14:16:41.
+Checking in at 2017-09-22 14:26:41.
+Checking in at 2017-09-22 14:36:42.
+Checking in at 2017-09-22 14:46:43.
+Checking in at 2017-09-22 14:56:44.
+Checking in at 2017-09-22 15:06:44.
+Checking in at 2017-09-22 15:16:44.
+Checking in at 2017-09-22 15:26:44.
+Checking in at 2017-09-22 15:36:44.
+Checking in at 2017-09-22 15:46:45.
+Checking in at 2017-09-22 15:56:45.
+Checking in at 2017-09-22 16:06:45.
+Checking in at 2017-09-22 16:16:46.
+Checking in at 2017-09-22 16:26:46.
+Checking in at 2017-09-22 16:36:47.
+Checking in at 2017-09-22 16:46:47.
+Checking in at 2017-09-22 16:56:47.
+Checking in at 2017-09-22 17:06:47.
+Checking in at 2017-09-22 17:16:48.
+Checking in at 2017-09-22 17:26:48.
+Checking in at 2017-09-22 17:36:49.
+Checking in at 2017-09-22 17:46:49.
+Checking in at 2017-09-22 17:56:49.
+Checking in at 2017-09-22 18:06:50.
+Checking in at 2017-09-22 18:16:50.
+Checking in at 2017-09-22 18:26:51.
+Checking in at 2017-09-22 18:36:51.
+Checking in at 2017-09-22 18:46:51.
+Checking in at 2017-09-22 18:56:52.
+Checking in at 2017-09-22 19:06:52.
+Checking in at 2017-09-22 19:16:52.
+Checking in at 2017-09-22 19:26:53.
+Checking in at 2017-09-22 19:36:53.
+Checking in at 2017-09-22 19:46:53.
+Checking in at 2017-09-22 19:56:54.
+Checking in at 2017-09-22 20:06:54.
+Checking in at 2017-09-22 20:16:55.
+Checking in at 2017-09-22 20:26:55.
+Checking in at 2017-09-22 20:36:56.
+Checking in at 2017-09-22 20:46:56.
+Checking in at 2017-09-22 20:56:57.
+Checking in at 2017-09-22 21:06:58.
+Checking in at 2017-09-22 21:16:58.
+Checking in at 2017-09-22 21:26:59.
+Checking in at 2017-09-22 21:36:59.
+Checking in at 2017-09-22 21:47:00.
+Checking in at 2017-09-22 21:57:00.
+Checking in at 2017-09-22 22:07:01.
+Checking in at 2017-09-22 22:17:01.
+Checking in at 2017-09-22 22:27:02.
+Checking in at 2017-09-22 22:37:02.
+Checking in at 2017-09-22 22:47:03.
+Checking in at 2017-09-22 22:57:04.
+Checking in at 2017-09-22 23:07:04.
+Checking in at 2017-09-22 23:17:05.
+Checking in at 2017-09-22 23:27:05.
+Checking in at 2017-09-22 23:37:06.
+Checking in at 2017-09-22 23:47:06.
+Checking in at 2017-09-22 23:57:07.
+Checking in at 2017-09-23 00:07:07.
+Checking in at 2017-09-23 00:17:08.
+Checking in at 2017-09-23 00:27:08.
+Checking in at 2017-09-23 00:37:09.
+Checking in at 2017-09-23 00:47:09.
+Checking in at 2017-09-23 00:57:09.
+Checking in at 2017-09-23 01:07:10.
+Checking in at 2017-09-23 01:17:11.
+Checking in at 2017-09-23 01:27:12.
+Checking in at 2017-09-23 01:37:12.
+Checking in at 2017-09-23 01:47:12.
+Checking in at 2017-09-23 01:57:13.
+Checking in at 2017-09-23 02:07:14.
+Checking in at 2017-09-23 02:17:14.
+Checking in at 2017-09-23 02:27:15.
+Checking in at 2017-09-23 02:37:15.
+Checking in at 2017-09-23 02:47:15.
+Checking in at 2017-09-23 02:57:15.
+Checking in at 2017-09-23 03:07:15.
+Checking in at 2017-09-23 03:17:15.
+Checking in at 2017-09-23 03:27:16.
+Checking in at 2017-09-23 03:37:16.
+Checking in at 2017-09-23 03:47:17.
+Checking in at 2017-09-23 03:57:18.
+Checking in at 2017-09-23 04:07:18.
+Checking in at 2017-09-23 04:17:19.
+Checking in at 2017-09-23 04:27:20.
+Checking in at 2017-09-23 04:37:20.
+Checking in at 2017-09-23 04:47:21.
+Checking in at 2017-09-23 04:57:21.
+Checking in at 2017-09-23 05:07:21.
+Checking in at 2017-09-23 05:17:22.
+Checking in at 2017-09-23 05:27:22.
+Checking in at 2017-09-23 05:37:23.
+Checking in at 2017-09-23 05:47:23.
+Checking in at 2017-09-23 05:57:23.
+Checking in at 2017-09-23 06:07:24.
+Checking in at 2017-09-23 06:17:24.
+Checking in at 2017-09-23 06:27:25.
+Checking in at 2017-09-23 06:37:25.
+Checking in at 2017-09-23 06:47:26.
+Checking in at 2017-09-23 06:57:26.
+Checking in at 2017-09-23 07:07:27.
+Checking in at 2017-09-23 07:17:27.
+Checking in at 2017-09-23 07:27:28.
+Checking in at 2017-09-23 07:37:28.
+Checking in at 2017-09-23 07:47:29.
+Checking in at 2017-09-23 07:57:29.
+Checking in at 2017-09-23 08:07:30.
+Checking in at 2017-09-23 08:17:30.
+Checking in at 2017-09-23 08:27:31.
+Checking in at 2017-09-23 08:37:31.
+Checking in at 2017-09-23 08:47:32.
+Checking in at 2017-09-23 08:57:32.
+Checking in at 2017-09-23 09:07:33.
+Checking in at 2017-09-23 09:17:33.
+Checking in at 2017-09-23 09:27:34.
+Checking in at 2017-09-23 09:37:34.
+Checking in at 2017-09-23 09:47:35.
+Checking in at 2017-09-23 09:57:35.
+Checking in at 2017-09-23 10:07:35.
+Checking in at 2017-09-23 10:17:36.
+Checking in at 2017-09-23 10:27:36.
+Checking in at 2017-09-23 10:37:37.
+Checking in at 2017-09-23 10:47:38.
+Checking in at 2017-09-23 10:57:38.
+Checking in at 2017-09-23 11:07:39.
+Checking in at 2017-09-23 11:17:40.
+Checking in at 2017-09-23 11:27:40.
+Checking in at 2017-09-23 11:37:41.
+Checking in at 2017-09-23 11:47:41.
+Checking in at 2017-09-23 11:57:42.
+Checking in at 2017-09-23 12:07:43.
+Checking in at 2017-09-23 12:17:43.
+Checking in at 2017-09-23 12:27:44.
+Checking in at 2017-09-23 12:37:44.
+Checking in at 2017-09-23 12:47:45.
+Checking in at 2017-09-23 12:57:45.
+Checking in at 2017-09-23 13:07:46.
+Checking in at 2017-09-23 13:17:46.
+Checking in at 2017-09-23 13:27:47.
+Checking in at 2017-09-23 13:37:47.
+Checking in at 2017-09-23 13:47:47.
+Checking in at 2017-09-23 13:57:47.
+Checking in at 2017-09-23 14:07:48.
+Checking in at 2017-09-23 14:17:48.
+Checking in at 2017-09-23 14:27:49.
+Checking in at 2017-09-23 14:37:49.
+Checking in at 2017-09-23 14:47:50.
+Checking in at 2017-09-23 14:57:51.
+Checking in at 2017-09-23 15:07:51.
+Checking in at 2017-09-23 15:17:52.
+Checking in at 2017-09-23 15:27:52.
+Checking in at 2017-09-23 15:37:53.
+Checking in at 2017-09-23 15:47:53.
+Checking in at 2017-09-23 15:57:54.
+Checking in at 2017-09-23 16:07:54.
+Checking in at 2017-09-23 16:17:55.
+Checking in at 2017-09-23 16:27:55.
+Checking in at 2017-09-23 16:37:56.
+Checking in at 2017-09-23 16:47:56.
+Checking in at 2017-09-23 16:57:57.
+Checking in at 2017-09-23 17:07:57.
+Checking in at 2017-09-23 17:17:58.
+Checking in at 2017-09-23 17:27:58.
+Checking in at 2017-09-23 17:37:58.
+Checking in at 2017-09-23 17:47:59.
+Checking in at 2017-09-23 17:57:59.
+Checking in at 2017-09-23 18:08:00.
+Checking in at 2017-09-23 18:18:00.
+Checking in at 2017-09-23 18:28:00.
+Checking in at 2017-09-23 18:38:01.
+Checking in at 2017-09-23 18:48:01.
+Checking in at 2017-09-23 18:58:02.
+Checking in at 2017-09-23 19:08:02.
+Checking in at 2017-09-23 19:18:03.
+Checking in at 2017-09-23 19:28:04.
+Checking in at 2017-09-23 19:38:05.
+Checking in at 2017-09-23 19:48:05.
+Checking in at 2017-09-23 19:58:06.
+Checking in at 2017-09-23 20:08:06.
+Checking in at 2017-09-23 20:18:07.
+Checking in at 2017-09-23 20:28:07.
+Checking in at 2017-09-23 20:38:08.
+Checking in at 2017-09-23 20:48:09.
+Checking in at 2017-09-23 20:58:09.
+Checking in at 2017-09-23 21:08:10.
+Checking in at 2017-09-23 21:18:10.
+Checking in at 2017-09-23 21:28:11.
+Checking in at 2017-09-23 21:38:11.
+Checking in at 2017-09-23 21:48:12.
+Checking in at 2017-09-23 21:58:12.
+Checking in at 2017-09-23 22:08:13.
+Checking in at 2017-09-23 22:18:13.
+Checking in at 2017-09-23 22:28:14.
+Checking in at 2017-09-23 22:38:14.
+Checking in at 2017-09-23 22:48:15.
+Checking in at 2017-09-23 22:58:15.
+Checking in at 2017-09-23 23:08:15.
+Checking in at 2017-09-23 23:18:16.
+Checking in at 2017-09-23 23:28:16.
+Checking in at 2017-09-23 23:38:16.
+Checking in at 2017-09-23 23:48:17.
+Checking in at 2017-09-23 23:58:17.
+Checking in at 2017-09-24 00:08:18.
+Checking in at 2017-09-24 00:18:18.
+Checking in at 2017-09-24 00:28:19.
+Checking in at 2017-09-24 00:38:19.
+Checking in at 2017-09-24 00:48:20.
+Checking in at 2017-09-24 00:58:20.
+Checking in at 2017-09-24 01:08:21.
+Checking in at 2017-09-24 01:18:21.
+Checking in at 2017-09-24 01:28:21.
+Checking in at 2017-09-24 01:38:22.
+Checking in at 2017-09-24 01:48:22.
+Checking in at 2017-09-24 01:58:22.
+Checking in at 2017-09-24 02:08:23.
+Checking in at 2017-09-24 02:18:24.
+Checking in at 2017-09-24 02:28:24.
+Checking in at 2017-09-24 02:38:25.
+Checking in at 2017-09-24 02:48:26.
+Checking in at 2017-09-24 02:58:26.
+Checking in at 2017-09-24 03:08:27.
+Checking in at 2017-09-24 03:18:28.
+Checking in at 2017-09-24 03:28:28.
+Checking in at 2017-09-24 03:38:29.
+Checking in at 2017-09-24 03:48:30.
+Checking in at 2017-09-24 03:58:31.
+Checking in at 2017-09-24 04:08:31.
+Checking in at 2017-09-24 04:18:32.
+Checking in at 2017-09-24 04:28:32.
+Checking in at 2017-09-24 04:38:33.
+Checking in at 2017-09-24 04:48:33.
+Checking in at 2017-09-24 04:58:34.
+Checking in at 2017-09-24 05:08:35.
+Checking in at 2017-09-24 05:18:35.
+Checking in at 2017-09-24 05:28:36.
+Checking in at 2017-09-24 05:38:36.
+Checking in at 2017-09-24 05:48:37.
+Checking in at 2017-09-24 05:58:38.
+Checking in at 2017-09-24 06:08:38.
+Checking in at 2017-09-24 06:18:39.
+Checking in at 2017-09-24 06:28:40.
+Checking in at 2017-09-24 06:38:41.
+Checking in at 2017-09-24 06:48:41.
+Checking in at 2017-09-24 06:58:41.
+Checking in at 2017-09-24 07:08:41.
+Checking in at 2017-09-24 07:18:42.
+Checking in at 2017-09-24 07:28:43.
+Checking in at 2017-09-24 07:38:43.
+Checking in at 2017-09-24 07:48:44.
+Checking in at 2017-09-24 07:58:44.
+Checking in at 2017-09-24 08:08:44.
+Checking in at 2017-09-24 08:18:45.
+Checking in at 2017-09-24 08:28:45.
+Checking in at 2017-09-24 08:38:46.
+Checking in at 2017-09-24 08:48:47.
+Checking in at 2017-09-24 08:58:48.
+Checking in at 2017-09-24 09:08:48.
+Checking in at 2017-09-24 09:18:49.
+Checking in at 2017-09-24 09:28:49.
+Checking in at 2017-09-24 09:38:49.
+Checking in at 2017-09-24 09:48:49.
+Checking in at 2017-09-24 09:58:50.
+Checking in at 2017-09-24 10:08:50.
+Checking in at 2017-09-24 10:18:50.
+Checking in at 2017-09-24 10:28:50.
+Checking in at 2017-09-24 10:38:51.
+Checking in at 2017-09-24 10:48:52.
+Checking in at 2017-09-24 10:58:52.
+Checking in at 2017-09-24 11:08:54.
+Checking in at 2017-09-24 11:18:54.
+Checking in at 2017-09-24 11:28:55.
+Checking in at 2017-09-24 11:38:55.
+Checking in at 2017-09-24 11:48:55.
+Checking in at 2017-09-24 11:58:56.
+Checking in at 2017-09-24 12:08:56.
+Checking in at 2017-09-24 12:18:56.
+Checking in at 2017-09-24 12:28:57.
+Checking in at 2017-09-24 12:38:57.
+Checking in at 2017-09-24 12:48:58.
+Checking in at 2017-09-24 12:58:59.
+Checking in at 2017-09-24 13:08:59.
+Checking in at 2017-09-24 13:19:00.
+Checking in at 2017-09-24 13:29:00.
+Checking in at 2017-09-24 13:39:01.
+Checking in at 2017-09-24 13:49:01.
+Checking in at 2017-09-24 13:59:01.
+Checking in at 2017-09-24 14:09:01.
+Checking in at 2017-09-24 14:19:02.
+Checking in at 2017-09-24 14:29:02.
+Checking in at 2017-09-24 14:39:03.
+Checking in at 2017-09-24 14:49:03.
+Checking in at 2017-09-24 14:59:04.
+Checking in at 2017-09-24 15:09:04.
+Checking in at 2017-09-24 15:19:04.
+Checking in at 2017-09-24 15:29:05.
+Checking in at 2017-09-24 15:39:05.
+Checking in at 2017-09-24 15:49:06.
+Checking in at 2017-09-24 15:59:06.
+Checking in at 2017-09-24 16:09:06.
+Checking in at 2017-09-24 16:19:07.
+Checking in at 2017-09-24 16:29:07.
+Checking in at 2017-09-24 16:39:08.
+Checking in at 2017-09-24 16:49:08.
+Checking in at 2017-09-24 16:59:09.
+Checking in at 2017-09-24 17:09:10.
+Checking in at 2017-09-24 17:19:10.
+Checking in at 2017-09-24 17:29:11.
+Checking in at 2017-09-24 17:39:11.
+Checking in at 2017-09-24 17:49:12.
+Checking in at 2017-09-24 17:59:12.
+Checking in at 2017-09-24 18:09:13.
+Checking in at 2017-09-24 18:19:13.
+Checking in at 2017-09-24 18:29:14.
+Checking in at 2017-09-24 18:39:14.
+Checking in at 2017-09-24 18:49:15.
+Checking in at 2017-09-24 18:59:15.
+Checking in at 2017-09-24 19:09:15.
+Checking in at 2017-09-24 19:19:16.
+Checking in at 2017-09-24 19:29:16.
+Checking in at 2017-09-24 19:39:17.
+Checking in at 2017-09-24 19:49:17.
+Checking in at 2017-09-24 19:59:18.
+Checking in at 2017-09-24 20:09:19.
+Checking in at 2017-09-24 20:19:19.
+Checking in at 2017-09-24 20:29:20.
+Checking in at 2017-09-24 20:39:20.
+Checking in at 2017-09-24 20:49:21.
+Checking in at 2017-09-24 20:59:22.
+Checking in at 2017-09-24 21:09:22.
+Checking in at 2017-09-24 21:19:23.
+Checking in at 2017-09-24 21:29:23.
+Checking in at 2017-09-24 21:39:24.
+Checking in at 2017-09-24 21:49:24.
+Checking in at 2017-09-24 21:59:25.
+Checking in at 2017-09-24 22:09:25.
+Checking in at 2017-09-24 22:19:25.
+Checking in at 2017-09-24 22:29:25.
+Checking in at 2017-09-24 22:39:26.
+Checking in at 2017-09-24 22:49:26.
+Checking in at 2017-09-24 22:59:27.
+Checking in at 2017-09-24 23:09:27.
+Checking in at 2017-09-24 23:19:27.
+Checking in at 2017-09-24 23:29:27.
+Checking in at 2017-09-24 23:39:27.
+Checking in at 2017-09-24 23:49:27.
+Checking in at 2017-09-24 23:59:28.
+Checking in at 2017-09-25 00:09:28.
+Checking in at 2017-09-25 00:19:29.
+Checking in at 2017-09-25 00:29:29.
+Checking in at 2017-09-25 00:39:30.
+Checking in at 2017-09-25 00:49:30.
+Checking in at 2017-09-25 00:59:31.
+Checking in at 2017-09-25 01:09:31.
+Checking in at 2017-09-25 01:19:32.
+Checking in at 2017-09-25 01:29:32.
+Checking in at 2017-09-25 01:39:33.
+Checking in at 2017-09-25 01:49:34.
+Checking in at 2017-09-25 01:59:34.
+Checking in at 2017-09-25 02:09:35.
+Checking in at 2017-09-25 02:19:35.
+Checking in at 2017-09-25 02:29:36.
+Checking in at 2017-09-25 02:39:36.
+Checking in at 2017-09-25 02:49:36.
+Checking in at 2017-09-25 02:59:36.
+Checking in at 2017-09-25 03:09:37.
+Checking in at 2017-09-25 03:19:38.
+Checking in at 2017-09-25 03:29:38.
+Checking in at 2017-09-25 03:39:39.
+Checking in at 2017-09-25 03:49:40.
+Checking in at 2017-09-25 03:59:40.
+Checking in at 2017-09-25 04:09:41.
+Checking in at 2017-09-25 04:19:42.
+Checking in at 2017-09-25 04:29:43.
+Checking in at 2017-09-25 04:39:43.
+Checking in at 2017-09-25 04:49:44.
+Checking in at 2017-09-25 04:59:44.
+Checking in at 2017-09-25 05:09:45.
+Checking in at 2017-09-25 05:19:46.
+Checking in at 2017-09-25 05:29:47.
+Checking in at 2017-09-25 05:39:48.
+Checking in at 2017-09-25 05:49:49.
+Checking in at 2017-09-25 05:59:50.
+Checking in at 2017-09-25 06:09:50.
+Checking in at 2017-09-25 06:19:50.
+Checking in at 2017-09-25 06:29:50.
+Checking in at 2017-09-25 06:39:51.
+Checking in at 2017-09-25 06:49:52.
+Checking in at 2017-09-25 06:59:53.
+Checking in at 2017-09-25 07:09:53.
+Checking in at 2017-09-25 07:19:53.
+Checking in at 2017-09-25 07:29:53.
+Checking in at 2017-09-25 07:39:54.
+Checking in at 2017-09-25 07:49:54.
+Checking in at 2017-09-25 07:59:55.
+Checking in at 2017-09-25 08:09:56.
+Checking in at 2017-09-25 08:19:56.
+Checking in at 2017-09-25 08:29:57.
+Checking in at 2017-09-25 08:39:58.
+Checking in at 2017-09-25 08:49:58.
+Checking in at 2017-09-25 08:59:59.
+Checking in at 2017-09-25 09:09:59.
+Checking in at 2017-09-25 09:19:59.
+Checking in at 2017-09-25 09:30:00.
+Checking in at 2017-09-25 09:40:00.
+Checking in at 2017-09-25 09:50:01.
+Checking in at 2017-09-25 10:00:01.
+Checking in at 2017-09-25 10:10:02.
+Checking in at 2017-09-25 10:20:03.
+Checking in at 2017-09-25 10:30:03.
+Checking in at 2017-09-25 10:40:03.
+Checking in at 2017-09-25 10:50:03.
+Checking in at 2017-09-25 11:00:05.
+Checking in at 2017-09-25 11:10:05.
+Checking in at 2017-09-25 11:20:06.
+Checking in at 2017-09-25 11:30:07.
+Checking in at 2017-09-25 11:40:07.
+Checking in at 2017-09-25 11:50:07.
+Checking in at 2017-09-25 12:00:08.
+Checking in at 2017-09-25 12:10:10.
+Checking in at 2017-09-25 12:20:10.
+Checking in at 2017-09-25 12:30:11.
+Checking in at 2017-09-25 12:40:11.
+Checking in at 2017-09-25 12:50:11.
+Checking in at 2017-09-25 13:00:12.
+Checking in at 2017-09-25 13:10:12.
+Checking in at 2017-09-25 13:20:13.
+Checking in at 2017-09-25 13:30:14.
+Checking in at 2017-09-25 13:40:14.
+Checking in at 2017-09-25 13:50:16.
+Checking in at 2017-09-25 14:00:17.
+Checking in at 2017-09-25 14:10:18.
+Checking in at 2017-09-25 14:20:18.
+Checking in at 2017-09-25 14:30:18.
+Checking in at 2017-09-25 14:40:18.
+Checking in at 2017-09-25 14:50:19.
+Checking in at 2017-09-25 15:00:19.
+Checking in at 2017-09-25 15:10:21.
+Checking in at 2017-09-25 15:20:21.
+Checking in at 2017-09-25 15:30:22.
+Checking in at 2017-09-25 15:40:22.
+Checking in at 2017-09-25 15:50:22.
+Checking in at 2017-09-25 16:00:22.
+Checking in at 2017-09-25 16:10:22.
+Checking in at 2017-09-25 16:20:24.
+Checking in at 2017-09-25 16:30:24.
+Checking in at 2017-09-25 16:40:24.
+Checking in at 2017-09-25 16:50:25.
+Checking in at 2017-09-25 17:00:25.
+Checking in at 2017-09-25 17:10:25.
+Checking in at 2017-09-25 17:20:25.
+Checking in at 2017-09-25 17:30:26.
+Checking in at 2017-09-25 17:40:26.
+Checking in at 2017-09-25 17:50:27.
+Checking in at 2017-09-25 18:00:28.
+Checking in at 2017-09-25 18:10:29.
+Checking in at 2017-09-25 18:20:29.
+Checking in at 2017-09-25 18:30:30.
+Checking in at 2017-09-25 18:40:30.
+Checking in at 2017-09-25 18:50:30.
+Checking in at 2017-09-25 19:00:31.
+Checking in at 2017-09-25 19:10:31.
+Checking in at 2017-09-25 19:20:32.
+Checking in at 2017-09-25 19:30:32.
+Checking in at 2017-09-25 19:40:32.
+Checking in at 2017-09-25 19:50:33.
+Checking in at 2017-09-25 20:00:34.
+Checking in at 2017-09-25 20:10:35.
+Checking in at 2017-09-25 20:20:36.
+Checking in at 2017-09-25 20:30:36.
+Checking in at 2017-09-25 20:40:37.
+Checking in at 2017-09-25 20:50:37.
+Checking in at 2017-09-25 21:00:37.
+Checking in at 2017-09-25 21:10:38.
+Checking in at 2017-09-25 21:20:38.
+Checking in at 2017-09-25 21:30:38.
+Checking in at 2017-09-25 21:40:38.
+Checking in at 2017-09-25 21:50:39.
+Checking in at 2017-09-25 22:00:40.
+Checking in at 2017-09-25 22:10:40.
+Checking in at 2017-09-25 22:20:41.
+Checking in at 2017-09-25 22:30:42.
+Checking in at 2017-09-25 22:40:42.
+Checking in at 2017-09-25 22:50:43.
+Checking in at 2017-09-25 23:00:43.
+Checking in at 2017-09-25 23:10:44.
+Checking in at 2017-09-25 23:20:44.
+Checking in at 2017-09-25 23:30:45.
+Checking in at 2017-09-25 23:40:45.
+Checking in at 2017-09-25 23:50:46.
+Checking in at 2017-09-26 00:00:47.
+Checking in at 2017-09-26 00:10:47.
+Checking in at 2017-09-26 00:20:48.
+Checking in at 2017-09-26 00:30:48.
+Checking in at 2017-09-26 00:40:49.
+Checking in at 2017-09-26 00:50:50.
+Checking in at 2017-09-26 01:00:50.
+Checking in at 2017-09-26 01:10:51.
+Checking in at 2017-09-26 01:20:51.
+Checking in at 2017-09-26 01:30:51.
+Checking in at 2017-09-26 01:40:52.
+Checking in at 2017-09-26 01:50:52.
+Starting buckler_dory at 2017-09-26 01:54:51.
+ To recreate, make sure: set.seed(627)
+
+First we'll fit the occupancy model with 291 observations and 87 explanatory variables.
+Sent to BB and will monitor:  
+every 4.85 minutes.
+Checking in at 2017-09-26 01:54:58.

@@ -1,0 +1,620 @@
+Starting barndoor_skate at 2017-09-30 03:20:37.
+ To recreate, make sure: set.seed(627)
+
+First we'll fit the occupancy model with 2076 observations and 107 explanatory variables.
+Sent to BB and will monitor: http://dataminer1-proto.d4science.org:80//wps/RetrieveResultServlet?id=7b0645e6-39b4-4244-8b9a-dc7cecc0c6a1 
+every 10 minutes.
+Checking in at 2017-09-30 03:20:53.
+Checking in at 2017-09-30 03:30:53.
+Checking in at 2017-09-30 03:40:53.
+Checking in at 2017-09-30 03:50:54.
+Success!  barndoor_skate is all finished and output files can be found:  http://data.d4science.org/SkNHNk5wdG1OdDJUM1dmNG9XTEVQTEVPQnVUVEtSNFNHbWJQNStIS0N6Yz0-VLT http://data.d4science.org/RkFQM2ZEeTF2NjJUM1dmNG9XTEVQTmN0UHZaNWJZZDJHbWJQNStIS0N6Yz0-VLT 
+
+P/A VSURF model identified  BT_SD zoo_fal_ann_penilia zoo_fal_ann_calfin sst_r_clim_11_0d zoo_fal_ann_larvaceans zoo_fal_ann_volume zoo_fal_ann_cham zoo_fal_ann_gas sst_r_clim_12_0d ST_SD zoo_fal_ann_acarspp sst_r_clim_10_0d chl_r_clim_06_0d  as the best variables for prediction.
+Starting barndoor_skate at 2017-09-30 04:01:23.
+ To recreate, make sure: set.seed(627)
+
+First we'll fit the occupancy model with 2076 observations and 107 explanatory variables.
+Sent to BB and will monitor: http://dataminer0-proto.d4science.org:80//wps/RetrieveResultServlet?id=c72718a0-c8b4-4b09-8b18-e4b852f6258d 
+every 10 minutes.
+Checking in at 2017-09-30 04:01:34.
+Checking in at 2017-09-30 04:11:35.
+Checking in at 2017-09-30 04:21:35.
+Checking in at 2017-09-30 04:31:36.
+Success!  barndoor_skate is all finished and output files can be found:  http://data.d4science.org/dmhMU29PaUJLQXFhN2lOTXVGQ21yaXl2Q3FzNzlRSkFHbWJQNStIS0N6Yz0-VLT http://data.d4science.org/dmhMU29PaUJLQXFhN2lOTXVGQ21yb2NrTlQ0SzlDYVlHbWJQNStIS0N6Yz0-VLT 
+
+P/A VSURF model identified  BT_SD zoo_fal_ann_penilia zoo_fal_ann_calfin sst_r_clim_11_0d zoo_fal_ann_larvaceans zoo_fal_ann_volume zoo_fal_ann_cham zoo_fal_ann_gas ST_SD sst_r_clim_12_0d zoo_fal_ann_acarspp sst_r_clim_05_0d zoo_fal_clim_cham  as the best variables for prediction.
+PA rf completed.
+Time difference of 1.70339 mins
+Accuracy = 0.7, Kappa = 0.39, and threshold = 0.511.
+Now we fit the biomass VSURF model with 2076 observations and 108 explanatory variables.
+Sent to BB and will monitor: http://dataminer1-proto.d4science.org:80//wps/RetrieveResultServlet?id=223d1263-d5a5-4274-9f12-a6d385168aa2 
+every 10 minutes.
+Checking in at 2017-09-30 04:43:40.
+Checking in at 2017-09-30 04:53:40.
+Checking in at 2017-09-30 05:03:40.
+Checking in at 2017-09-30 05:13:40.
+Checking in at 2017-09-30 05:23:40.
+Checking in at 2017-09-30 05:33:41.
+Checking in at 2017-09-30 05:43:41.
+Checking in at 2017-09-30 05:53:42.
+Checking in at 2017-09-30 06:03:42.
+Checking in at 2017-09-30 06:13:42.
+Checking in at 2017-09-30 06:23:42.
+Checking in at 2017-09-30 06:33:42.
+Success!  barndoor_skate is all finished and output files can be found:  http://data.d4science.org/b2VSRFZGazBIWUNUM1dmNG9XTEVQTG9zeU42bk40Qm9HbWJQNStIS0N6Yz0-VLT http://data.d4science.org/OGdkZjdpUCtRN2VUM1dmNG9XTEVQTWNjdmErZ1kwVHdHbWJQNStIS0N6Yz0-VLT 
+
+Starting barndoor_skate at 2017-09-30 16:10:58.
+ To recreate, make sure: set.seed(627)
+
+First we'll fit the occupancy model with 2076 observations and 107 explanatory variables.
+Sent to BB and will monitor: http://dataminer0-proto.d4science.org:80//wps/RetrieveResultServlet?id=ee4a20f0-5a27-40e3-87ef-d9465327518a 
+every 10 minutes.
+Checking in at 2017-09-30 16:11:09.
+Starting barndoor_skate at 2017-09-30 18:13:59.
+ To recreate, make sure: set.seed(627)
+
+First we'll fit the occupancy model with 2076 observations and 107 explanatory variables.
+Sent to BB and will monitor: http://dataminer1-proto.d4science.org:80//wps/RetrieveResultServlet?id=93392f0e-8307-4a4e-819c-af764e817a30 
+every 10 minutes.
+Checking in at 2017-09-30 18:14:17.
+Checking in at 2017-09-30 18:24:17.
+Checking in at 2017-09-30 18:34:17.
+Checking in at 2017-09-30 18:44:17.
+Success!  barndoor_skate is all finished and output files can be found:  http://data.d4science.org/clNHWVhibFZlVUtUM1dmNG9XTEVQS3lmTndJTG4rcHNHbWJQNStIS0N6Yz0-VLT http://data.d4science.org/R3orZVJEQ1dtd2VUM1dmNG9XTEVQTG9Uci9KTHdwUFNHbWJQNStIS0N6Yz0-VLT 
+
+P/A VSURF model identified  BT_SD zoo_fal_ann_penilia zoo_fal_ann_calfin sst_r_clim_11_0d zoo_fal_ann_larvaceans zoo_fal_ann_volume zoo_fal_ann_cham zoo_fal_ann_gas ST_SD sst_r_clim_12_0d sst_r_clim_05_0d zoo_fal_ann_acarspp sst_r_clim_10_0d zoo_fal_clim_cham zoo_fal_ann_mlucens  as the best variables for prediction.
+PA rf completed.
+Time difference of 1.734001 mins
+Accuracy = 0.71, Kappa = 0.41, and threshold = 0.441.
+Now we fit the biomass VSURF model with 2076 observations and 108 explanatory variables.
+Sent to BB and will monitor: http://dataminer0-proto.d4science.org:80//wps/RetrieveResultServlet?id=80ab62a3-3a28-4503-905b-ca077efcb8bd 
+every 10 minutes.
+Checking in at 2017-09-30 18:56:27.
+Checking in at 2017-09-30 19:06:27.
+Checking in at 2017-09-30 19:16:28.
+Checking in at 2017-09-30 19:26:28.
+Checking in at 2017-09-30 19:36:28.
+Checking in at 2017-09-30 19:46:29.
+Checking in at 2017-09-30 19:56:29.
+Checking in at 2017-09-30 20:06:29.
+Checking in at 2017-09-30 20:16:30.
+Checking in at 2017-09-30 20:26:30.
+Success!  barndoor_skate is all finished and output files can be found:  http://data.d4science.org/SmZYT29UMUp2eEdhN2lOTXVGQ21yaG5sOEZWRWVqSG1HbWJQNStIS0N6Yz0-VLT http://data.d4science.org/Y0U5c0ZxUUl3ZG1hN2lOTXVGQ21ydGQ5Yy9Yd2k2TERHbWJQNStIS0N6Yz0-VLT 
+
+Biomass VSURF model identified  PRESPROB sst_r_clim_07_0d sst_r_clim_02_0d sst_r_clim_05_0d zoo_fal_clim_oithspp zoo_fal_ann_oithspp sst_r_clim_08_0d ST_SD zoo_fal_ann_larvaceans chl_r_clim_01_0d chl_r_clim_11_0d rast_prcurv10km sst_r_clim_11_0d zoo_fal_clim_evadnespp zoo_fal_ann_evadnespp rast_slpslp10km zoo_fal_ann_mlucens  as the best variables for prediction.
+Biomass rf completed.
+Time difference of 1.925797 mins.
+R2 = 0.21, and RMSE = 0.33
+Now we fit the biomass VSURF model (w/o PA) with 924 observations and 107 explanatory variables. 
+Sent to BB and will monitor: http://dataminer1-proto.d4science.org:80//wps/RetrieveResultServlet?id=4993d11a-7cf4-45e7-a490-91b5ff88e522 
+every 10 minutes.
+Checking in at 2017-09-30 20:38:40.
+Checking in at 2017-09-30 20:48:40.
+Checking in at 2017-09-30 20:58:41.
+Checking in at 2017-09-30 21:08:41.
+Success!  barndoor_skate is all finished and output files can be found:  http://data.d4science.org/Zmo4Z0hlQ0JVNWFUM1dmNG9XTEVQQ2FIdFB2ZXpBOERHbWJQNStIS0N6Yz0-VLT http://data.d4science.org/b1Vac3RsZ0NpajZUM1dmNG9XTEVQSit4VjdpY1AwUlpHbWJQNStIS0N6Yz0-VLT 
+
+Starting barndoor_skate at 2017-10-01 22:23:45.
+ To recreate, make sure: set.seed(627)
+
+First we'll fit the occupancy model with 2076 observations and 107 explanatory variables.
+Starting barndoor_skate at 2017-10-01 22:32:02.
+ To recreate, make sure: set.seed(627)
+
+First we'll fit the occupancy model with 2076 observations and 107 explanatory variables.
+Sent to BB and will monitor: http://dataminer0-proto.d4science.org:80//wps/RetrieveResultServlet?id=5b88cfd4-19bf-4968-b7a8-ecb258a8b468 
+every 10 minutes.
+Checking in at 2017-10-01 22:32:13.
+Checking in at 2017-10-01 22:42:13.
+Checking in at 2017-10-01 22:52:13.
+Checking in at 2017-10-01 23:02:13.
+Success!  barndoor_skate is all finished and output files can be found:  http://data.d4science.org/aE1Cd3dUYU4vTEthN2lOTXVGQ21yaVk0YTRxeDRiOVlHbWJQNStIS0N6Yz0-VLT http://data.d4science.org/aE1Cd3dUYU4vTEthN2lOTXVGQ21ycG1YUTJ0aHJuQWFHbWJQNStIS0N6Yz0-VLT 
+
+P/A VSURF model identified  BT_SD zoo_fal_ann_penilia zoo_fal_ann_calfin sst_r_clim_11_0d zoo_fal_ann_larvaceans zoo_fal_ann_volume zoo_fal_ann_cham zoo_fal_ann_gas ST_SD sst_r_clim_12_0d zoo_fal_ann_acarspp sst_r_clim_05_0d zoo_fal_clim_cham chl_r_clim_11_0d zoo_fal_ann_mlucens  as the best variables for prediction.
+PA rf completed.
+Time difference of 1.660092 mins
+Accuracy = 0.65, Kappa = 0.29, and threshold = 0.467.
+Now we fit the biomass VSURF model with 2076 observations and 108 explanatory variables.
+Sent to BB and will monitor: http://dataminer1-proto.d4science.org:80//wps/RetrieveResultServlet?id=43c73475-c125-4ede-ab0c-c0399941382b 
+every 10 minutes.
+Checking in at 2017-10-01 23:14:16.
+Checking in at 2017-10-01 23:24:17.
+Checking in at 2017-10-01 23:34:17.
+Checking in at 2017-10-01 23:44:18.
+Checking in at 2017-10-01 23:54:18.
+Checking in at 2017-10-02 00:04:19.
+Checking in at 2017-10-02 00:14:19.
+Checking in at 2017-10-02 00:24:19.
+Checking in at 2017-10-02 00:34:20.
+Checking in at 2017-10-02 00:44:20.
+Checking in at 2017-10-02 00:54:20.
+Checking in at 2017-10-02 01:04:21.
+Success!  barndoor_skate is all finished and output files can be found:  http://data.d4science.org/MUNRZUl1dHowanVUM1dmNG9XTEVQRzFEeHJlTDRuWUtHbWJQNStIS0N6Yz0-VLT http://data.d4science.org/dHRDVVZWdE90VEtUM1dmNG9XTEVQRlVDZkYzejdVZStHbWJQNStIS0N6Yz0-VLT 
+
+Biomass VSURF model identified  PRESPROB sst_r_clim_07_0d sst_r_clim_02_0d sst_r_clim_05_0d sst_r_clim_08_0d ST_SD zoo_fal_ann_oithspp rast_prcurv10km zoo_fal_clim_gas sst_r_clim_11_0d chl_r_clim_11_0d chl_r_clim_01_0d sst_r_clim_06_0d  as the best variables for prediction.
+Biomass rf completed.
+Time difference of 1.533018 mins.
+R2 = 0.19, and RMSE = 0.35
+Now we fit the biomass VSURF model (w/o PA) with 924 observations and 107 explanatory variables. 
+Sent to BB and will monitor: http://dataminer0-proto.d4science.org:80//wps/RetrieveResultServlet?id=667f8ea0-5d46-4112-bb04-80c146449a9f 
+every 10 minutes.
+Checking in at 2017-10-02 01:16:11.
+Checking in at 2017-10-02 01:26:11.
+Checking in at 2017-10-02 01:36:12.
+Success!  barndoor_skate is all finished and output files can be found:  http://data.d4science.org/TTdxZVM3TmdxZENhN2lOTXVGQ21yc0RPandqb3pBVWNHbWJQNStIS0N6Yz0-VLT http://data.d4science.org/em5SUzBEN0xNZkthN2lOTXVGQ21yb3Nlc2JqRWh3blJHbWJQNStIS0N6Yz0-VLT 
+
+Biomass VSURF (w/o PA) model identified  zoo_fal_ann_oithspp chl_r_clim_01_0d ST_SD zoo_fal_ann_larvaceans sst_r_clim_02_0d sst_r_clim_05_0d sst_r_clim_07_0d chl_r_clim_11_0d  as the best variables for prediction.
+Biomass rf completed.
+Time difference of 2.719977 mins
+R2 = 0.23, and RMSE = 0.32
+
+~~~~~~~~~~~~~~~~~~
+Starting thorny_skate at 2017-10-02 01:56:12.
+ To recreate, make sure: set.seed(627)
+
+First we'll fit the occupancy model with 2099 observations and 107 explanatory variables.
+Sent to BB and will monitor: http://dataminer1-proto.d4science.org:80//wps/RetrieveResultServlet?id=47c41a9b-5fe2-4fb9-9787-ed16989d6c4a 
+every 10 minutes.
+Checking in at 2017-10-02 01:56:23.
+Checking in at 2017-10-02 02:06:23.
+Checking in at 2017-10-02 02:16:24.
+Checking in at 2017-10-02 02:26:24.
+Success!  thorny_skate is all finished and output files can be found:  http://data.d4science.org/K20yREw5MXVYdytUM1dmNG9XTEVQSFRDeDhYVzZwNUFHbWJQNStIS0N6Yz0-VLT http://data.d4science.org/bHcxTUpHVDZXbEtUM1dmNG9XTEVQQk9jNDBoRndXWWRHbWJQNStIS0N6Yz0-VLT 
+
+P/A VSURF model identified  zoo_fal_clim_chaeto sst_r_clim_12_0d BOTSALIN sst_r_clim_11_0d BT_SD chl_r_clim_03_0d sst_f_clim_02_0d chl_f_clim_01_0d zoo_fal_ann_mlucens zoo_fal_ann_pseudo zoo_fal_clim_calfin zoo_fal_clim_pseudo  as the best variables for prediction.
+PA rf completed.
+Time difference of 1.494109 mins
+Accuracy = 0.72, Kappa = 0.41, and threshold = 0.469.
+Now we fit the biomass VSURF model with 2099 observations and 108 explanatory variables.
+Sent to BB and will monitor: http://dataminer0-proto.d4science.org:80//wps/RetrieveResultServlet?id=a50d7d7c-d6cc-4b05-91da-b9b7d59e40d7 
+every 10 minutes.
+Checking in at 2017-10-02 02:38:18.
+Checking in at 2017-10-02 02:48:19.
+Checking in at 2017-10-02 02:58:20.
+Checking in at 2017-10-02 03:08:20.
+Checking in at 2017-10-02 03:18:20.
+Checking in at 2017-10-02 03:28:21.
+Checking in at 2017-10-02 03:38:21.
+Success!  thorny_skate is all finished and output files can be found:  http://data.d4science.org/VE5VUkFWYXRmejJhN2lOTXVGQ21ydWtXeEZWZWlRT3VHbWJQNStIS0N6Yz0-VLT http://data.d4science.org/VE5VUkFWYXRmejJhN2lOTXVGQ21yaVduNnB1elp0ZWNHbWJQNStIS0N6Yz0-VLT 
+
+Biomass VSURF model identified  PRESPROB zoo_fal_clim_chaeto sst_r_clim_12_0d zoo_fal_ann_volume BT_SD sst_r_clim_11_0d zoo_fal_ann_pseudo BOTSALIN zoo_fal_clim_hyper zoo_fal_ann_cham ST_SD  as the best variables for prediction.
+Biomass rf completed.
+Time difference of 1.115734 mins.
+R2 = 0.19, and RMSE = 0.31
+Now we fit the biomass VSURF model (w/o PA) with 822 observations and 107 explanatory variables. 
+Sent to BB and will monitor: http://dataminer1-proto.d4science.org:80//wps/RetrieveResultServlet?id=526a0069-3fb8-48a0-873e-18175f62d0b4 
+every 10 minutes.
+Checking in at 2017-10-02 03:49:40.
+Checking in at 2017-10-02 03:59:41.
+Checking in at 2017-10-02 04:09:42.
+Success!  thorny_skate is all finished and output files can be found:  http://data.d4science.org/SXFHaWpHOEw2WitUM1dmNG9XTEVQRVZaY3dHbGY2T3JHbWJQNStIS0N6Yz0-VLT http://data.d4science.org/eE5uWU1pRWI1akdUM1dmNG9XTEVQTTZCajRrSzBlOHNHbWJQNStIS0N6Yz0-VLT 
+
+Biomass VSURF (w/o PA) model identified  zoo_fal_ann_volume BT_SD zoo_fal_ann_pseudo rast_soft_sed zoo_fal_ann_evadnespp rast_vortfa ST_SD chl_f_clim_10_0d zoo_fal_ann_acarspp zoo_fal_clim_larvaceans rast_slpslp20km zoo_fal_clim_chaeto  as the best variables for prediction.
+Biomass rf completed.
+Time difference of 52.0989 secs
+R2 = 0.21, and RMSE = 0.31
+
+~~~~~~~~~~~~~~~~~~
+Starting Atlantic_cod at 2017-10-02 04:20:39.
+ To recreate, make sure: set.seed(627)
+
+First we'll fit the occupancy model with 2631 observations and 107 explanatory variables.
+Sent to BB and will monitor: http://dataminer0-proto.d4science.org:80//wps/RetrieveResultServlet?id=efb0e8e0-88a9-4100-9fe1-2668cb837dfd 
+every 10 minutes.
+Checking in at 2017-10-02 04:20:52.
+Checking in at 2017-10-02 04:30:52.
+Checking in at 2017-10-02 04:40:53.
+Checking in at 2017-10-02 04:50:54.
+Checking in at 2017-10-02 05:00:54.
+Checking in at 2017-10-02 05:10:54.
+Success!  Atlantic_cod is all finished and output files can be found:  http://data.d4science.org/ZHVpZDhvOUJKc3lhN2lOTXVGQ21yaGdtNktFR3dYMXZHbWJQNStIS0N6Yz0-VLT http://data.d4science.org/ZHVpZDhvOUJKc3lhN2lOTXVGQ21ydnNvdlJQL0NwUFRHbWJQNStIS0N6Yz0-VLT 
+
+P/A VSURF model identified  sst_r_clim_12_0d sst_r_clim_11_0d zoo_fal_clim_pseudo rast_namera_bpi rast_soft_sed zoo_fal_clim_calfin BOTSALIN zoo_fal_clim_larvaceans zoo_fal_ann_calfin zoo_fal_ann_cham sst_r_clim_08_0d  as the best variables for prediction.
+PA rf completed.
+Time difference of 1.697966 mins
+Accuracy = 0.77, Kappa = 0.53, and threshold = 0.407.
+Now we fit the biomass VSURF model with 2631 observations and 108 explanatory variables.
+Sent to BB and will monitor: http://dataminer1-proto.d4science.org:80//wps/RetrieveResultServlet?id=8a874cb1-d652-4d55-b833-37bc48357d39 
+every 10 minutes.
+Checking in at 2017-10-02 05:22:56.
+Checking in at 2017-10-02 05:32:56.
+Checking in at 2017-10-02 05:42:57.
+Checking in at 2017-10-02 05:52:57.
+Checking in at 2017-10-02 06:02:58.
+Checking in at 2017-10-02 06:12:58.
+Checking in at 2017-10-02 06:22:58.
+Checking in at 2017-10-02 06:32:58.
+Checking in at 2017-10-02 06:42:59.
+Checking in at 2017-10-02 06:52:59.
+Checking in at 2017-10-02 07:02:59.
+Checking in at 2017-10-02 07:13:00.
+Checking in at 2017-10-02 07:23:00.
+Checking in at 2017-10-02 07:33:01.
+Checking in at 2017-10-02 07:43:01.
+Checking in at 2017-10-02 07:53:01.
+Checking in at 2017-10-02 08:03:01.
+Checking in at 2017-10-02 08:13:02.
+Checking in at 2017-10-02 08:23:02.
+Checking in at 2017-10-02 08:33:02.
+Checking in at 2017-10-02 08:43:03.
+Checking in at 2017-10-02 08:53:04.
+Checking in at 2017-10-02 09:03:04.
+Checking in at 2017-10-02 09:13:05.
+Checking in at 2017-10-02 09:23:05.
+Checking in at 2017-10-02 09:33:05.
+Checking in at 2017-10-02 09:43:06.
+Checking in at 2017-10-02 09:53:06.
+Checking in at 2017-10-02 10:03:06.
+Checking in at 2017-10-02 10:13:07.
+Checking in at 2017-10-02 10:23:07.
+Checking in at 2017-10-02 10:33:07.
+Checking in at 2017-10-02 10:43:07.
+Checking in at 2017-10-02 10:53:08.
+Success!  Atlantic_cod is all finished and output files can be found:  http://data.d4science.org/ZVVETTBnS2YzbXVUM1dmNG9XTEVQQUZIbzREMFVJR1VHbWJQNStIS0N6Yz0-VLT http://data.d4science.org/WDJBYU5xQWZhQVdUM1dmNG9XTEVQSitReTYwaE1Vc3RHbWJQNStIS0N6Yz0-VLT 
+
+Biomass VSURF model identified  PRESPROB zoo_fal_clim_pseudo sst_r_clim_12_0d sst_r_clim_11_0d zoo_fal_ann_pseudo rast_soft_sed chl_r_clim_04_0d sst_r_clim_10_0d BT_SD zoo_fal_ann_mlucens chl_r_clim_09_0d zoo_fal_ann_tlong chl_f_clim_08_0d zoo_fal_ann_calfin zoo_fal_clim_chaeto SURFSALIN zoo_fal_ann_oithspp zoo_fal_ann_echino  as the best variables for prediction.
+Biomass rf completed.
+Time difference of 2.677547 mins.
+R2 = 0.29, and RMSE = 0.44
+Now we fit the biomass VSURF model (w/o PA) with 1153 observations and 107 explanatory variables. 
+Sent to BB and will monitor: http://dataminer1-proto.d4science.org:80//wps/RetrieveResultServlet?id=d8df4dc5-9e30-49d3-8d63-88cd9c52a557 
+every 10 minutes.
+Checking in at 2017-10-02 11:06:16.
+Checking in at 2017-10-02 11:16:16.
+Checking in at 2017-10-02 11:26:16.
+Checking in at 2017-10-02 11:36:16.
+Checking in at 2017-10-02 11:46:16.
+Checking in at 2017-10-02 11:56:17.
+Checking in at 2017-10-02 12:06:17.
+Checking in at 2017-10-02 12:16:17.
+Checking in at 2017-10-02 12:26:18.
+Checking in at 2017-10-02 12:36:18.
+Success!  Atlantic_cod is all finished and output files can be found:  http://data.d4science.org/bFdCckRuczFjWUtUM1dmNG9XTEVQQm1GZm16K0FlVHhHbWJQNStIS0N6Yz0-VLT http://data.d4science.org/UTN2ODY5SVI4MUdUM1dmNG9XTEVQQ2l3dG1Ba0R3MElHbWJQNStIS0N6Yz0-VLT 
+
+Biomass VSURF (w/o PA) model identified  chl_r_clim_04_0d sst_r_clim_08_0d rast_soft_sed rast_prcurv10km zoo_fal_ann_pseudo sst_r_clim_07_0d sst_r_clim_04_0d zoo_fal_clim_pseudo sst_r_clim_11_0d chl_f_clim_08_0d rast_prcurv2km rast_namera_bpi zoo_fal_ann_tlong BT_SD sst_f_clim_08_0d zoo_fal_ann_penilia zoo_fal_ann_larvaceans zoo_fal_ann_echino zoo_fal_ann_cham  as the best variables for prediction.
+Biomass rf completed.
+Time difference of 2.946433 mins
+R2 = 0.29, and RMSE = 0.44
+
+~~~~~~~~~~~~~~~~~~
+Starting haddock at 2017-10-02 12:49:20.
+ To recreate, make sure: set.seed(627)
+
+First we'll fit the occupancy model with 3409 observations and 107 explanatory variables.
+Sent to BB and will monitor: http://dataminer0-proto.d4science.org:80//wps/RetrieveResultServlet?id=61021731-60de-45aa-b86b-fa19cb0c0def 
+every 10 minutes.
+Checking in at 2017-10-02 12:49:35.
+Checking in at 2017-10-02 12:59:35.
+Checking in at 2017-10-02 13:09:36.
+Checking in at 2017-10-02 13:19:36.
+Checking in at 2017-10-02 13:29:36.
+Checking in at 2017-10-02 13:39:36.
+Checking in at 2017-10-02 13:49:36.
+Success!  haddock is all finished and output files can be found:  http://data.d4science.org/aDdweTl0d0VlK21hN2lOTXVGQ21yckVZSWxUWjNpRjhHbWJQNStIS0N6Yz0-VLT http://data.d4science.org/cHJERjFBZjBnOENhN2lOTXVGQ21yazVhYWthbUM2c3NHbWJQNStIS0N6Yz0-VLT 
+
+P/A VSURF model identified  zoo_fal_ann_volume sst_r_clim_10_0d sst_r_clim_04_0d sst_r_clim_11_0d rast_soft_sed zoo_fal_ann_chaeto sst_r_clim_05_0d zoo_fal_clim_calfin BT_SD BOTSALIN zoo_fal_ann_cham zoo_fal_ann_larvaceans zoo_fal_ann_hyper  as the best variables for prediction.
+PA rf completed.
+Time difference of 2.319072 mins
+Accuracy = 0.74, Kappa = 0.45, and threshold = 0.511.
+Now we fit the biomass VSURF model with 3409 observations and 108 explanatory variables.
+Sent to BB and will monitor: http://dataminer1-proto.d4science.org:80//wps/RetrieveResultServlet?id=9960b186-ac19-4d2a-a072-1a741749633d 
+every 10 minutes.
+Checking in at 2017-10-02 14:02:26.
+Checking in at 2017-10-02 14:12:26.
+Checking in at 2017-10-02 14:22:26.
+Checking in at 2017-10-02 14:32:27.
+Checking in at 2017-10-02 14:42:27.
+Checking in at 2017-10-02 14:52:27.
+Checking in at 2017-10-02 15:02:27.
+Checking in at 2017-10-02 15:12:27.
+Checking in at 2017-10-02 15:22:28.
+Checking in at 2017-10-02 15:32:28.
+Checking in at 2017-10-02 15:42:29.
+Checking in at 2017-10-02 15:52:29.
+Checking in at 2017-10-02 16:02:30.
+Checking in at 2017-10-02 16:12:30.
+Checking in at 2017-10-02 16:22:31.
+Checking in at 2017-10-02 16:32:31.
+Checking in at 2017-10-02 16:42:31.
+Checking in at 2017-10-02 16:52:32.
+Checking in at 2017-10-02 17:02:32.
+Checking in at 2017-10-02 17:12:32.
+Checking in at 2017-10-02 17:22:32.
+Checking in at 2017-10-02 17:32:33.
+Checking in at 2017-10-02 17:42:33.
+Checking in at 2017-10-02 17:52:34.
+Checking in at 2017-10-02 18:02:34.
+Checking in at 2017-10-02 18:12:34.
+Checking in at 2017-10-02 18:22:35.
+Checking in at 2017-10-02 18:32:35.
+Checking in at 2017-10-02 18:42:35.
+Checking in at 2017-10-02 18:52:36.
+Checking in at 2017-10-02 19:02:36.
+Checking in at 2017-10-02 19:12:36.
+Checking in at 2017-10-02 19:22:36.
+Checking in at 2017-10-02 19:32:37.
+Checking in at 2017-10-02 19:42:37.
+Checking in at 2017-10-02 19:52:38.
+Checking in at 2017-10-02 20:02:38.
+Checking in at 2017-10-02 20:12:38.
+Checking in at 2017-10-02 20:22:39.
+Checking in at 2017-10-02 20:32:39.
+Checking in at 2017-10-02 20:42:39.
+Checking in at 2017-10-02 20:52:40.
+Checking in at 2017-10-02 21:02:40.
+Checking in at 2017-10-02 21:12:40.
+Checking in at 2017-10-02 21:22:41.
+Checking in at 2017-10-02 21:32:41.
+Checking in at 2017-10-02 21:42:41.
+Checking in at 2017-10-02 21:52:41.
+Checking in at 2017-10-02 22:02:41.
+Checking in at 2017-10-02 22:12:41.
+Checking in at 2017-10-02 22:22:42.
+Checking in at 2017-10-02 22:32:42.
+Checking in at 2017-10-02 22:42:42.
+Success!  haddock is all finished and output files can be found:  http://data.d4science.org/ZWNCWldxUm9FSCtUM1dmNG9XTEVQT3d6Tm8rMFFVTjJHbWJQNStIS0N6Yz0-VLT http://data.d4science.org/N3dpeTZoYkpELzZUM1dmNG9XTEVQTGkrVnZKY0hXN1VHbWJQNStIS0N6Yz0-VLT 
+
+Biomass VSURF model identified  PRESPROB sst_r_clim_11_0d sst_r_clim_10_0d sst_r_clim_04_0d zoo_fal_clim_larvaceans chl_r_clim_02_0d zoo_fal_ann_penilia chl_r_clim_12_0d chl_f_clim_02_0d zoo_fal_ann_salps zoo_fal_ann_acarspp chl_r_clim_05_0d sst_r_clim_12_0d zoo_fal_ann_volume zoo_fal_ann_hyper zoo_fal_ann_chaeto zoo_fal_clim_mlucens zoo_fal_ann_pseudo rast_namera_bpi zoo_fal_ann_echino zoo_fal_ann_para sst_r_clim_08_0d BOTSALIN zoo_fal_clim_cham zoo_fal_ann_mlucens zoo_fal_ann_evadnespp  as the best variables for prediction.
+Biomass rf completed.
+Time difference of 3.802507 mins.
+R2 = 0.45, and RMSE = 0.6
+Now we fit the biomass VSURF model (w/o PA) with 1901 observations and 107 explanatory variables. 
+Sent to BB and will monitor: http://dataminer0-proto.d4science.org:80//wps/RetrieveResultServlet?id=a7f70659-1c1e-496b-b887-9dffc29054c8 
+every 10 minutes.
+Checking in at 2017-10-02 22:56:57.
+Checking in at 2017-10-02 23:06:58.
+Checking in at 2017-10-02 23:16:58.
+Checking in at 2017-10-02 23:26:59.
+Checking in at 2017-10-02 23:36:59.
+Checking in at 2017-10-02 23:46:59.
+Checking in at 2017-10-02 23:57:00.
+Checking in at 2017-10-03 00:07:00.
+Checking in at 2017-10-03 00:17:00.
+Checking in at 2017-10-03 00:27:00.
+Checking in at 2017-10-03 00:37:00.
+Checking in at 2017-10-03 00:47:00.
+Checking in at 2017-10-03 00:57:01.
+Checking in at 2017-10-03 01:07:01.
+Checking in at 2017-10-03 01:17:02.
+Checking in at 2017-10-03 01:27:02.
+Checking in at 2017-10-03 01:37:02.
+Checking in at 2017-10-03 01:47:02.
+Checking in at 2017-10-03 01:57:03.
+Checking in at 2017-10-03 02:07:03.
+Checking in at 2017-10-03 02:17:03.
+Success!  haddock is all finished and output files can be found:  http://data.d4science.org/Um10cWlrRFI0RzZhN2lOTXVGQ21ycU1jU09DR3NLTGNHbWJQNStIS0N6Yz0-VLT http://data.d4science.org/Um10cWlrRFI0RzZhN2lOTXVGQ21ybmQvSXpWdVVGN3NHbWJQNStIS0N6Yz0-VLT 
+
+Biomass VSURF (w/o PA) model identified  chl_r_clim_01_0d chl_r_clim_02_0d chl_f_clim_01_0d chl_f_clim_02_0d zoo_fal_clim_larvaceans sst_r_clim_11_0d sst_f_clim_12_0d rast_soft_sed sst_r_clim_10_0d zoo_fal_ann_acarspp zoo_fal_ann_penilia zoo_fal_ann_hyper sst_r_clim_12_0d chl_r_clim_05_0d zoo_fal_ann_chaeto ST_SD BOTSALIN zoo_fal_clim_mlucens zoo_fal_ann_salps zoo_fal_clim_calfin zoo_fal_ann_pseudo chl_r_clim_06_0d zoo_fal_ann_volume zoo_fal_ann_echino rast_namera_bpi  as the best variables for prediction.
+Biomass rf completed.
+Time difference of 6.024517 mins
+R2 = 0.46, and RMSE = 0.59
+
+~~~~~~~~~~~~~~~~~~
+Starting yellowtail_flounder at 2017-10-03 02:33:17.
+ To recreate, make sure: set.seed(627)
+
+First we'll fit the occupancy model with 2803 observations and 107 explanatory variables.
+Sent to BB and will monitor: http://dataminer1-proto.d4science.org:80//wps/RetrieveResultServlet?id=c6319835-dc4e-4063-9890-5e9b95422123 
+every 10 minutes.
+Checking in at 2017-10-03 02:33:32.
+Checking in at 2017-10-03 02:43:32.
+Checking in at 2017-10-03 02:53:32.
+Checking in at 2017-10-03 03:03:32.
+Checking in at 2017-10-03 03:13:32.
+Checking in at 2017-10-03 03:23:32.
+Checking in at 2017-10-03 03:33:32.
+Checking in at 2017-10-03 03:43:32.
+Checking in at 2017-10-03 03:53:33.
+Checking in at 2017-10-03 04:03:33.
+Checking in at 2017-10-03 04:13:33.
+Checking in at 2017-10-03 04:23:34.
+Checking in at 2017-10-03 04:33:34.
+Success!  yellowtail_flounder is all finished and output files can be found:  http://data.d4science.org/MVNoSG1VTkVrRVNUM1dmNG9XTEVQQXVNV2VQelpnbVZHbWJQNStIS0N6Yz0-VLT http://data.d4science.org/MVNoSG1VTkVrRVNUM1dmNG9XTEVQQjE5TFp0eFdOZjBHbWJQNStIS0N6Yz0-VLT 
+
+P/A VSURF model identified  chl_r_clim_07_0d sst_r_clim_10_0d BT_SD chl_r_clim_02_0d zoo_fal_clim_calfin chl_r_clim_06_0d sst_r_clim_11_0d zoo_fal_ann_cham chl_r_clim_08_0d sst_f_clim_11_0d zoo_fal_ann_calfin zoo_fal_ann_mlucens ST_SD rast_prcurv10km zoo_fal_ann_larvaceans rast_namera_bpi rast_prcurv2km zoo_fal_ann_penilia  as the best variables for prediction.
+PA rf completed.
+Time difference of 2.124393 mins
+Accuracy = 0.8, Kappa = 0.59, and threshold = 0.531.
+Now we fit the biomass VSURF model with 2803 observations and 108 explanatory variables.
+Sent to BB and will monitor: http://dataminer0-proto.d4science.org:80//wps/RetrieveResultServlet?id=baffc5e7-8df0-42b5-bb8f-cb9f212cb6c2 
+every 10 minutes.
+Checking in at 2017-10-03 04:46:11.
+Checking in at 2017-10-03 04:56:12.
+Checking in at 2017-10-03 05:06:12.
+Checking in at 2017-10-03 05:16:12.
+Checking in at 2017-10-03 05:26:13.
+Checking in at 2017-10-03 05:36:13.
+Checking in at 2017-10-03 05:46:13.
+Checking in at 2017-10-03 05:56:14.
+Checking in at 2017-10-03 06:06:14.
+Checking in at 2017-10-03 06:16:14.
+Checking in at 2017-10-03 06:26:14.
+Checking in at 2017-10-03 06:36:14.
+Checking in at 2017-10-03 06:46:15.
+Checking in at 2017-10-03 06:56:15.
+Checking in at 2017-10-03 07:06:15.
+Checking in at 2017-10-03 07:16:16.
+Checking in at 2017-10-03 07:26:16.
+Checking in at 2017-10-03 07:36:16.
+Checking in at 2017-10-03 07:46:16.
+Checking in at 2017-10-03 07:56:16.
+Checking in at 2017-10-03 08:06:17.
+Checking in at 2017-10-03 08:16:17.
+Checking in at 2017-10-03 08:26:18.
+Success!  yellowtail_flounder is all finished and output files can be found:  http://data.d4science.org/c0ZSU1BodC9lL0thN2lOTXVGQ21ydm11anQrYWFsSHNHbWJQNStIS0N6Yz0-VLT http://data.d4science.org/aStKL3FJamdhbWFhN2lOTXVGQ21yZ0xLNVVZeVB5cEpHbWJQNStIS0N6Yz0-VLT 
+
+Biomass VSURF model identified  PRESPROB sst_r_clim_10_0d sst_r_clim_11_0d zoo_fal_clim_cham sst_r_clim_12_0d chl_r_clim_05_0d chl_r_clim_04_0d zoo_fal_clim_pseudo ST_SD zoo_fal_ann_tlong rast_vortsp zoo_fal_ann_salps zoo_fal_clim_calfin zoo_fal_ann_evadnespp zoo_fal_ann_penilia chl_f_clim_09_0d chl_r_clim_06_0d zoo_fal_ann_pseudo zoo_fal_clim_evadnespp zoo_fal_ann_mlucens  as the best variables for prediction.
+Biomass rf completed.
+Time difference of 2.257596 mins.
+R2 = 0.36, and RMSE = 0.36
+Now we fit the biomass VSURF model (w/o PA) with 1365 observations and 107 explanatory variables. 
+Sent to BB and will monitor: http://dataminer0-proto.d4science.org:80//wps/RetrieveResultServlet?id=c763d873-689d-4ab2-9b50-511d501c13ec 
+every 10 minutes.
+Checking in at 2017-10-03 08:38:51.
+Checking in at 2017-10-03 08:48:51.
+Checking in at 2017-10-03 08:58:51.
+Checking in at 2017-10-03 09:08:52.
+Checking in at 2017-10-03 09:18:52.
+Checking in at 2017-10-03 09:28:53.
+Checking in at 2017-10-03 09:38:53.
+Checking in at 2017-10-03 09:48:54.
+Checking in at 2017-10-03 09:58:54.
+Checking in at 2017-10-03 10:08:55.
+Checking in at 2017-10-03 10:18:55.
+Checking in at 2017-10-03 10:28:56.
+Checking in at 2017-10-03 10:38:56.
+Checking in at 2017-10-03 10:48:57.
+Checking in at 2017-10-03 10:58:57.
+Checking in at 2017-10-03 11:08:57.
+Checking in at 2017-10-03 11:18:58.
+Checking in at 2017-10-03 11:28:58.
+Success!  yellowtail_flounder is all finished and output files can be found:  http://data.d4science.org/VzN0UkJjYmp0OENhN2lOTXVGQ21yc29XYlhKWnlRelVHbWJQNStIS0N6Yz0-VLT http://data.d4science.org/VzN0UkJjYmp0OENhN2lOTXVGQ21yaDJvQ1lZZTBmY3JHbWJQNStIS0N6Yz0-VLT 
+
+Biomass VSURF (w/o PA) model identified  sst_r_clim_04_0d sst_r_clim_10_0d sst_r_clim_09_0d sst_r_clim_08_0d sst_r_clim_12_0d ST_SD rast_vortsp sst_r_clim_07_0d chl_r_clim_05_0d chl_r_clim_04_0d zoo_fal_ann_evadnespp zoo_fal_ann_salps zoo_fal_ann_tlong sst_r_clim_03_0d zoo_fal_ann_penilia chl_r_clim_09_0d zoo_fal_ann_mlucens chl_r_clim_08_0d zoo_fal_ann_pseudo chl_r_clim_01_0d zoo_fal_ann_volume rast_namera_bpi chl_r_clim_02_0d zoo_fal_ann_larvaceans zoo_fal_ann_hyper  as the best variables for prediction.
+Biomass rf completed.
+Time difference of 2.993291 mins
+R2 = 0.38, and RMSE = 0.35
+
+~~~~~~~~~~~~~~~~~~
+Starting witch_flounder at 2017-10-03 11:42:09.
+ To recreate, make sure: set.seed(627)
+
+First we'll fit the occupancy model with 2278 observations and 107 explanatory variables.
+Sent to BB and will monitor: http://dataminer1-proto.d4science.org:80//wps/RetrieveResultServlet?id=dcd83297-1633-4631-9bb4-878f6bb241b0 
+every 10 minutes.
+Checking in at 2017-10-03 11:42:24.
+Checking in at 2017-10-03 11:52:25.
+Checking in at 2017-10-03 12:02:25.
+Checking in at 2017-10-03 12:12:26.
+Checking in at 2017-10-03 12:22:26.
+Checking in at 2017-10-03 12:32:27.
+Success!  witch_flounder is all finished and output files can be found:  http://data.d4science.org/QVdJaGNHaTMrTkNUM1dmNG9XTEVQTjhGV3NNdGlyK05HbWJQNStIS0N6Yz0-VLT http://data.d4science.org/TGZOT0ZBUzEyWStUM1dmNG9XTEVQR0EvTENkN1dad0pHbWJQNStIS0N6Yz0-VLT 
+
+P/A VSURF model identified  zoo_fal_clim_calfin zoo_fal_clim_chaeto sst_r_clim_10_0d chl_r_clim_05_0d zoo_fal_clim_salps rast_namera_bpi sst_r_clim_11_0d rast_soft_sed BOTSALIN BT_SD rast_slp2km zoo_fal_clim_mlucens zoo_fal_ann_mlucens  as the best variables for prediction.
+PA rf completed.
+Time difference of 1.308608 mins
+Accuracy = 0.76, Kappa = 0.52, and threshold = 0.565.
+Now we fit the biomass VSURF model with 2278 observations and 108 explanatory variables.
+Sent to BB and will monitor: http://dataminer1-proto.d4science.org:80//wps/RetrieveResultServlet?id=4e7af219-5904-4df2-9d0e-3fadd1880a57 
+every 10 minutes.
+Checking in at 2017-10-03 12:44:29.
+Checking in at 2017-10-03 12:54:29.
+Checking in at 2017-10-03 13:04:29.
+Checking in at 2017-10-03 13:14:30.
+Checking in at 2017-10-03 13:24:30.
+Checking in at 2017-10-03 13:34:30.
+Checking in at 2017-10-03 13:44:31.
+Checking in at 2017-10-03 13:54:31.
+Checking in at 2017-10-03 14:04:31.
+Checking in at 2017-10-03 14:14:32.
+Checking in at 2017-10-03 14:24:32.
+Checking in at 2017-10-03 14:34:32.
+Checking in at 2017-10-03 14:44:33.
+Checking in at 2017-10-03 14:54:33.
+Checking in at 2017-10-03 15:04:33.
+Checking in at 2017-10-03 15:14:33.
+Checking in at 2017-10-03 15:24:33.
+Checking in at 2017-10-03 15:34:34.
+Checking in at 2017-10-03 15:44:34.
+Checking in at 2017-10-03 15:54:34.
+Checking in at 2017-10-03 16:04:35.
+Checking in at 2017-10-03 16:14:35.
+Checking in at 2017-10-03 16:24:36.
+Checking in at 2017-10-03 16:34:36.
+Checking in at 2017-10-03 16:44:37.
+Checking in at 2017-10-03 16:54:37.
+Checking in at 2017-10-03 17:04:38.
+Success!  witch_flounder is all finished and output files can be found:  http://data.d4science.org/K3lRL2gvbmtwdDJUM1dmNG9XTEVQRVZwc0hLZnMyUTZHbWJQNStIS0N6Yz0-VLT http://data.d4science.org/SlZEc1hTZEpJQzZUM1dmNG9XTEVQRXFRR05SQnNlTWdHbWJQNStIS0N6Yz0-VLT 
+
+Biomass VSURF model identified  PRESPROB zoo_fal_clim_calfin chl_r_clim_03_0d rast_slpslp20km rast_slp20km sst_f_clim_01_0d zoo_fal_clim_para sst_f_clim_09_0d sst_r_clim_11_0d sst_r_clim_02_0d zoo_fal_ann_calfin rast_vortwi zoo_fal_ann_oithspp BOTSALIN rast_complexity rast_vortsp zoo_fal_ann_cham rast_namera_bpi zoo_fal_ann_pseudo sst_r_clim_04_0d sst_r_clim_06_0d BT_SD zoo_fal_ann_chaeto chl_r_clim_06_0d zoo_fal_ann_acarspp  as the best variables for prediction.
+Biomass rf completed.
+Time difference of 2.707875 mins.
+R2 = 0.23, and RMSE = 0.2
+Now we fit the biomass VSURF model (w/o PA) with 1250 observations and 107 explanatory variables. 
+Sent to BB and will monitor: http://dataminer1-proto.d4science.org:80//wps/RetrieveResultServlet?id=56db8285-d175-459f-adf3-219a1458ada8 
+every 10 minutes.
+Checking in at 2017-10-03 17:17:49.
+Checking in at 2017-10-03 17:27:49.
+Checking in at 2017-10-03 17:37:49.
+Checking in at 2017-10-03 17:47:50.
+Checking in at 2017-10-03 17:57:50.
+Checking in at 2017-10-03 18:07:51.
+Checking in at 2017-10-03 18:17:51.
+Checking in at 2017-10-03 18:27:52.
+Checking in at 2017-10-03 18:37:52.
+Checking in at 2017-10-03 18:47:53.
+Checking in at 2017-10-03 18:57:53.
+Checking in at 2017-10-03 19:07:53.
+Checking in at 2017-10-03 19:17:53.
+Checking in at 2017-10-03 19:27:54.
+Checking in at 2017-10-03 19:37:54.
+Checking in at 2017-10-03 19:47:55.
+Success!  witch_flounder is all finished and output files can be found:  http://data.d4science.org/TG1GNHdPbkw3dEdUM1dmNG9XTEVQT0wrZ0ZpNVdkelhHbWJQNStIS0N6Yz0-VLT http://data.d4science.org/SDVHcW54NkZORmFUM1dmNG9XTEVQQU9GOVRaMHZIVzNHbWJQNStIS0N6Yz0-VLT 
+
+Biomass VSURF (w/o PA) model identified  sst_f_clim_01_0d sst_f_clim_12_0d zoo_fal_clim_larvaceans zoo_fal_clim_para chl_r_clim_03_0d sst_f_clim_02_0d zoo_fal_clim_pseudo sst_f_clim_09_0d rast_namera_vrm zoo_fal_ann_calfin rast_slpslp20km zoo_fal_ann_pseudo sst_f_clim_08_0d rast_rugosity zoo_fal_clim_acarspp sst_r_clim_01_0d zoo_fal_clim_penilia rast_seabedforms zoo_fal_ann_oithspp zoo_fal_ann_mlucens chl_r_clim_02_0d zoo_fal_clim_ctyp sst_r_clim_07_0d rast_vortwi BT_SD ST_SD rast_namera_bpi zoo_fal_ann_ctyp sst_r_clim_10_0d zoo_fal_ann_acarspp  as the best variables for prediction.
+Biomass rf completed.
+Time difference of 2.798926 mins
+R2 = 0.24, and RMSE = 0.2
+
+~~~~~~~~~~~~~~~~~~
+Starting black_sea_bass at 2017-10-03 20:00:52.
+ To recreate, make sure: set.seed(627)
+
+First we'll fit the occupancy model with 2116 observations and 107 explanatory variables.
+Sent to BB and will monitor: http://dataminer1-proto.d4science.org:80//wps/RetrieveResultServlet?id=d4799d9f-0cbe-405d-a06b-f9b6314e3cc0 
+every 10 minutes.
+Checking in at 2017-10-03 20:01:06.
+Checking in at 2017-10-03 20:11:06.
+Checking in at 2017-10-03 20:21:07.
+Checking in at 2017-10-03 20:31:07.
+Success!  black_sea_bass is all finished and output files can be found:  http://data.d4science.org/RUM0eDFUai9acnlUM1dmNG9XTEVQQnp3SjhvRVNmSHlHbWJQNStIS0N6Yz0-VLT http://data.d4science.org/bkE3RjFHOGlpYVNUM1dmNG9XTEVQSjdUVEVUekM5Q2tHbWJQNStIS0N6Yz0-VLT 
+
+P/A VSURF model identified  chl_r_clim_01_0d BT_SD chl_r_clim_02_0d chl_r_clim_12_0d zoo_fal_ann_acarspp zoo_fal_clim_acarspp ST_SD  as the best variables for prediction.
+PA rf completed.
+Time difference of 1.300182 mins
+Accuracy = 0.72, Kappa = 0.43, and threshold = 0.569.
+Now we fit the biomass VSURF model with 2116 observations and 108 explanatory variables.
+Sent to BB and will monitor: http://dataminer1-proto.d4science.org:80//wps/RetrieveResultServlet?id=4185cdfd-d026-43f7-be68-99498dc1c0d3 
+every 10 minutes.
+Checking in at 2017-10-03 20:42:50.
+Checking in at 2017-10-03 20:52:50.
+Checking in at 2017-10-03 21:02:51.
+Checking in at 2017-10-03 21:12:51.
+Checking in at 2017-10-03 21:22:52.
+Checking in at 2017-10-03 21:32:52.
+Checking in at 2017-10-03 21:42:53.
+Checking in at 2017-10-03 21:52:53.
+Checking in at 2017-10-03 22:02:54.
+Checking in at 2017-10-03 22:12:54.
+Checking in at 2017-10-03 22:22:55.
+Checking in at 2017-10-03 22:32:55.
+Checking in at 2017-10-03 22:42:55.
+Checking in at 2017-10-03 22:52:56.
+Checking in at 2017-10-03 23:02:56.
+Success!  black_sea_bass is all finished and output files can be found:  http://data.d4science.org/MmxxemtRVnhML2VUM1dmNG9XTEVQQjZ2Zng3MC91SEFHbWJQNStIS0N6Yz0-VLT http://data.d4science.org/aUVnR3B0bk5XUk9UM1dmNG9XTEVQR2h3STYrdjAwMklHbWJQNStIS0N6Yz0-VLT 
+
+Biomass VSURF model identified  PRESPROB zoo_fal_clim_acarspp zoo_fal_clim_echino chl_r_clim_02_0d chl_r_clim_01_0d zoo_fal_ann_acarspp zoo_fal_ann_echino chl_r_clim_04_0d zoo_fal_clim_calfin rast_slpslp20km sst_r_clim_04_0d chl_f_clim_02_0d chl_f_clim_12_0d SURFSALIN zoo_fal_ann_volume  as the best variables for prediction.
+Biomass rf completed.
+Time difference of 1.619832 mins.
+R2 = 0.18, and RMSE = 0.22
+Now we fit the biomass VSURF model (w/o PA) with 1123 observations and 107 explanatory variables. 
+Sent to BB and will monitor: http://dataminer0-proto.d4science.org:80//wps/RetrieveResultServlet?id=eaa6179a-b31b-49d1-9797-346d4723d434 
+every 10 minutes.
+Checking in at 2017-10-03 23:14:53.
+Checking in at 2017-10-03 23:24:54.
+Checking in at 2017-10-03 23:34:54.
+Checking in at 2017-10-03 23:44:54.
+Checking in at 2017-10-03 23:54:55.
+Checking in at 2017-10-04 00:04:55.
+Checking in at 2017-10-04 00:14:56.
+Checking in at 2017-10-04 00:24:56.
+Checking in at 2017-10-04 00:34:57.
+Success!  black_sea_bass is all finished and output files can be found:  http://data.d4science.org/SE5wMkFJQW1sbENhN2lOTXVGQ21yb2I5UzV0L0IwWUdHbWJQNStIS0N6Yz0-VLT http://data.d4science.org/T21KcndudjRPMk9hN2lOTXVGQ21yaERjNXU1bzZ6WnpHbWJQNStIS0N6Yz0-VLT 
+
+Biomass VSURF (w/o PA) model identified  zoo_fal_clim_echino zoo_fal_ann_echino zoo_fal_clim_acarspp zoo_fal_clim_salps sst_r_clim_06_0d ST_SD chl_r_clim_04_0d sst_r_clim_08_0d zoo_fal_ann_volume rast_vortsu rast_slpslp20km sst_f_clim_04_0d sst_r_clim_11_0d BOTSALIN zoo_fal_ann_cham zoo_fal_clim_pseudo SURFSALIN chl_r_clim_01_0d rast_soft_sed  as the best variables for prediction.
+Biomass rf completed.
+Time difference of 1.762188 mins
+R2 = 0.19, and RMSE = 0.22
+
+~~~~~~~~~~~~~~~~~~
