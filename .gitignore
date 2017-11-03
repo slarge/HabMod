@@ -8,4 +8,4 @@ analysis/data/raw_data/**/*.RData
 analysis/data/raw_data/**/*.rds
 analysis/data/raw_data/keys.csv
 analysis/data/derived_data/**/*.rdata
-analysis/data/figures/** 
+analysis/data/figures/**

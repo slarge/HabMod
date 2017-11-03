@@ -1,25 +1,38 @@
 # Load new data 
+rm(list = ls())
 
-# need to do this: https://github.com/tidyverse/googledrive/issues/79
+## 1. make sure googledrive is loaded
+library(googledrive)
+
+## 2. Authenticate the connection 
+## (this will open up a browser window. Sign in to your relevant google account, 
+## copy and paste the code into the console when it asks to "Enter authorization code:")
 options(httr_oob_default=TRUE)
 googledrive::drive_auth()
 
-drive_path <- "~/temp_for_scott/1_habitat_analysis_2017/spring models lt only/"
+
+## 3. Make sure HabMod package is loaded with ctrl+shift+l
+
+## 4. Download spring.data.RData and fall.data.Rdata from appropriate GoogleDrive locations
+spring_drive_path <- "~/temp_for_scott/1_habitat_analysis_2017/spring models lt only/"
 data_path <- "analysis/data/raw_data/"
 
-drive_files <-  googledrive::drive_ls(drive_path, pattern = "spring.data.RData")
-
-googledrive::drive_download(file = drive_files,
-               path = paste0(data_path, drive_files$name),
+spring_drive_files <-  googledrive::drive_ls(spring_drive_path, pattern = "spring.data.RData")
+googledrive::drive_download(file = spring_drive_files,
+               path = file.path(data_path, spring_drive_files$name),
                overwrite = TRUE)
 
-drive_path_fall <- "~/temp_for_scott/1_habitat_analysis_2017/fall models lt only/"
-drive_files_fall <-  googledrive::drive_ls(drive_path_fall, pattern = "fall.data.RData")
+fall_drive_path <- "~/temp_for_scott/1_habitat_analysis_2017/fall models lt only/"
+fall_drive_files <-  googledrive::drive_ls(fall_drive_path, pattern = "fall.data.RData")
 
-googledrive::drive_download(file = drive_path_fall,
-                            path = paste0(drive_path_fall, drive_file_falls$name),
+googledrive::drive_download(file = fall_drive_files,
+                            path = file.path(data_path, fall_drive_files$name),
                             overwrite = TRUE)
 
+## 5. Now you are all set to run the /analysis/procedure/habitatmodel.R and /analysis/procedure/xgboost_habitat.R analyses.
+
+
+## 6 To run the habitatprediction.R scripts, you will need some raster data... the subsequent code will load that, but it will take some time.
 
 ## ~~~~~~~~~~~ ##
 ## Raster data ##
