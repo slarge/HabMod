@@ -1,4 +1,4 @@
-# rm(list = ls())
+rm(list = ls())
 seed <- 627
 set.seed(seed)
 
@@ -66,6 +66,9 @@ if(length(grep(paste0("-biomass_habmod-", season),
                         grep(paste0("-biomass_habmod-", season),
                              list.files("analysis/data/raw_data"),
                              value = TRUE))
+  
+  # Get the most recent file
+  habmod_file <- habmod_file[file.info(habmod_file)$mtime == tail(file.info(habmod_file)$mtime, 1)]
   all_dat_op <- readRDS(habmod_file)
 
   log_name <- gsub(".rds", ".log", habmod_file)
@@ -76,6 +79,7 @@ if(length(grep(paste0("-biomass_habmod-", season),
 if(length(grep(paste0("-biomass_habmod-", season, ".rds"),
                list.files("analysis/data/raw_data"))) == 0) {
   load(paste0("analysis/data/raw_data/", season, ".data.RData"))
+
   if(season == "fall"){
     season.data <- fall.data
     rm(list = c("fall.data"))
@@ -91,76 +95,49 @@ if(length(grep(paste0("-biomass_habmod-", season, ".rds"),
   ## ~~~~~~~~~~~~~~~~~ ##
   names(season.data) <- sub(" ", "", names(season.data))
   lag_dat <- grep("_[1-9]d", colnames(season.data), value = TRUE)
-  zoo_static_dat <- grep("zoo_spr_clim_", colnames(season.data), value = TRUE)
-  
+  zoo_static_dat <- grep("zoo_spr_clim_|zoo_fal_clim_", colnames(season.data), value = TRUE)
+
+  # Get rid of all the unwanted columns
   season_dat <- season.data %>%
-    dplyr::filter(SVSPP %in% species_list) %>%
     dplyr::select(-TOW,
                   -CATCHSEX,
                   -dplyr::one_of(lag_dat),
                   -dplyr::one_of(zoo_static_dat),
                   -dplyr::one_of(bad_dat)) %>%
     dplyr::distinct(.keep_all = TRUE)
-
-  rm(list = c("season.data"))
-
-  ## ~~~~~~~~~~~~~~ ##
-  ## Add zero sites ##
-  ## ~~~~~~~~~~~~~~ ##
-
-  # Each row is an observation, so count the number of each species per year, strata, and station sampled.
-  # Spread by each species, so NAs are created where species aren't present for a year, stratum, and station.
-  # Replace NAs with 0 and reorganize into a long data frame by year, stratum, and station.
-  # Sum the number of observations per year, species, and stratum. If a species is not found in a year, stratum, station
-  # but is found in that year stratum, they are considered "absent" or 0. If a species is not found in a year, stratum, station
-  # nor is found in that year stratum, they are NA and removed.
-
-  pa_table <- season_dat %>%
-    dplyr::group_by(YEAR, SVSPP, STRATUM, STATION) %>%
-    dplyr::summarize(count = n()) %>%
-    tidyr::spread(SVSPP, value = count) %>%
-    dplyr::mutate_all(dplyr::funs(replace(., is.na(.), 0))) %>%
-    tidyr::gather(SVSPP, value = count, -YEAR, -STRATUM, -STATION) %>%
-    dplyr::group_by(YEAR, SVSPP, STRATUM) %>%
-    dplyr::mutate(stratum_sum = sum(count), #
-                  PRESENCE = dplyr::case_when(count == 0 & stratum_sum >= 1 ~ 0, # Not at station but in stratum
-                                              count == 1 & stratum_sum >= 0 ~ 1, # Present
-                                              count == 0 & stratum_sum == 0 ~ NA_real_, # Not at station or in stratum
-                                              TRUE ~ NA_real_)) %>%
-    dplyr::filter(!is.na(PRESENCE))
-
-  # Create a data.frame of just the station data
+  
+  # Create a data.frame of just the station data for merging to make biomass per species by station
   station_dat <- season_dat %>%
     dplyr::select(-SVSPP,
                   -ABUNDANCE,
                   -BIOMASS) %>%
-    dplyr::distinct(.keep_all = TRUE)
+    dplyr::distinct(.keep_all = TRUE) 
+  
+  # Quick function to filter by species and join with station data, adding zero biomass and abundance if NA
+  extend_data <- function(svspp) {
+    season_dat %>%
+      filter(SVSPP == svspp) %>% 
+      right_join(station_dat) %>% 
+      mutate(BIOMASS = ifelse(is.na(BIOMASS),
+                              0, 
+                              BIOMASS),
+             ABUNDANCE = ifelse(is.na(ABUNDANCE),
+                                0,
+                                ABUNDANCE),
+             SVSPP = svspp)
+  }
+  
+  # Make the big data 
+  all_dat <- suppressMessages(bind_rows(species_list %>% purrr::map(., extend_data)))
+  rm(list = c("season.data"))
 
-  # join the p/a data with the station data
-  pa_dat <- pa_table %>%
-    dplyr::ungroup() %>%
-    dplyr::mutate(SVSPP = as.numeric(SVSPP)) %>%
-    dplyr::left_join(station_dat, by = c("YEAR", "STRATUM", "STATION")) %>%
-    dplyr::select(-stratum_sum, -count)
-
-  # join the p/a data with abundance and biomass data
-  bio_dat <- season_dat %>%
-    dplyr::select(ABUNDANCE,
-                  BIOMASS,
-                  join_names) %>%
-    dplyr::distinct(.keep_all = TRUE)
-
-  all_dat_op <- pa_dat %>%
-    dplyr::left_join(bio_dat, by = join_names) %>%
+  # Make data modifications (PA, log10(BIOMASS))
+  all_dat_op <- all_dat %>%  
     dplyr::left_join(svspp_dat, by = "SVSPP") %>%
-    dplyr::mutate(ABUNDANCE = ifelse(is.na(ABUNDANCE),
-                              0,
-                              ABUNDANCE),
-           ABUNDANCE = as.numeric(ABUNDANCE),
-           BIOMASS = ifelse(is.na(BIOMASS),
-                            0,
-                            BIOMASS),
-           BIOMASS = log10(as.numeric(BIOMASS) + 1),
+    dplyr::mutate(PRESENCE = ifelse(BIOMASS == 0,
+                                    0,
+                                    1),
+      BIOMASS = log10(as.numeric(BIOMASS) + 1),
            SVSPP = as.numeric(SVSPP),
            name = as.character(gsub(" ", "_", COMNAME))) %>% 
     dplyr::select(-dplyr::one_of(join_names),
@@ -168,40 +145,15 @@ if(length(grep(paste0("-biomass_habmod-", season, ".rds"),
                   SVSPP, LON, LAT, YEAR) %>%
     as.data.frame
 
-    # na.omit %>%
-  
-  ## Here, instead of creating SAC, we will do it later if SAC is present. The dat_maker
-  ## function finds the max row/col of data for each species.
-  # all_dat_op <- lapply(unique(all_dat$SVSPP), dat_maker) %>%
-    # dplyr::bind_rows()
-
-  # ## Split the datasets into PA and Biomass/Abundance partitions
-  # data_part_list <- lapply(unique(all_dat_op$SVSPP), function(x)
-  #   createDataPartition(y = all_dat_op %>%
-  #                         dplyr::filter(SVSPP == x) %>%
-  #                         dplyr::select(PRESENCE) %>%
-  #                         pull,
-  #                       p = 0.50,
-  #                       list = FALSE))
-  #
-  # data_partition <- list(selection = data_part_list)
-  # class(data_partition) <- c("tbl_df", "data.frame")
-  # attr(data_partition, "row.names") <- .set_row_names(length(data_part_list))
-  # data_partition$SVSPP <- unique(all_dat_op$SVSPP)
-  # data_partition <- unnest(data_partition)
-
   log_file <- paste(gsub("-", "", Sys.Date()), "-biomass_habmod-", season,".log", sep="")
   log_name <- paste0(derived_path, season, "/", log_file)
   saveRDS(all_dat_op, 
           file = paste0(raw_path, gsub(".log", ".rds", log_file)))
 }
 
-# sp.list <- c(22, 28, 73, 74, 105, 107, 141)
-sp.list <- c(28, 73, 74, 105, 107, 141)
-# sp.list <- c(141, 32, 72, 112, 163, 197)
-# sp.list <- c(112, 163, 197)
-# sp.list <- 22
-# sp.i <- 22
+sp.list <- c(22, 28, 73, 74, 105, 107, 141)
+
+sp.i <- 73
 for(sp.i in sp.list) {
 
   ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ##
