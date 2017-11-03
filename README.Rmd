@@ -14,7 +14,21 @@ knitr::opts_chunk$set(
 
 # Habitat modeling
 
-Data is held in a private google drive folder. If you have access to the folder, open analysis/data/raw_data/load_new_data.R and follow the directions. Once the raw data is loaded open analysis/procedure/habitatmodel.R. You will need to have BlueBRIDGE access to the [https://i-marine.d4science.org/group/stockassessment](BlueBRIDGE Stock Assessment VRE) to run the analysis on the BlueBRIDGE e-infrastructure. Once you have access, you will be asked to provide your login and token when you run the analysis.
+Data is held in a private google drive folder. If you have access to the folder, open analysis/data/raw_data/load_new_data.R.
+
+1. Make sure that you have googledrive loaded
+2. Authenticate the connection (this will open up a browser window. Sign in to your relevant google account, copy and paste the code into the console when it asks to "Enter authorization code:")
+    ```{r eval=FALSE}
+options(httr_oob_default=TRUE)
+googledrive::drive_auth()
+    ```
+
+3. Make sure the "HabMod" package is loaded with ctrl+shift+l, which brings a few helper functions into the current environment.
+4. Download spring.data.RData and fall.data.Rdata from appropriate GoogleDrive locations
+5. Now you are all set to run the Random Forest (analysis/procedure/habitatmodel.R) and Extreme Gradient Boosting (analysis/procedure/xgboost_habitat.R) analyses.
+    - Note, for the Random Forest analysis, you will need to have BlueBRIDGE access to the [https://i-marine.d4science.org/group/stockassessment](BlueBRIDGE Stock Assessment VRE) to run the analysis on the BlueBRIDGE e-infrastructure. Once you have access, you will be asked to provide your login and token when you run the analysis.
+
+
 
 
 ### Citation
