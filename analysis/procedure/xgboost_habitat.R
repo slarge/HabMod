@@ -18,20 +18,20 @@ raw_path <- "analysis/data/raw_data/"
 derived_path <- "analysis/data/derived_data/"
 
 # Using Data Miner with R
-source("http://svn.research-infrastructures.eu/public/d4science/gcube/trunk/data-analysis/RConfiguration/RD4SFunctions/workspace_interaction.r")
+# source("http://svn.research-infrastructures.eu/public/d4science/gcube/trunk/data-analysis/RConfiguration/RD4SFunctions/workspace_interaction.r")
 
 #SETTING USERNAME AND TOKEN - NOT NEEDED WHEN USING RSTUDIO ON THE PORTAL
-if(file.exists(paste0(raw_path, "keys.csv"))){
-  keys <- read.csv("analysis/data/raw_data/keys.csv", stringsAsFactors = FALSE)
-  username <<- keys$username
-  token <<- keys$token
-  rm(keys)
-}
-
-if(!file.exists(paste0(raw_path, "keys.csv"))) {
-  cat("To use the vsurf_bb functionality, go to: https://i-marine.d4science.org/group/stockassessment \nand enter your username and personal token")
-  set_keys(save_key = TRUE)
-}
+# if(file.exists(paste0(raw_path, "keys.csv"))){
+#   keys <- read.csv("analysis/data/raw_data/keys.csv", stringsAsFactors = FALSE)
+#   username <<- keys$username
+#   token <<- keys$token
+#   rm(keys)
+# }
+# 
+# if(!file.exists(paste0(raw_path, "keys.csv"))) {
+#   cat("To use the vsurf_bb functionality, go to: https://i-marine.d4science.org/group/stockassessment \nand enter your username and personal token")
+#   set_keys(save_key = TRUE)
+# }
 
 ## ~~~~~~~~~~~~~ ##
 ## Load the data ##
@@ -195,7 +195,7 @@ sp.i <- 73
   xgb.cv.bayes.logistic <- function(max_depth, subsample, colsample_bytree, eta){
 
     cv <- xgboost::xgb.cv(params = list(booster = 'gbtree',
-                                        eta = 0.01,
+                                        eta = eta,
                                         max_depth = max_depth,
                                         subsample = subsample,
                                         colsample_bytree = colsample_bytree,
@@ -206,15 +206,17 @@ sp.i <- 73
                                         nthread = parallel::detectCores()-1),
                           data = data.matrix(pa_df_train[,-target.var]),
                           label = as.matrix(pa_df_train[, target.var]),
-                          nround = 100, # Keep this smaller to be more efficient in finding best hyperparameters
+                          nround = 500, # Keep this smaller to be more efficient in finding best hyperparameters
                           folds = pa_cv_folds, 
-                          prediction = TRUE,
+                          watchlist =  list(train = pa_train,
+                                            test = pa_test),
+                          prediction = FALSE,
                           showsd = TRUE, 
                           early_stop_round = 5, 
                           maximize = TRUE,
                           verbose = 0
     )
-    list(Score = max(cv$evaluation_log$train_auc_mean), #cv$evaluation_log$test_auc_mean[cv$best_iteration]
+    list(Score = max(cv$evaluation_log$test_auc_mean), #cv$evaluation_log$test_auc_mean[cv$best_iteration]
          Pred = 0)
   }
 
@@ -231,7 +233,8 @@ sp.i <- 73
   
   pa_xgb_bayes <- rBayesianOptimization::BayesianOptimization(
     xgb.cv.bayes.logistic,
-    bounds = list(max_depth = c(2L, 12L),
+    bounds = list(eta = c(0.01, 0.3),
+                  max_depth = c(2L, 12L),
                   subsample = c(0.5, 1),
                   colsample_bytree = c(0.1, 0.4)
     ),
@@ -267,7 +270,7 @@ sp.i <- 73
                       print_every_n = 10,
                       early_stop_round = 5)
 
-  ## Identify the index of that maximizes AUC
+  ## Identify the index the model that maximizes AUC
   pa_bst_idx <- bst_plain$evaluation_log$iter[bst_plain$evaluation_log$test_auc_mean == max(bst_plain$evaluation_log$test_auc_mean)]
   
   pa_bst <-  xgboost(data = pa_train,
@@ -276,7 +279,17 @@ sp.i <- 73
                      nrounds = pa_bst_idx, 
                      verbose = 1) 
   
-  pred <- predict(pa_bst, pa_test)
+  predROC <- predict(pa_bst, pa_test)
+  
+  # myroc <- pROC::roc(pa_rf_test$PRESENCE, as.vector(predRoc))
+  # 
+  # roc_plot <- pROC::ggroc(myroc) +
+  #   ggplot2::geom_abline(intercept = 1, slope = 1, col = "grey70") +
+  #   ggplot2::labs(title = gsub("_", " ", name),
+  #                 subtitle = paste("AUC =", sprintf("%.3f",myroc$auc))) +
+  #   ggplot2::theme_bw() +
+  #   ggplot2::coord_equal()
+  # 
   
   ## ~~~~~~~~~~~~~ ##
   ## BIOMASS MODEL ##
@@ -289,6 +302,7 @@ sp.i <- 73
   bm_selection <- caret::createDataPartition(y = bm_rf[, "BIOMASS"],
                                              p = 0.75,
                                              list = FALSE)
+  fk <- caret::createFolds(bm_rf[, "BIOMASS"], k = 5)
   
   bm_train <- xgboost::xgb.DMatrix(data = as.matrix(bm_rf[bm_selection, -1]),
                           label = bm_rf[bm_selection, 1], 
@@ -300,10 +314,10 @@ sp.i <- 73
   
   target.var <- 1
   bm_df_train <- bm_rf[bm_selection, ]
-  xgb.cv.bayes.linear <- function(max_depth, subsample, colsample_bytree){
+  xgb.cv.bayes.linear <- function(max_depth, subsample, colsample_bytree, eta){
     
     cv <- xgboost::xgb.cv(params = list(booster = 'gbtree',
-                                        eta = 0.3,
+                                        eta = eta,
                                         max_depth = max_depth,
                                         subsample = subsample,
                                         colsample_bytree = colsample_bytree,
@@ -314,20 +328,20 @@ sp.i <- 73
                                         nthread = parallel::detectCores()-1),
                           data = data.matrix(bm_df_train[,-target.var]),
                           label = as.matrix(bm_df_train[, target.var]),
-                          nround = 100, # Keep this smaller to be more efficient in finding best hyperparameters
+                          nround = 500, # Keep this smaller to be more efficient in finding best hyperparameters
+                          watchlist = list(train = bm_train,
+                                           test = bm_test),
                           folds = bm_cv_folds,
-                          # nfolds = 5,
-                          prediction = TRUE,
+                          prediction = FALSE,
                           showsd = TRUE, 
                           early_stop_round = 5, 
                           maximize = FALSE,
                           verbose = 0
     )
-    list(Score = min(cv$evaluation_log$train_rmse_mean), #cv$evaluation_log$test_auc_mean[cv$best_iteration]
-         Pred = cv$pred)
+    list(Score = min(cv$evaluation_log$test_rmse_mean), #cv$evaluation_log$test_auc_mean[cv$best_iteration]
+         Pred = 0)
   }
-cv <- bm_bst_plain
-cv$evaluation_log
+
   ## ~~~~~~~~~~~~~~~~~~~~~~~~ ##
   ## Tune the hyperparameters ##
   ## ~~~~~~~~~~~~~~~~~~~~~~~~ ##
@@ -335,58 +349,63 @@ cv$evaluation_log
                                            nfolds = 5,
                                            stratified = FALSE,
                                            seed = seed)
-  
+  strt_time <- Sys.time()
   bm_xgb_bayes <- BayesianOptimization(
     xgb.cv.bayes.linear,
-    bounds = list(#eta = c(0.001, 0.3),
+    bounds = list(eta = c(0.01, 0.3),
                   max_depth = c(2L, 12L),
                   subsample = c(0.5, 1),
                   colsample_bytree = c(0.1, 0.4)
     ),
     init_grid_dt = NULL,
-    init_points = 2,  # number of random points to start search
-    n_iter = 2, # number of iterations after initial random points are set
+    init_points = 10,  # number of random points to start search
+    n_iter = 20, # number of iterations after initial random points are set
     acq = 'ucb', kappa = 2.576, eps = 0.0, verbose = TRUE
   )
   
-  bm_params <- list(
-    objective = "reg:linear",
-    seed = seed,
-    eta = bm_xgb_bayes$Best_Par[["eta"]],
-    max.depth = bm_xgb_bayes$Best_Par[["max_depth"]],
-    subsample = bm_xgb_bayes$Best_Par[["subsample"]],
-    colsample_bytree = bm_xgb_bayes$Best_Par[["colsample_bytree"]],
-    eval_metric = "rmse",
-    nthread = parallel::detectCores()-1)
+  stp_time <- Sys.time()
+  stp_time - strt_time
   
+  bm_params <- list(booster = 'gbtree',
+                    eta = bm_xgb_bayes$Best_Par[["eta"]],
+                    max_depth = bm_xgb_bayes$Best_Par[["max_depth"]],
+                    subsample =  bm_xgb_bayes$Best_Par[["subsample"]],
+                    colsample_bytree =  bm_xgb_bayes$Best_Par[["colsample_bytree"]],
+                    lambda = 1,
+                    alpha = 0,
+                    objective = 'reg:linear',
+                    eval_metric = 'rmse',
+                    nthread = parallel::detectCores()-1)
   
-  bm_params <- list(
-    objective = "reg:linear",
-    seed = seed,
-    eta = 0.3,
-    # max.depth = bm_xgb_bayes$Best_Par[["max_depth"]],
-    # subsample = bm_xgb_bayes$Best_Par[["subsample"]],
-    # colsample_bytree = bm_xgb_bayes$Best_Par[["colsample_bytree"]],
-    eval_metric = "rmse",
-    nthread = parallel::detectCores()-1)
-  
+  # bm_params <- list(booster = 'gbtree',
+  #                   # eta = bm_xgb_bayes$Best_Par[["eta"]],
+  #                   # max_depth = bm_xgb_bayes$Best_Par[["max_depth"]],
+  #                   # subsample =  bm_xgb_bayes$Best_Par[["subsample"]],
+  #                   # colsample_bytree =  bm_xgb_bayes$Best_Par[["colsample_bytree"]],
+  #                   # lambda = 1,
+  #                   # alpha = 0,
+  #                   objective = 'reg:linear',
+  #                   eval_metric = 'rmse',
+  #                   nthread = parallel::detectCores()-1)
   ## ~~~~~~~~~~~~~~ ##
   ## Tune the model ##
   ## ~~~~~~~~~~~~~~ ##
   
-  bm_watchlist <- list(train = bm_train,
-                       test = bm_test)
-  
-  bm_bst_plain <- xgb.cv(data = bm_train,
-                         watchlist = bm_watchlist,
-                         params = bm_params, 
-                         maximize = FALSE,
-                         nrounds = 100,
-                         nfold = 5,
-                         # folds = bm_cv_folds,
-                         print_every_n = 10,
-                         early_stop_round = 5)
-  
+  bm_bst_plain <- xgboost::xgb.cv(params = bm_params,
+                  data = bm_train,
+                  nround = 500, # Keep this smaller to be more efficient in finding best hyperparameters
+                  watchlist = list(train = bm_train,
+                                   test = bm_test),
+                  folds = bm_cv_folds,
+                  prediction = FALSE,
+                  seed = seed,
+                  showsd = TRUE, 
+                  early_stop_round = 5, 
+                  print_every_n = 10,
+                  maximize = FALSE,
+                  verbose = 1
+  )
+ 
   ## Identify the index of that maximizes AUC
   bm_bst_idx <- bm_bst_plain$evaluation_log$iter[bm_bst_plain$evaluation_log$test_rmse_mean == min(bm_bst_plain$evaluation_log$test_rmse_mean)]
   
@@ -400,7 +419,7 @@ cv$evaluation_log
   
   
   
-  label = getinfo(dtest, "label")
+  
   
   # get the trained model
   model = xgb.dump(bst, with_stats=TRUE)
