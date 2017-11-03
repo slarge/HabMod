@@ -133,7 +133,7 @@ for(season in season_list) {
   # mod_type = "PA"
   
   for(mod_type in c("PA", "BM")) {
-    run.rf <- readRDS(paste0(derived_path, season, "/", grep(paste0(name, "-", mod_type, "-RF"),
+    run.rf <- readRDS(paste0(derived_path, season, "/", grep(paste0(name, "-", season, "-", mod_type, "-RF"),
                                                 files, value = TRUE)))
     pred_vars <- run.rf$finalModel$xNames
     
