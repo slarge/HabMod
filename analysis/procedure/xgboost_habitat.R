@@ -131,7 +131,7 @@ if(length(grep(paste0("-biomass_habmod-", season, ".rds"),
       filter(SVSPP == svspp) %>% 
       right_join(station_dat) %>% 
       mutate(BIOMASS = ifelse(is.na(BIOMASS),
-                              0, 
+                              0,
                               BIOMASS),
              ABUNDANCE = ifelse(is.na(ABUNDANCE),
                                 0,
@@ -179,6 +179,9 @@ sp.i <- 73
     
   ## P/A data
   pa_rf <- pa_data[, c("PRESENCE", keepers)]
+  
+  
+  ## set the seed to make your partition reproductible
   pa_selection <- caret::createDataPartition(y = pa_rf[, "PRESENCE"],
                                           p = 0.75,
                                           list = FALSE)
@@ -277,33 +280,47 @@ sp.i <- 73
                      params = pa_params, 
                      maximize = TRUE,
                      nrounds = pa_bst_idx, 
-                     verbose = 1) 
+                     verbose = 0) 
+  
+  xgb.save(pa_bst, fname = file.path(derived_path, season, paste0(name, "-", season, "-pa_bst")))
+  pa_bst <- xgb.load(file.path(derived_path, season, paste0(name, "-", season, "-pa_bst")))
   
   predROC <- predict(pa_bst, pa_test)
+  # pa_test <- xgb.DMatrix(data = as.matrix(pa_rf[-pa_selection, -1]),
+  #                        label = pa_rf[-pa_selection, 1], 
+  #                        missing = NA)
+  # 
   
-  # myroc <- pROC::roc(pa_rf_test$PRESENCE, as.vector(predRoc))
+  myroc <- pROC::roc(pa_rf[-pa_selection, ]$PRESENCE, as.vector(predROC))
   # 
-  # roc_plot <- pROC::ggroc(myroc) +
-  #   ggplot2::geom_abline(intercept = 1, slope = 1, col = "grey70") +
-  #   ggplot2::labs(title = gsub("_", " ", name),
-  #                 subtitle = paste("AUC =", sprintf("%.3f",myroc$auc))) +
-  #   ggplot2::theme_bw() +
-  #   ggplot2::coord_equal()
+  roc_plot <- pROC::ggroc(myroc) +
+    ggplot2::geom_abline(intercept = 1, slope = 1, col = "grey70") +
+    ggplot2::labs(title = paste0(gsub("_", " ", name), " (", season, ")"),
+                  subtitle = paste("AUC =", sprintf("%.3f",myroc$auc))) +
+    ggplot2::theme_bw() +
+    ggplot2::coord_equal()
+  
   # 
+  ##adjust optimal cut-off threshold for class probabilities
+  threshold <- pROC::coords(myroc, x="best", best.method = "closest.topleft")[[1]] #get optimal cutoff threshold
+  predCut <- factor( ifelse(predROC > threshold, 1, 0) )
+  
+  curConfusionMatrix <- caret::confusionMatrix(predCut, pa_rf[-pa_selection, ]$PRESENCE, positive = "1")
   
   ## ~~~~~~~~~~~~~ ##
   ## BIOMASS MODEL ##
   ## ~~~~~~~~~~~~~ ##
+
   bm_rf <- pa_data[, c("BIOMASS", keepers)]
   
   # Add the probability of occurance to the Biomass data
   bm_rf$PRESPROB <- predict(pa_bst, newdata = data.matrix(bm_rf[, -1]))
-  
+  bm_rf$PRESPROB <- ifelse(bm_rf$PRESPROB > threshold, 1, 0)
+
   bm_selection <- caret::createDataPartition(y = bm_rf[, "BIOMASS"],
                                              p = 0.75,
                                              list = FALSE)
-  fk <- caret::createFolds(bm_rf[, "BIOMASS"], k = 5)
-  
+
   bm_train <- xgboost::xgb.DMatrix(data = as.matrix(bm_rf[bm_selection, -1]),
                           label = bm_rf[bm_selection, 1], 
                           missing = NA)
@@ -314,7 +331,7 @@ sp.i <- 73
   
   target.var <- 1
   bm_df_train <- bm_rf[bm_selection, ]
-  xgb.cv.bayes.linear <- function(max_depth, subsample, colsample_bytree, eta){
+  xgb.cv.bayes.linear <- function(max_depth, subsample, colsample_bytree, eta){#, tweedie_variance_power){
     
     cv <- xgboost::xgb.cv(params = list(booster = 'gbtree',
                                         eta = eta,
@@ -323,7 +340,10 @@ sp.i <- 73
                                         colsample_bytree = colsample_bytree,
                                         lambda = 1,
                                         alpha = 0,
-                                        objective = 'reg:linear',
+                                        obective = 'reg:tweedie',
+                                        tweedie_variance_power = 1,
+                                        # tweedie_variance_power = tweedie_variance_power,
+                                        # objective = 'reg:linear',
                                         eval_metric = 'rmse',
                                         nthread = parallel::detectCores()-1),
                           data = data.matrix(bm_df_train[,-target.var]),
@@ -335,10 +355,10 @@ sp.i <- 73
                           prediction = FALSE,
                           showsd = TRUE, 
                           early_stop_round = 5, 
-                          maximize = FALSE,
+                          maximize = TRUE,
                           verbose = 0
     )
-    list(Score = min(cv$evaluation_log$test_rmse_mean), #cv$evaluation_log$test_auc_mean[cv$best_iteration]
+    list(Score = -min(cv$evaluation_log$test_rmse_mean), #cv$evaluation_log$test_auc_mean[cv$best_iteration]
          Pred = 0)
   }
 
@@ -355,11 +375,12 @@ sp.i <- 73
     bounds = list(eta = c(0.01, 0.3),
                   max_depth = c(2L, 12L),
                   subsample = c(0.5, 1),
-                  colsample_bytree = c(0.1, 0.4)
+                  colsample_bytree = c(0.1, 0.4)#,
+                  # tweedie_variance_power = c(1, 1.6)
     ),
     init_grid_dt = NULL,
-    init_points = 10,  # number of random points to start search
-    n_iter = 20, # number of iterations after initial random points are set
+    init_points = 20,  # number of random points to start search
+    n_iter = 30, # number of iterations after initial random points are set
     acq = 'ucb', kappa = 2.576, eps = 0.0, verbose = TRUE
   )
   
@@ -371,9 +392,11 @@ sp.i <- 73
                     max_depth = bm_xgb_bayes$Best_Par[["max_depth"]],
                     subsample =  bm_xgb_bayes$Best_Par[["subsample"]],
                     colsample_bytree =  bm_xgb_bayes$Best_Par[["colsample_bytree"]],
+                    tweedie_variance_power = 1,
+                    # tweedie_variance_power = bm_xgb_bayes$Best_Par[["tweedie_variance_power"]],
                     lambda = 1,
                     alpha = 0,
-                    objective = 'reg:linear',
+                    objective = 'reg:tweedie',
                     eval_metric = 'rmse',
                     nthread = parallel::detectCores()-1)
   
@@ -392,41 +415,112 @@ sp.i <- 73
   ## ~~~~~~~~~~~~~~ ##
   
   bm_bst_plain <- xgboost::xgb.cv(params = bm_params,
-                  data = bm_train,
-                  nround = 500, # Keep this smaller to be more efficient in finding best hyperparameters
-                  watchlist = list(train = bm_train,
-                                   test = bm_test),
-                  folds = bm_cv_folds,
-                  prediction = FALSE,
-                  seed = seed,
-                  showsd = TRUE, 
-                  early_stop_round = 5, 
-                  print_every_n = 10,
-                  maximize = FALSE,
-                  verbose = 1
+                                  data = bm_train,
+                                  nround = 500, # Keep this smaller to be more efficient in finding best hyperparameters
+                                  watchlist = list(train = bm_train,
+                                                   test = bm_test),
+                                  folds = bm_cv_folds,
+                                  prediction = FALSE,
+                                  missing = NA,
+                                  seed = seed,
+                                  showsd = TRUE, 
+                                  early_stop_round = 5, 
+                                  print_every_n = 10,
+                                  maximize = FALSE,
+                                  verbose = 1
   )
- 
+  
   ## Identify the index of that maximizes AUC
   bm_bst_idx <- bm_bst_plain$evaluation_log$iter[bm_bst_plain$evaluation_log$test_rmse_mean == min(bm_bst_plain$evaluation_log$test_rmse_mean)]
   
   bm_bst <-  xgboost(data = bm_train,
-                  params = bm_params, 
-                  maximize = TRUE,
-                  nrounds = bm_bst_idx, 
-                  verbose = 0) 
+                     params = bm_params, 
+                     maximize = FALSE,
+                     nrounds = bm_bst_idx,
+                     verbose = 0) 
   
   pred <- predict(bm_bst, bm_test)
   
+  bm_all <- xgboost::xgb.DMatrix(data = as.matrix(bm_rf[, -1]),
+                                   label = bm_rf[, 1], 
+                                   missing = NA)
+  
+  # pred <- predict(bm_bst, bm_all)
+  
+  bm_rf$PREDICTION <- NA
+  bm_rf[-bm_selection, ]$PREDICTION <- pred
+
+  bm_rf$RESID <- NA
+  bm_rf[-bm_selection, ]$RESID <- bm_rf[-bm_selection, ]$BIOMASS - bm_rf[-bm_selection, ]$PREDICTION
+  #
+  RMSE_test <- sqrt(sum((bm_rf[-bm_selection, ]$BIOMASS - bm_rf[-bm_selection, ]$PREDICTION)^2)/length(bm_rf[-bm_selection, ]$PREDICTION))
+  rRMSE_test <- round(RMSE_test/(max(bm_rf[-bm_selection, ]$BIOMASS) - min(bm_rf[-bm_selection, ]$BIOMASS)), 2) #normalized
+  
+  df <- data.frame(BIOMASS = bm_rf[-bm_selection, ]$BIOMASS, PREDICTED = bm_rf[-bm_selection, ]$PREDICTION)
+
+  # 
+  # bm_rf$PREDICTION <- NA
+  # bm_rf[, ]$PREDICTION <- pred
+  # 
+  # bm_rf$RESID <- NA
+  # bm_rf[, ]$RESID <- bm_rf[, ]$BIOMASS - bm_rf[, ]$PREDICTION
+  # #
+  # RMSE_test <- sqrt(sum((bm_rf[, ]$BIOMASS - bm_rf[, ]$PREDICTION)^2)/length(bm_rf[, ]$PREDICTION))
+  # rRMSE_test <- round(RMSE_test/(max(bm_rf[, ]$BIOMASS) - min(bm_rf[, ]$BIOMASS)), 2)
+  
+  # df <- data.frame(BIOMASS = bm_rf[, ]$BIOMASS, PREDICTED = bm_rf[, ]$PREDICTION)
+  
+  ## Predicted/observed plot
+  p1 <- ggplot(df, aes(x = BIOMASS, y = PREDICTED))
+  p1 <- p1 +
+    # geom_linerange(aes(ymin = ci_lower,
+    #                    ymax = ci_upper),
+    #                color = "black", alpha = 0.2) +
+    geom_point(color = "black", alpha = 0.8, shape = 16) +
+    geom_abline(intercept=0, slope = 1, linetype = 2) +
+    labs(x = "Observed biomass",
+         y = "Predicted biomass",
+         title = sprintf("%s (%s)", gsub("_", " ", name), season),
+         subtitle = paste0("The error (relative RMSE) is about ", rRMSE_test * 100, "% \nas large as the mean biomass.")) +
+    coord_equal() +
+    theme_bw()
+  p1
+  # ggplot(bm_test, aes(x = PREDICTED, y = BIOMASS)) +
+  #   geom_point() +
+  #   geom_smooth(method='lm', formula = y ~ x, col = "grey40", se = FALSE) +
+  #   geom_abline(slope = 1, intercept = 0, linetype = 2, col = "grey40") +
+  #   theme_minimal() +
+  #   labs(title = "",
+  #        subtitle = paste0("RMSE = ", rf_rmse),
+  #        x = expression(Model~predicted~biomass~(log[10])),
+  #        y = expression(Observed~biomass~(log[10]))) +
+  #   theme(aspect.ratio = 1)
+  # 
   
   
+  ggplot(bm_rf, aes(x = PREDICTION, y = RESID)) +
+  # p1 <- p1 +
+    # geom_linerange(aes(ymin = ci_lower,
+    #                    ymax = ci_upper),
+    #                color = "black", alpha = 0.2) +
+    geom_point(color = "black", alpha = 0.8, shape = 16)
+  
+  
+  xgb.save(bm_bst, fname = file.path(derived_data, season, paste0(name, "bm_bst") ))
+  
+  final_dat <- list(pa_data,
+                    pa_colnames,
+                    bm_selection,
+                    bm_colnames,
+                    pa_selection)
   
   
   # get the trained model
   model = xgb.dump(bst, with_stats=TRUE)
   # get the feature real names
-  names = colnames(pa_rf[,-1])
+  names = colnames(bm_rf[,-1])
   # compute feature importance matrix
-  importance_matrix = xgb.importance(names, model=bst)
+  importance_matrix = xgb.importance(names, model=bm_bst)
   
   # plot
   gp = xgb.ggplot.importance(importance_matrix, top_n = 10)
