@@ -16,6 +16,8 @@ library(ggplot2)
 library(ggthemes)
 # devtools::install_github("dgrtwo/gganimate")
 library(gganimate)
+library(foreach)
+library(doParallel)
 # library(RFinfer)
 # devtools::install_github("swager/randomForestCI")
 # library(randomForestCI)
@@ -88,7 +90,7 @@ sp_abbr <- read.csv("analysis/data/raw_data/SVSPP_abbr.csv",
 ## Start loop for all models ##
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 
-season_list <- c("fall", "spring")[2]
+season_list <- c("fall", "spring")[1]
 
 season <- "fall"
 for(season in season_list) {
@@ -207,10 +209,15 @@ for(season in season_list) {
         sp_data <- sp_data[colnames(sp_data) %in% pred_vars]
       }
       
+      doParallel::registerDoParallel()
+      foreach::getDoParWorkers()
       
       # loop for years
-      for(year in 1992:2016){
+      # for(year in 1992:2016){
+      # foreach
+      foreach::foreach(i = 1992:2016, .packages = c("raster","sp", "automap")) %dopar% {
         
+        year = i
         # create dataframe to hold a year of data at a time, start with blank data
         pred.data = data.frame(array(data=NA, dim=c(nrow(nes.grid),length(pred_vars)+2)))
         colnames(pred.data) <- c("x","y", pred_vars)
@@ -533,10 +540,10 @@ for(season in season_list) {
                               V2 = pred.data$y,
                               value = bst_pr)
         # make spdf for kriging
-        coordinates(cont.out) <- ~V1+V2
+        sp::coordinates(cont.out) <- ~V1+V2
         
         # Ordinary kriging to make complete depth grid
-        kriging_result <- autoKrige(value ~ 1, 
+        kriging_result <- automap::autoKrige(value ~ 1, 
                                     input_data = cont.out,
                                     new_data = nes.grid.pred)
         
@@ -544,8 +551,8 @@ for(season in season_list) {
         k_out <- kriging_result$krige_output
         
         # make project and save raster
-        masked.raster = rasterFromXYZ(k_out) 
-        crs(masked.raster) <- "+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0" 
+        masked.raster = raster::rasterFromXYZ(k_out) 
+        raster::crs(masked.raster) <- "+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0" 
         
         outfile <- sprintf("RAST_%s_%s.00.00.%s.%s.%s.000000000.RData",
                            name_abbr,
@@ -556,8 +563,14 @@ for(season in season_list) {
         
         # write locally or to google drive?
         save(masked.raster, file = paste0(derived_path, season, "/", outfile))
-      } # end year loop 
+      } # end year foreach loop 
     } # end mod_type loop
+    
+    unregister <- function() {
+      env <- foreach:::.foreachGlobals
+      rm(list=ls(name=env), pos=env)
+    }
+    unregister()
     
     mod_type = "BM"
       
