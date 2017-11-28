@@ -21,7 +21,7 @@ library(gganimate)
 # library(randomForestCI)
 
 sp.i = 73
-mod_type = "PA"
+# mod_type = "PA"
 
 set.seed(627)
 
@@ -88,7 +88,7 @@ sp_abbr <- read.csv("analysis/data/raw_data/SVSPP_abbr.csv",
 ## Start loop for all models ##
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 
-season_list <- c("fall", "spring")[1]
+season_list <- c("fall", "spring")[2]
 
 season <- "fall"
 for(season in season_list) {
@@ -126,9 +126,9 @@ for(season in season_list) {
   SURFSALIN_dir = sprintf("%ssurfsal/%s_spdf/rasters/", raw_path, season)
   
   PRESPROB_dir <-  sprintf("%s%s/", derived_path, season) 
-  
+
   # sp_svspp$SVSPP
-  for(sp.i in c(28,73)){
+  for(sp.i in  c(28, 73, 74, 105, 107, 141)){
     
     if(!sp.i %in% sp_abbr$SVSPP) {
       stop("Make sure there is a 6 char abbreviation in the analysis/data/raw_data/SVSPP_abbr.csv file.")
@@ -198,7 +198,7 @@ for(season in season_list) {
           ggplot2::theme_bw() +
           ggplot2::coord_equal()
         
-        ggplot2::ggsave(paste0("analysis/figures/", name, "-", season, "-", "roc.png"), 
+        ggplot2::ggsave(paste0("analysis/figures/", season, "/", name, "-", season, "-", "roc.png"), 
                         plot = roc_plot)
 
         predCut <- factor( ifelse(predRoc >= threshold$threshold, "1", "0") )
@@ -680,9 +680,9 @@ for(season in season_list) {
               legend.key.width = unit(2, "cm")) +
         facet_wrap(~YEAR)
       
-      gganimate(pp1, filename = paste0(fig_path, name, "-", season, "-", mod_type, ".gif"))
+      gganimate(pp1, filename = paste0(fig_path, season, "/", name, "-", season, "-", mod_type, ".gif"))
       
-      ggsave(filename = paste0(fig_path, name, "-", season, "-", mod_type, ".png"), 
+      ggsave(filename = paste0(fig_path, season, "/", name, "-", season, "-", mod_type, ".png"), 
              plot = pp2, 
              width = 210, 
              height = 297, 
@@ -718,10 +718,9 @@ for(season in season_list) {
       
       pp3 <- ggplot() +
         geom_tile(data = hab_final, aes(x = x, y = y, fill = pred), alpha = 0.8) +
-        geom_sf(data = ne_countries, color = "grey60", size = 0.25) +
+        geom_sf(data = ne_countries, color = "grey70", fill = "grey60", size = 0.25) +
         stat_contour(data = bathy_df, aes(x = x, y = y , z = z), breaks = -200, color = "grey60", size = 0.25) +
-        scale_fill_gradient2(midpoint = 0, low = "blue", mid = "white",
-                             high="red") +
+        scale_fill_gradient2(midpoint = 0, low = "#0000FF", mid = "#FFFFFF", high ="#FF0000") +
         coord_sf(crs = crs, xlim = xlims, ylim = ylims) +
         theme_map() +
         labs(title = paste0(gsub("_", " ", name)), 
@@ -731,7 +730,7 @@ for(season in season_list) {
               strip.background = element_blank())
       # pp3
 
-      ggsave(filename = paste0(fig_path, name, "-", season,  "-", mod_type, "-slope.png"), 
+      ggsave(filename = paste0(fig_path, season, "/", name, "-", season,  "-", mod_type, "-slope.png"), 
              plot = pp3) 
       
       hab_raw <- hab_slope %>%  
@@ -754,7 +753,7 @@ for(season in season_list) {
               strip.background = element_blank())
       # pp4
 
-      ggsave(filename = paste0(fig_path, name, "-", season,  "-", mod_type, "-raw_slope.png"), 
+      ggsave(filename = paste0(fig_path, season, "/", name, "-", season,  "-", mod_type, "-raw_slope.png"), 
              plot = pp4)
 
   } # close species loop
