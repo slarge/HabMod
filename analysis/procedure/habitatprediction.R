@@ -564,13 +564,13 @@ for(season in season_list) {
         # write locally or to google drive?
         save(masked.raster, file = paste0(derived_path, season, "/", outfile))
       } # end year foreach loop 
+      unregister <- function() {
+        env <- foreach:::.foreachGlobals
+        rm(list=ls(name=env), pos=env)
+      }
+      unregister()
     } # end mod_type loop
     
-    unregister <- function() {
-      env <- foreach:::.foreachGlobals
-      rm(list=ls(name=env), pos=env)
-    }
-    unregister()
     
     mod_type = "BM"
       
