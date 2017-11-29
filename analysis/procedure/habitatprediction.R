@@ -16,13 +16,11 @@ library(ggplot2)
 library(ggthemes)
 # devtools::install_github("dgrtwo/gganimate")
 library(gganimate)
-library(foreach)
-library(doParallel)
 # library(RFinfer)
 # devtools::install_github("swager/randomForestCI")
 # library(randomForestCI)
 
-sp.i = 73
+# sp.i = 73
 # mod_type = "PA"
 
 set.seed(627)
@@ -90,9 +88,9 @@ sp_abbr <- read.csv("analysis/data/raw_data/SVSPP_abbr.csv",
 ## Start loop for all models ##
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 
-season_list <- c("fall", "spring")[1]
+season_list <- c("fall", "spring")[2]
 
-season <- "fall"
+season <- "spring"
 for(season in season_list) {
   
   habmod_file <- paste0("analysis/data/raw_data/",
@@ -130,7 +128,8 @@ for(season in season_list) {
   PRESPROB_dir <-  sprintf("%s%s/", derived_path, season) 
 
   # sp_svspp$SVSPP
-  for(sp.i in  c(28, 73, 74, 105, 107, 141)){
+  sp_str <- c(22, 74)
+  for(sp.i in  sp_str){
     
     if(!sp.i %in% sp_abbr$SVSPP) {
       stop("Make sure there is a 6 char abbreviation in the analysis/data/raw_data/SVSPP_abbr.csv file.")
@@ -213,11 +212,8 @@ for(season in season_list) {
       foreach::getDoParWorkers()
       
       # loop for years
-      # for(year in 1992:2016){
-      # foreach
-      foreach::foreach(i = 1992:2016, .packages = c("raster","sp", "automap")) %dopar% {
-        
-        year = i
+      for(year in 1992:2016){
+
         # create dataframe to hold a year of data at a time, start with blank data
         pred.data = data.frame(array(data=NA, dim=c(nrow(nes.grid),length(pred_vars)+2)))
         colnames(pred.data) <- c("x","y", pred_vars)
@@ -564,11 +560,6 @@ for(season in season_list) {
         # write locally or to google drive?
         save(masked.raster, file = paste0(derived_path, season, "/", outfile))
       } # end year foreach loop 
-      unregister <- function() {
-        env <- foreach:::.foreachGlobals
-        rm(list=ls(name=env), pos=env)
-      }
-      unregister()
     } # end mod_type loop
     
     
