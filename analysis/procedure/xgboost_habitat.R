@@ -161,6 +161,10 @@ run_xgboost_model <- function(season, SVSPP){
   keepers <- colnames(pa_data)[!colnames(pa_data) %in% c("YEAR", "name", "SVSPP", "BIOMASS", "ABUNDANCE", 
                                                          "PRESENCE", "LON", "LAT")]
   
+  log_con <- file(log_name, open = "a")
+  cat(paste0("Starting ", name, " at ",  Sys.time(), ".\n To recreate, make sure: set.seed(", seed, ")"), file = log_con)
+  close(log_con)
+  
   ## P/A data
   pa_rf <- pa_data[, c("PRESENCE", keepers)]
   
@@ -192,12 +196,14 @@ run_xgboost_model <- function(season, SVSPP){
                           label = as.matrix(pa_df_train[, target.var]),
                           nround = 1200, # Keep this smaller to be more efficient in finding best hyperparameters
                           folds = pa_cv_folds, 
-                          watchlist =  list(train = pa_train,
-                                            test = pa_test),
+                          watchlist =  list(test = pa_test,
+                                            train = pa_train),
                           prediction = FALSE,
                           showsd = TRUE, 
-                          early_stop_round = 5, 
-                          maximize = TRUE,
+                          callbacks = list(cb.early.stop(stopping_rounds = 10,
+                                                         maximize = TRUE,
+                                                         metric_name = "test_auc",
+                                                         verbose = FALSE)),
                           verbose = 0
     )
     list(Score = max(cv$evaluation_log$test_auc_mean), #cv$evaluation_log$test_auc_mean[cv$best_iteration]
@@ -219,7 +225,7 @@ run_xgboost_model <- function(season, SVSPP){
   pa_xgb_bayes <- rBayesianOptimization::BayesianOptimization(
     xgb.cv.bayes.logistic,
     bounds = list(eta = c(0.01, 0.3),
-                  max_depth = c(2L, 8L),
+                  max_depth = c(2L, 6L),
                   subsample = c(0.5, 1),
                   colsample_bytree = c(0.1, 0.4)
     ),
@@ -239,9 +245,16 @@ run_xgboost_model <- function(season, SVSPP){
     eval_metric = "auc",
     nthread = parallel::detectCores()-1)
   
+  log_con <- file(log_name, open = "a")
+  cat(paste0("\nTune the hyperparameters for the PA model. The optimizer found the following hyperparameters for ", 
+             name, ":\n ",
+             pa_params, "\n"), file = log_con)
+  close(log_con)
+  
   ## ~~~~~~~~~~~~~~ ##
   ## Tune the model ##
   ## ~~~~~~~~~~~~~~ ##
+
   pa_watchlist <- list(train = pa_train,
                        test = pa_test)
   
@@ -252,10 +265,15 @@ run_xgboost_model <- function(season, SVSPP){
                       nrounds = 1200, # Keep this large to find best model
                       folds = pa_cv_folds,
                       print_every_n = 10,
-                      early_stop_round = 5)
+                      callbacks = list(cb.early.stop(stopping_rounds = 10,
+                                                     maximize = TRUE,
+                                                     metric_name = "test_auc",
+                                                     verbose = TRUE)),
+                      verbose = 1)
   
   ## Identify the index the model that maximizes AUC
   pa_bst_idx <- bst_plain$evaluation_log$iter[bst_plain$evaluation_log$test_auc_mean == max(bst_plain$evaluation_log$test_auc_mean)]
+  pa_bst_auc <- max(bst_plain$evaluation_log$test_auc_mean)
   
   pa_bst <-  xgboost(data = pa_train,
                      params = pa_params, 
@@ -264,6 +282,12 @@ run_xgboost_model <- function(season, SVSPP){
                      verbose = 0) 
   
   saveRDS(pa_bst, file = file.path(derived_path, season, paste0(name,"-", season, "-PA_bst.rds")))
+  
+  log_con <- file(log_name, open = "a")
+  cat(paste0("\nThe best ", name, " PA model was iteration number ", 
+             pa_bst_idx, ", with a test AUC of ", 
+             pa_bst_auc, ".\n"), file = log_con)
+  close(log_con)
   
   pa_names = colnames(pa_rf[, -1])
   
@@ -304,16 +328,19 @@ run_xgboost_model <- function(season, SVSPP){
                           data = data.matrix(bm_df_train[,-target.var]),
                           label = as.matrix(bm_df_train[, target.var]),
                           nround = 1200, # Keep this smaller to be more efficient in finding best hyperparameters
-                          watchlist = list(train = bm_train,
-                                           test = bm_test),
+                          watchlist = list(test = bm_test,
+                                           train = bm_train),
                           folds = bm_cv_folds,
                           prediction = FALSE,
                           showsd = TRUE, 
-                          early_stop_round = 5, 
-                          maximize = TRUE,
+                          callbacks = list(cb.early.stop(stopping_rounds = 10,
+                                                         maximize = FALSE,
+                                                         metric_name = "test_rmse",
+                                                         verbose = TRUE)),
+                          maximize = FALSE,
                           verbose = 0
     )
-    list(Score = -min(cv$evaluation_log$test_rmse_mean), #cv$evaluation_log$test_auc_mean[cv$best_iteration]
+    list(Score = min(cv$evaluation_log$test_rmse_mean), #cv$evaluation_log$test_auc_mean[cv$best_iteration]
          Pred = 0)
   }
   
@@ -331,7 +358,7 @@ run_xgboost_model <- function(season, SVSPP){
   bm_xgb_bayes <- BayesianOptimization(
     xgb.cv.bayes.linear,
     bounds = list(eta = c(0.01, 0.3),
-                  max_depth = c(2L, 8L),
+                  max_depth = c(2L, 6L),
                   subsample = c(0.5, 1),
                   colsample_bytree = c(0.1, 0.4)
     ),
@@ -355,6 +382,13 @@ run_xgboost_model <- function(season, SVSPP){
                     eval_metric = 'rmse',
                     nthread = parallel::detectCores()-1)
   
+  log_con <- file(log_name, open = "a")
+  cat(paste0("\nTune the hyperparameters for the BM model. The optimizer found the following hyperparameters for ", 
+             name, ":\n ",
+             bm_params, "\n"), file = log_con)
+  close(log_con)
+  
+  
   ## ~~~~~~~~~~~~~~ ##
   ## Tune the model ##
   ## ~~~~~~~~~~~~~~ ##
@@ -362,14 +396,17 @@ run_xgboost_model <- function(season, SVSPP){
   bm_bst_plain <- xgboost::xgb.cv(params = bm_params,
                                   data = bm_train,
                                   nround = 1200, # Keep this smaller to be more efficient in finding best hyperparameters
-                                  watchlist = list(train = bm_train,
-                                                   test = bm_test),
+                                  watchlist = list(test = bm_test,
+                                                   train = bm_train),
                                   folds = bm_cv_folds,
                                   prediction = FALSE,
                                   missing = NA,
                                   seed = seed,
                                   showsd = TRUE, 
-                                  early_stop_round = 5, 
+                                  callbacks = list(cb.early.stop(stopping_rounds = 10,
+                                                                 maximize = FALSE,
+                                                                 metric_name = "test_rmse",
+                                                                 verbose = TRUE)),
                                   print_every_n = 10,
                                   maximize = FALSE,
                                   verbose = 1
@@ -377,6 +414,7 @@ run_xgboost_model <- function(season, SVSPP){
   
   ## Identify the index of that maximizes AUC
   bm_bst_idx <- bm_bst_plain$evaluation_log$iter[bm_bst_plain$evaluation_log$test_rmse_mean == min(bm_bst_plain$evaluation_log$test_rmse_mean)]
+  bm_bst_rmse <- min(bm_bst_plain$evaluation_log$test_rmse_mean)
   
   bm_bst <-  xgboost(data = bm_train,
                      params = bm_params, 
@@ -387,6 +425,12 @@ run_xgboost_model <- function(season, SVSPP){
   bm_names <- colnames(bm_rf[, -1])
   
   saveRDS(bm_bst, file = file.path(derived_path, season, paste0(name,"-", season, "-BM_bst.rds")))
+  
+  log_con <- file(log_name, open = "a")
+  cat(paste0("\nThe best ", name, " BM model was iteration number ", 
+             bm_bst_idx, ", with a test RMSE of ", 
+             bm_bst_auc, ".\n"), file = log_con)
+  close(log_con)
   
   final_dat <- list(data = pa_data,
                     pa_names =  pa_names,
