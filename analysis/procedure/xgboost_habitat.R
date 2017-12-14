@@ -1,169 +1,165 @@
-rm(list = ls())
+## In lieu of rm(list = ls()), please restart R to clean your R environment. in RStudio, ctrl+shift+F10 ##
+
 seed <- 627
 set.seed(seed)
-
-## Installs the development xgboost ##
-# install.packages("drat", repos="https://cran.rstudio.com")
-# drat:::addRepo("dmlc")
-# install.packages("xgboost", repos="http://dmlc.ml/drat/", type = "source")
 
 library(Matrix)
 library(xgboost)
 library(dplyr)
 library(rBayesianOptimization)
 library(ggplot2)
-# devtools::install_github("AppliedDataSciencePartners/xgboostExplainer")
-# library(xgboostExplainer)
 
 raw_path <- "analysis/data/raw_data/"
 derived_path <- "analysis/data/derived_data/"
 
-## ~~~~~~~~~~~~~ ##
-## Load the data ##
-## ~~~~~~~~~~~~~ ##
-svspp_dat <- read.csv(paste0(raw_path, "SVSPP.csv"),
-                      stringsAsFactors = FALSE)
+## ~~~~~~~~~~~~~~~~~ ##
+#### Load the data ####
+## ~~~~~~~~~~~~~~~~~ ##
 
-svspp_dat <- svspp_dat %>%
-  dplyr::mutate(COMNAME = tolower(COMNAME)) %>%
-  dplyr::select(COMNAME, SVSPP) %>%
-  dplyr::mutate(COMNAME = gsub("atlantic", "Atlantic", COMNAME),
-                COMNAME = gsub("american", "American", COMNAME),
-                COMNAME = gsub("acadian", "Acadian", COMNAME)) %>%
-  dplyr::distinct(.keep_all = TRUE)
+# sp.list <- c(22, 28, 73, 74, 105, 107, 141)
+# lapply(sp.list, run_xgboost_model, season = "fall")
 
-species_list <- c(101,102,103,104,105,
-                  106,107,108,109,112,
-                  121,13,131,135,139,
-                  14,141,143,145,15,
-                  151,155,156,163,164,
-                  168,171,172,176,177,
-                  22,23,24,25,26,
-                  27,28,32,33,34,
-                  35,36,69,72,73,
-                  74,75,76,77,78,84)
-
-join_names <- c("CRUISE6", "STRATUM", "STATION", "SVVESSEL", "YEAR", "SEASON", "LAT",
-                "LON", "EST_TOWDATE", "DEPTH", "DOY", "SVSPP")
-
-bad_dat <- c("rast_necrm_bpi", "rast_necrm_vrm" ,
-             "rast_bpi_3_25_layer", "rast_bpi_30_250_layer",
-             "rast_mab_sed", "rast_gdepth",
-             "rast_gravel_fraction", "rast_mud_fraction",
-             "rast_phi_fraction", "rast_sand_fraction", 
-             "rast_plcurv20km", "rast_plcurv2km",
-             "rast_plcurv10km", "SURFTEMP", "BOTTEMP")
-
-season <- "fall"
-
-if(length(grep(paste0("-biomass_habmod-", season), 
-               list.files("analysis/data/raw_data"))) != 0) {
+run_xgboost_model <- function(season, SVSPP){
   
-  habmod_file <- paste0("analysis/data/raw_data/",
-                        grep(paste0("-biomass_habmod-", season),
-                             list.files("analysis/data/raw_data"),
-                             value = TRUE))
+  svspp_dat <- read.csv(paste0(raw_path, "SVSPP.csv"),
+                        stringsAsFactors = FALSE)
   
-  # Get the most recent file
-  habmod_file <- habmod_file[file.info(habmod_file)$mtime == tail(file.info(habmod_file)$mtime, 1)]
-  all_dat_op <- readRDS(habmod_file)
-  
-  log_name <- gsub(".rds", ".log", habmod_file)
-  log_name <- gsub("raw_data", "derived_data", log_name)
-  rm(habmod_file)
-}
-
-if(length(grep(paste0("-biomass_habmod-", season, ".rds"),
-               list.files("analysis/data/raw_data"))) == 0) {
-  load(paste0("analysis/data/raw_data/", season, ".data.RData"))
-  
-  if(season == "fall"){
-    season.data <- fall.data
-    rm(list = c("fall.data"))
-  }
-  
-  if(season == "spring"){
-    season.data <- spring.data
-    rm(list = c("spring.data"))
-  }
-  
-  ## ~~~~~~~~~~~~~~~~~ ##
-  ## Clean up the data ##
-  ## ~~~~~~~~~~~~~~~~~ ##
-  names(season.data) <- sub(" ", "", names(season.data))
-  lag_dat <- grep("_[1-9]d", colnames(season.data), value = TRUE)
-  zoo_static_dat <- grep("zoo_spr_clim_|zoo_fal_clim_", colnames(season.data), value = TRUE)
-  
-  # Get rid of all the unwanted columns
-  season_dat <- season.data %>%
-    dplyr::select(-TOW,
-                  -CATCHSEX,
-                  -dplyr::one_of(lag_dat),
-                  -dplyr::one_of(zoo_static_dat),
-                  -dplyr::one_of(bad_dat)) %>%
+  svspp_dat <- svspp_dat %>%
+    dplyr::mutate(COMNAME = tolower(COMNAME)) %>%
+    dplyr::select(COMNAME, SVSPP) %>%
+    dplyr::mutate(COMNAME = gsub("atlantic", "Atlantic", COMNAME),
+                  COMNAME = gsub("american", "American", COMNAME),
+                  COMNAME = gsub("acadian", "Acadian", COMNAME)) %>%
     dplyr::distinct(.keep_all = TRUE)
   
-  # Create a data.frame of just the station data for merging to make biomass per species by station
-  station_dat <- season_dat %>%
-    dplyr::select(-SVSPP,
-                  -ABUNDANCE,
-                  -BIOMASS) %>%
-    dplyr::distinct(.keep_all = TRUE) 
+  ## Short list -- will need to be updated ##
+  species_list <- c(101, 102, 103, 104, 105, 
+                    106, 107, 108, 109, 112, 
+                    121, 13, 131, 135, 139, 
+                    14, 141, 143, 145, 15, 
+                    151, 155, 156, 163, 164, 
+                    168, 171, 172, 176, 177, 
+                    22, 23, 24, 25, 26, 
+                    27, 28, 32, 33, 34, 
+                    35, 36, 69, 72, 73, 
+                    74, 75, 76, 77, 78, 84)
   
-  # Quick function to filter by species and join with station data, adding zero biomass and abundance if NA
-  extend_data <- function(svspp) {
-    season_dat %>%
-      filter(SVSPP == svspp) %>% 
-      right_join(station_dat) %>% 
-      mutate(PRESENCE = ifelse(is.na(BIOMASS),
-                               0,
-                               1),
-             BIOMASS = ifelse(is.na(BIOMASS),
-                              NA,
-                              BIOMASS),
-             ABUNDANCE = ifelse(is.na(ABUNDANCE),
-                                0,
-                                ABUNDANCE),
-             SVSPP = svspp)
+  if(!SVSPP %in% species_list){
+    stop("SVSPP not in the available species list")
   }
   
-  # Make the big data 
-  all_dat <- suppressMessages(bind_rows(species_list %>% purrr::map(., extend_data)))
-  rm(list = c("season.data"))
+  join_names <- c("CRUISE6", "STRATUM", "STATION", "SVVESSEL", "YEAR", "SEASON", "LAT",
+                  "LON", "EST_TOWDATE", "DEPTH", "DOY", "SVSPP")
   
-  # Make data modifications (PA, log10(BIOMASS))
-  all_dat_op <- all_dat %>%  
-    dplyr::left_join(svspp_dat, by = "SVSPP") %>%
-    dplyr::mutate(#PRESENCE = ifelse(BIOMASS == 0,
-      #                 0,
-      #                1),
-      BIOMASS = log10(as.numeric(BIOMASS) + 1),
-      SVSPP = as.numeric(SVSPP),
-      name = as.character(gsub(" ", "_", COMNAME))) %>% 
-    dplyr::select(-dplyr::one_of(join_names),
-                  -COMNAME,
-                  SVSPP, LON, LAT, YEAR) %>%
-    as.data.frame
+  bad_dat <- c("rast_necrm_bpi", "rast_necrm_vrm" ,
+               "rast_bpi_3_25_layer", "rast_bpi_30_250_layer",
+               "rast_mab_sed", "rast_gdepth",
+               "rast_gravel_fraction", "rast_mud_fraction",
+               "rast_phi_fraction", "rast_sand_fraction", 
+               "rast_plcurv20km", "rast_plcurv2km",
+               "rast_plcurv10km", "SURFTEMP", "BOTTEMP")
   
-  log_file <- paste(gsub("-", "", Sys.Date()), "-biomass_habmod-", season,".log", sep="")
-  log_name <- paste0(derived_path, season, "/", log_file)
-  saveRDS(all_dat_op, 
-          file = paste0(raw_path, gsub(".log", ".rds", log_file)))
-}
-
-sp.list <- c(22, 28, 73, 74, 105, 107, 141)
-# 
-# sp.i <- 73
-for(sp.i in sp.list) {
+  if(length(grep(paste0("-biomass_habmod-", season), 
+                 list.files("analysis/data/raw_data"))) != 0) {
+    
+    habmod_file <- paste0("analysis/data/raw_data/",
+                          grep(paste0("-biomass_habmod-", season),
+                               list.files("analysis/data/raw_data"),
+                               value = TRUE))
+    
+    # Get the most recent file
+    habmod_file <- habmod_file[file.info(habmod_file)$mtime == tail(file.info(habmod_file)$mtime, 1)]
+    all_dat_op <- readRDS(habmod_file)
+    
+    log_name <- gsub(".rds", ".log", habmod_file)
+    log_name <- gsub("raw_data", "derived_data", log_name)
+    rm(habmod_file)
+  }
+  
+  if(length(grep(paste0("-biomass_habmod-", season, ".rds"),
+                 list.files("analysis/data/raw_data"))) == 0) {
+    load(paste0("analysis/data/raw_data/", season, ".data.RData"))
+    
+    if(season == "fall"){
+      season.data <- fall.data
+      rm(list = c("fall.data"))
+    }
+    
+    if(season == "spring"){
+      season.data <- spring.data
+      rm(list = c("spring.data"))
+    }
+    
+    ## ~~~~~~~~~~~~~~~~~ ##
+    ## Clean up the data ##
+    ## ~~~~~~~~~~~~~~~~~ ##
+    names(season.data) <- sub(" ", "", names(season.data))
+    lag_dat <- grep("_[1-9]d", colnames(season.data), value = TRUE)
+    zoo_static_dat <- grep("zoo_spr_clim_|zoo_fal_clim_", colnames(season.data), value = TRUE)
+    
+    ## Get rid of all the unwanted columns
+    season_dat <- season.data %>%
+      dplyr::select(-TOW,
+                    -CATCHSEX,
+                    -dplyr::one_of(lag_dat),
+                    -dplyr::one_of(zoo_static_dat),
+                    -dplyr::one_of(bad_dat)) %>%
+      dplyr::distinct(.keep_all = TRUE)
+    
+    ## Create a data.frame of just the station data for merging to make biomass per species by station
+    station_dat <- season_dat %>%
+      dplyr::select(-SVSPP,
+                    -ABUNDANCE,
+                    -BIOMASS) %>%
+      dplyr::distinct(.keep_all = TRUE) 
+    
+    ## Quick function to filter by species and join with station data, adding zero biomass and abundance if NA
+    extend_data <- function(svspp) {
+      season_dat %>%
+        filter(SVSPP == svspp) %>% 
+        right_join(station_dat) %>% 
+        mutate(PRESENCE = ifelse(is.na(BIOMASS),
+                                 0,
+                                 1),
+               BIOMASS = ifelse(is.na(BIOMASS),
+                                NA,
+                                BIOMASS),
+               ABUNDANCE = ifelse(is.na(ABUNDANCE),
+                                  0,
+                                  ABUNDANCE),
+               SVSPP = svspp)
+    }
+    
+    ## Make the big data 
+    all_dat <- suppressMessages(bind_rows(species_list %>% purrr::map(., extend_data)))
+    rm(list = c("season.data"))
+    
+    ## Make data modifications (PA, log10(BIOMASS))
+    all_dat_op <- all_dat %>%  
+      dplyr::left_join(svspp_dat, by = "SVSPP") %>%
+      dplyr::mutate(BIOMASS = log10(as.numeric(BIOMASS) + 1),
+                    SVSPP = as.numeric(SVSPP),
+                    name = as.character(gsub(" ", "_", COMNAME))) %>% 
+      dplyr::select(-dplyr::one_of(join_names),
+                    -COMNAME,
+                    SVSPP, LON, LAT, YEAR) %>%
+      as.data.frame
+    
+    log_file <- paste(gsub("-", "", Sys.Date()), "-biomass_habmod-", season,".log", sep="")
+    log_name <- paste0(derived_path, season, "/", log_file)
+    saveRDS(all_dat_op, 
+            file = paste0(raw_path, gsub(".log", ".rds", log_file)))
+  }
   
   ## ~~~~~~~~~ ##
   ## P/A model ##
   ## ~~~~~~~~~ ##
   
   pa_data <- all_dat_op %>% 
-    dplyr::filter(SVSPP == sp.i)
+    dplyr::filter(SVSPP == rlang::UQ(SVSPP))
   name <- unique(pa_data$name)
-  keepers <- colnames(pa_data)[!colnames(pa_data) %in% c("YEAR", "name", "SVSPP", "BIOMASS", "ABUNDANCE", "PRESENCE", "LON", "LAT")]
+  keepers <- colnames(pa_data)[!colnames(pa_data) %in% c("YEAR", "name", "SVSPP", "BIOMASS", "ABUNDANCE", 
+                                                         "PRESENCE", "LON", "LAT")]
   
   ## P/A data
   pa_rf <- pa_data[, c("PRESENCE", keepers)]
@@ -172,11 +168,11 @@ for(sp.i in sp.list) {
                                              p = 0.75,
                                              list = FALSE)
   
-  pa_train <- xgb.DMatrix(data = as.matrix(pa_rf[pa_selection, -1]),
+  pa_train <- xgboost::xgb.DMatrix(data = as.matrix(pa_rf[pa_selection, -1]),
                           label = pa_rf[pa_selection, 1], 
                           missing = NA)
   
-  pa_test <- xgb.DMatrix(data = as.matrix(pa_rf[-pa_selection, -1]),
+  pa_test <- xgboost::xgb.DMatrix(data = as.matrix(pa_rf[-pa_selection, -1]),
                          label = pa_rf[-pa_selection, 1], 
                          missing = NA)
   
@@ -187,14 +183,14 @@ for(sp.i in sp.list) {
                                         max_depth = max_depth,
                                         subsample = subsample,
                                         colsample_bytree = colsample_bytree,
-                                        lambda = 1, 
+                                        lambda = 1,
                                         alpha = 0,
                                         objective = 'binary:logistic',
                                         eval_metric = 'auc',
                                         nthread = parallel::detectCores()-1),
                           data = data.matrix(pa_df_train[,-target.var]),
                           label = as.matrix(pa_df_train[, target.var]),
-                          nround = 500, # Keep this smaller to be more efficient in finding best hyperparameters
+                          nround = 1200, # Keep this smaller to be more efficient in finding best hyperparameters
                           folds = pa_cv_folds, 
                           watchlist =  list(train = pa_train,
                                             test = pa_test),
@@ -223,7 +219,7 @@ for(sp.i in sp.list) {
   pa_xgb_bayes <- rBayesianOptimization::BayesianOptimization(
     xgb.cv.bayes.logistic,
     bounds = list(eta = c(0.01, 0.3),
-                  max_depth = c(2L, 12L),
+                  max_depth = c(2L, 8L),
                   subsample = c(0.5, 1),
                   colsample_bytree = c(0.1, 0.4)
     ),
@@ -253,7 +249,7 @@ for(sp.i in sp.list) {
                       watchlist = pa_watchlist,
                       params = pa_params, 
                       maximize = TRUE,
-                      nrounds = 500, # Keep this large to find best model
+                      nrounds = 1200, # Keep this large to find best model
                       folds = pa_cv_folds,
                       print_every_n = 10,
                       early_stop_round = 5)
@@ -307,7 +303,7 @@ for(sp.i in sp.list) {
                                         nthread = parallel::detectCores()-1),
                           data = data.matrix(bm_df_train[,-target.var]),
                           label = as.matrix(bm_df_train[, target.var]),
-                          nround = 500, # Keep this smaller to be more efficient in finding best hyperparameters
+                          nround = 1200, # Keep this smaller to be more efficient in finding best hyperparameters
                           watchlist = list(train = bm_train,
                                            test = bm_test),
                           folds = bm_cv_folds,
@@ -335,7 +331,7 @@ for(sp.i in sp.list) {
   bm_xgb_bayes <- BayesianOptimization(
     xgb.cv.bayes.linear,
     bounds = list(eta = c(0.01, 0.3),
-                  max_depth = c(2L, 12L),
+                  max_depth = c(2L, 8L),
                   subsample = c(0.5, 1),
                   colsample_bytree = c(0.1, 0.4)
     ),
@@ -365,7 +361,7 @@ for(sp.i in sp.list) {
   
   bm_bst_plain <- xgboost::xgb.cv(params = bm_params,
                                   data = bm_train,
-                                  nround = 500, # Keep this smaller to be more efficient in finding best hyperparameters
+                                  nround = 1200, # Keep this smaller to be more efficient in finding best hyperparameters
                                   watchlist = list(train = bm_train,
                                                    test = bm_test),
                                   folds = bm_cv_folds,
@@ -399,7 +395,7 @@ for(sp.i in sp.list) {
                     pa_selection = pa_selection)
   saveRDS(final_dat, file = file.path(derived_path, season, paste0(name,"-", season, "-dat.rds")))
   
-}
+} ## Close function
 
 
 ## Plots to explore residual patterns
