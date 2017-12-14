@@ -1,42 +1,54 @@
-# Load new data 
-rm(list = ls())
+## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ##
+## These are the steps to get all the data necessary for the analyses ##
+## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ##
 
-## 1. make sure googledrive is loaded
-library(googledrive)
+## In lieu of rm(list = ls()), please restart R to clean your R environment. in RStudio, hotkeys ctrl+shift+F10 ##
 
-## 2. Authenticate the connection 
-## (this will open up a browser window. Sign in to your relevant google account, 
-## copy and paste the code into the console when it asks to "Enter authorization code:")
-options(httr_oob_default=TRUE)
+library(dplyr)
+library(tidyr)
+library(stringr)
+
+## 1. Authenticate the googledrive connection 
+## (If you haven't used this before, the following will open up a browser window. Sign in to your relevant google account, 
+## and copy/paste the code from the browser into the R console when it asks to "Enter authorization code:")
+options(httr_oob_default = TRUE)
 googledrive::drive_auth()
 
+## 2. Make sure HabMod package is loaded with ctrl+shift+l
+if(!"package:HabMod" %in% search()) {
+  cat("Try typing ctrl+shift+L to load the HabMod package into the Global Environment")
+}
 
-## 3. Make sure HabMod package is loaded with ctrl+shift+l
 
-## 4. Download spring.data.RData and fall.data.Rdata from appropriate GoogleDrive locations
+## ~~~~~~~~~~~~~~~ ##
+#### Survey data ####
+## ~~~~~~~~~~~~~~~ ##
+
+## 3. Download spring.data.RData and fall.data.Rdata from appropriate GoogleDrive locations
+
 spring_drive_path <- "~/temp_for_scott/1_habitat_analysis_2017/spring models lt only/"
 data_path <- "analysis/data/raw_data/"
 
 spring_drive_files <-  googledrive::drive_ls(spring_drive_path, pattern = "spring.data.RData")
 googledrive::drive_download(file = spring_drive_files,
                path = file.path(data_path, spring_drive_files$name),
-               overwrite = TRUE)
+               overwrite = FALSE)
 
 fall_drive_path <- "~/temp_for_scott/1_habitat_analysis_2017/fall models lt only/"
 fall_drive_files <-  googledrive::drive_ls(fall_drive_path, pattern = "fall.data.RData")
 
 googledrive::drive_download(file = fall_drive_files,
                             path = file.path(data_path, fall_drive_files$name),
-                            overwrite = TRUE)
+                            overwrite = FALSE)
 
-## 5. Now you are all set to run the /analysis/procedure/habitatmodel.R and /analysis/procedure/xgboost_habitat.R analyses.
+## Now you are all set to run /analysis/procedure/xgboost_habitat.R analyses. Additional data is necessary for the habitatprediction.R scripts.
 
 
-## 6 To run the habitatprediction.R scripts, you will need some raster data... the subsequent code will load that, but it will take some time.
+## 4. To run the habitatprediction.R scripts, you will need some raster data and SVSPP 6 character codes... the subsequent code will load that, but it will take some time.
 
-## ~~~~~~~~~~~ ##
-## Raster data ##
-## ~~~~~~~~~~~ ##
+## ~~~~~~~~~~~~~~~ ##
+#### Raster data ####
+## ~~~~~~~~~~~~~~~ ##
 
 subDirs <- c("static_vars", 
              "particle transport", 
@@ -70,6 +82,11 @@ lapply(climDirs, function(x) gd_loader(gdDir = "temp_for_scott/1_habitat_analysi
                                       mainDir = "analysis/data/raw_data"))
 
 
+## ~~~~~~~~~~~~~~~~~~~~~~~~~~~ ##
+#### SVSPP 6 character codes ####
+## ~~~~~~~~~~~~~~~~~~~~~~~~~~~ ##
+
+## This little ditty takes the SVSPP names and creates unique 6 character codes 
 
 SVSPP <- read.csv("analysis/data/raw_data/SVSPP.csv")
 species_list <- c(101,102,103,104,105,
