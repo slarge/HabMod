@@ -1,30 +1,14 @@
-Package: habitatmodel
-Title: What the Package Does (one line, title case)
+Package: HabMod
+Title: Habitat Modeling of Northeastern US Fish Species.
 Version: 0.0.0.9000
 Authors@R: person("Scott", "Large", email = "largesi@gmail.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+Description: This package serves as a Research Compendium to create a reproducible and transparent record of the steps necessary to explore and predict habitat associations using NEFSC bottom trawl survey data and remotely sensed climatologies.
 Depends: R (>= 3.4.1)
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-Imports: bookdown,
-         dplyr,
-         tidyr,
-         ggplot2,
-         caret (<= 6.0-76),
-         parallel,
-         doParallel,
-         httr,
-         xml2,
-         viridis,
-         spdep,
-         googledrive,
-         citr,
-         cowplot,
-         randomForest,
-         raster,
-         automap,
-         maps,
-         marmap
-Depends: purrr
+Imports: googledrive,
+         magrittr,
+         purrr
+Depends:
 RoxygenNote: 6.0.1
