@@ -1,28 +1,22 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+Introduction to the package
+===========================
+
+This project was created with the [`rrrpkg` package](https://github.com/ropensci/rrrpkg) and is intended to serve as a [Research Compendium](https://github.com/ropensci/rrrpkg). The easiest way to get your hands dirty and explore data and run the analysis is to clone the [HabMod github repository](https://github.com/slarge/HabMod) (instructions on how to clone and general github/Rstudio knowledge can be found at [happygitwithr.com](http://happygitwithr.com/rstudio-git-github.html#clone-the-new-github-repository-to-your-computer-via-rstudio) -- replace 'myrepo' with 'slarge/HabMod'). Once you have the project cloned, you will need to add a few functions necessary to load data. "Load all" using the keyboard shortcut ctrl+shift+L, which will load these functions into the current Global Environment.
+
+Data is held in a private google drive folder. If you have access to the folder, open the analysis/data/raw\_data/load\_new\_data.R script and follow the instructions to download the data. The intention, here, is to copy data from the google drive folder into the R package directory structure in a consistent way to facilitate batch processessing the data in subsequent analyses.
+
 Habitat modeling
 ================
 
-Data is held in a private google drive folder. If you have access to the folder, open analysis/data/raw\_data/load\_new\_data.R.
-
-1.  Make sure that you have googledrive loaded
-2.  Authenticate the connection (this will open up a browser window. Sign in to your relevant google account, copy and paste the code into the console when it asks to "Enter authorization code:")
-
-    ``` r
-    options(httr_oob_default=TRUE)
-    googledrive::drive_auth()
-    ```
-
-3.  Make sure the "HabMod" package is loaded with ctrl+shift+l, which brings a few helper functions into the current environment.
-4.  Download spring.data.RData and fall.data.Rdata from appropriate GoogleDrive locations
-5.  Now you are all set to run the Random Forest (analysis/procedure/habitatmodel.R) and Extreme Gradient Boosting (analysis/procedure/xgboost\_habitat.R) analyses.
-    -   Note, for the Random Forest analysis, you will need to have BlueBRIDGE access to the [https://i-marine.d4science.org/group/stockassessment](BlueBRIDGE%20Stock%20Assessment%20VRE) to run the analysis on the BlueBRIDGE e-infrastructure. Once you have access, you will be asked to provide your login and token when you run the analysis.
+Once data are loaded using the analysis/data/raw\_data/load\_new\_data.R script, you can get started with the analysis. Load the analysis/procedure/xgboost\_habitat.R script. This script loads the raw data and adds a presence/absence vector for each species and then models presence/absence habitat and biomass habitat. Fitting with the xgboost algorithm requires a few steps. First, a few hyperparameters need to be tuned, which is done using a Bayesian optimization procedure. Next, the model is tuned.
 
 ### Citation
 
 Please cite this compendium as:
 
-> Authors, (2017). *Title of compendium*. Accessed 03 Nov 2017. Online at <https://doi.org/xxx/xxx>
+> Large, S and Friedland, K (2017). *NEUS Habitat Modeling*. Accessed 14 Dec 2017. Online at <https://doi.org/xxx/xxx>
 
 ### Installation
 
