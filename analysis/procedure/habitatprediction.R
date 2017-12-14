@@ -1,4 +1,5 @@
-rm(list = ls())
+## In lieu of rm(list = ls()), please restart R to clean your R environment. in RStudio, ctrl+shift+F10 ##
+
 #-------------------------------------------------------------------------------
 #Requiredpackages
 # library(randomForest)
