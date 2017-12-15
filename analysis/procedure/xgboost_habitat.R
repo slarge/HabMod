@@ -429,7 +429,7 @@ run_xgboost_model <- function(season, SVSPP){
   log_con <- file(log_name, open = "a")
   cat(paste0("\nThe best ", name, " BM model was iteration number ", 
              bm_bst_idx, ", with a test RMSE of ", 
-             bm_bst_auc, ".\n"), file = log_con)
+             bm_bst_rmse, ".\n"), file = log_con)
   close(log_con)
   
   final_dat <- list(data = pa_data,
