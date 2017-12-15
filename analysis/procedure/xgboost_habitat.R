@@ -246,9 +246,9 @@ run_xgboost_model <- function(season, SVSPP){
     nthread = parallel::detectCores()-1)
   
   log_con <- file(log_name, open = "a")
-  cat(paste0("\nTune the hyperparameters for the PA model. The optimizer found the following hyperparameters for ", 
-             name, ":\n ",
-             pa_params, "\n"), file = log_con)
+  cat("\nTune the hyperparameters for the PA model. The optimizer found the following hyperparameters for ", 
+      name, ":\n ",
+      print(pa_params), "\n", file = log_con)
   close(log_con)
   
   ## ~~~~~~~~~~~~~~ ##
@@ -383,9 +383,9 @@ run_xgboost_model <- function(season, SVSPP){
                     nthread = parallel::detectCores()-1)
   
   log_con <- file(log_name, open = "a")
-  cat(paste0("\nTune the hyperparameters for the BM model. The optimizer found the following hyperparameters for ", 
-             name, ":\n ",
-             bm_params, "\n"), file = log_con)
+  cat("\nTune the hyperparameters for the BM model. The optimizer found the following hyperparameters for ", 
+      name, ":\n ",
+      print(bm_params), "\n", file = log_con)
   close(log_con)
   
   
